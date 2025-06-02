@@ -14,7 +14,7 @@ export function EnhancedToolbar({ title, scrollTitle, isScrolled = false, classN
   return (
     <div
       className={cn(
-        'border-border bg-background/75 sticky top-0 z-10 flex h-(--header-height) items-center gap-2 border-b-[0.5px] backdrop-blur-sm transition-all duration-300',
+        'border-border bg-background/75 sticky top-0 z-10 flex h-(--header-height) items-center gap-2 border-b-[0.5px] px-6 backdrop-blur-sm transition-all duration-300',
         className,
       )}
     >

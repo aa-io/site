@@ -1,0 +1,11 @@
+- linear.app
+- openai.com
+- shadcn.com
+- brianlovin.com
+- midday.ai
+- craft.do
+- paco.me
+- jordanhughes.co
+- mainfra.me
+- resend.com/handbook
+- stripe.com
