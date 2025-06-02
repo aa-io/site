@@ -3,3 +3,43 @@ description:
 globs:
 alwaysApply: false
 ---
+# Development Workflow & Tooling
+
+## Development Commands
+- `pnpm dev` - Start development server with Turbopack
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+
+## Code Quality Tools
+- **ESLint**: Configured with Next.js rules in [eslint.config.mjs](mdc:eslint.config.mjs)
+- **Prettier**: Auto-formatting with Tailwind plugin in [prettier.config.js](mdc:prettier.config.js)
+- **TypeScript**: Strict mode enabled for type safety
+
+## shadcn/ui Integration
+- Configuration in [components.json](mdc:components.json)
+- Use `npx shadcn@latest add <component>` to add new UI components
+- Components are installed to [components/ui/](mdc:components/ui/)
+- Aliases configured for easy imports: `@/components`, `@/lib`, `@/hooks`
+
+## Theme System
+- Theme provider in [components/theme-provider.tsx](mdc:components/theme-provider.tsx)
+- CSS variables defined in [app/globals.css](mdc:app/globals.css)
+- Dark/light mode switching with system preference detection
+- Theme colors follow shadcn/ui neutral base color scheme
+
+## Asset Management
+- Static assets in [public/](mdc:public/) directory
+- Project images organized in [public/img/projects/](mdc:public/img/projects/)
+- Favicon and other meta assets in [app/](mdc:app/) directory
+
+## Performance Considerations
+- Next.js 15 with Turbopack for fast development
+- Font optimization with `next/font/google`
+- CSS variables for efficient theming
+- Tree-shaking enabled for optimal bundle size
+
+## MDX Support
+- MDX components configured in [mdx-components.tsx](mdc:mdx-components.tsx)
+- Remark GFM plugin for GitHub Flavored Markdown
+- Custom styling for MDX content

@@ -3,3 +3,30 @@ description:
 globs:
 alwaysApply: false
 ---
+# Project Overview
+
+This is Andrew Ambrosino's personal portfolio website built with modern web technologies.
+
+## Tech Stack
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript with strict mode
+- **Styling**: Tailwind CSS v4 with CSS variables
+- **UI Components**: shadcn/ui (New York style) with Radix UI primitives
+- **Icons**: Tabler Icons and Lucide React
+- **Fonts**: Geist Sans and Geist Mono
+- **Theme**: Dark/light mode support with next-themes
+- **Package Manager**: pnpm
+
+## Architecture
+The site uses Next.js App Router with a sidebar-based layout:
+- Root layout in [app/layout.tsx](mdc:app/layout.tsx) provides global theme and sidebar
+- Pages are organized under [app/(pages)/](mdc:app/(pages)/) route group
+- Components are split between [components/](mdc:components/) and [components/ui/](mdc:components/ui/)
+- Utilities and hooks are in [lib/](mdc:lib/) and [hooks/](mdc:hooks/) respectively
+
+## Key Features
+- Responsive sidebar navigation with collapsible sections
+- Dark/light theme switching
+- MDX support for content pages
+- Professional timeline component for work experience
+- Modern typography with custom font loading
