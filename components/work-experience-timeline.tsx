@@ -1,4 +1,4 @@
-import { Building2, Calendar, ExternalLink, MapPin } from 'lucide-react';
+import { Calendar, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { Separator } from '@/components/ui/separator';
@@ -93,20 +93,23 @@ export function WorkExperienceTimeline({ experience }: WorkExperienceTimelinePro
 
                     <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
                       <div className="flex items-center gap-1">
-                        <Building2 className="h-4 w-4" />
-                        {stint.company.description}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="h-4 w-4" />
-                        {stint.location}
-                        {stint.isRemote && ' (Remote)'}
-                      </div>
-                      <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
                         {formatDateRange(stint.startDate, stint.endDate)} • {getStintDuration(stint)}
                       </div>
                     </div>
                   </div>
+
+                  {/* Key accomplishments for the stint */}
+                  {stint.keyAccomplishments.length > 0 && (
+                    <div className="space-y-2">
+                      <h5 className="text-muted-foreground text-sm font-medium">Overall Accomplishments</h5>
+                      <ul className="list-inside list-disc space-y-1 pl-2 text-sm">
+                        {stint.keyAccomplishments.map((accomplishment, idx) => (
+                          <li key={idx}>{accomplishment}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
                   {/* Roles */}
                   <div className="space-y-4">
@@ -119,9 +122,6 @@ export function WorkExperienceTimeline({ experience }: WorkExperienceTimelinePro
                               {formatDateRange(role.startDate, role.endDate)}
                             </div>
                           </div>
-                          <p className="text-muted-foreground text-sm capitalize">
-                            {role.level} • {role.department}
-                          </p>
                         </div>
 
                         <p className="text-sm">{role.description}</p>
@@ -176,18 +176,6 @@ export function WorkExperienceTimeline({ experience }: WorkExperienceTimelinePro
                       </div>
                     ))}
                   </div>
-
-                  {/* Key accomplishments for the stint */}
-                  {stint.keyAccomplishments.length > 0 && (
-                    <div className="space-y-2">
-                      <h5 className="text-muted-foreground text-sm font-medium">Overall Accomplishments</h5>
-                      <ul className="list-inside list-disc space-y-1 pl-2 text-sm">
-                        {stint.keyAccomplishments.map((accomplishment, idx) => (
-                          <li key={idx}>{accomplishment}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
                 </div>
               </div>
             ))}
