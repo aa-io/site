@@ -1,3 +1,4 @@
+import { FloatingToc } from '@/components/floating-toc';
 import { IntegratedScrollHeader } from '@/components/integrated-scroll-header';
 import Content from './content.mdx';
 
@@ -16,6 +17,9 @@ export default function About() {
           <Content />
         </div>
       </div>
+
+      {/* Floating Table of Contents */}
+      <FloatingToc />
     </div>
   );
 }

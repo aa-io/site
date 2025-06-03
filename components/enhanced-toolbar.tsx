@@ -9,7 +9,9 @@ interface EnhancedToolbarProps {
 }
 
 export function EnhancedToolbar({ title, scrollTitle, isScrolled = false, className }: EnhancedToolbarProps) {
+  // Show scroll title when scrolled, otherwise show the regular title (which is now blank)
   const displayTitle = isScrolled && scrollTitle ? scrollTitle : title;
+  const shouldShowTitle = isScrolled && scrollTitle;
 
   return (
     <div
@@ -21,8 +23,8 @@ export function EnhancedToolbar({ title, scrollTitle, isScrolled = false, classN
       <SidebarTrigger className="-ml-1" />
       <div
         className={cn(
-          'flex-1 text-sm font-semibold transition-all duration-300',
-          isScrolled && scrollTitle ? 'opacity-100' : 'opacity-100',
+          'flex-1 text-sm font-semibold transition-all duration-500 ease-out',
+          shouldShowTitle ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0',
         )}
       >
         {displayTitle}

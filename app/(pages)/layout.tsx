@@ -14,17 +14,22 @@ export default function PagesLayout({
   const pathname = usePathname();
   const { isScrolled } = useScrollHeaderState();
 
-  // Determine page title based on pathname
+  // Determine page title based on pathname (blank for non-scrolled)
   const getPageTitle = () => {
-    if (pathname === '/about') return 'About';
-    if (pathname.startsWith('/projects')) return 'Projects';
-    return 'My App';
+    return '';
   };
 
-  // Determine scroll title based on pathname
+  // Determine scroll title based on pathname (use the big title from the page)
   const getScrollTitle = () => {
     if (pathname === '/about') return 'About Andrew';
-    if (pathname.startsWith('/projects')) return 'My Projects';
+    if (pathname === '/projects') return 'My Projects';
+    if (pathname === '/projects/catch') return 'Catch';
+    if (pathname === '/projects/noyo') return 'Noyo';
+    if (pathname.startsWith('/projects/')) {
+      // For other project pages, extract the project name and capitalize it
+      const projectId = pathname.split('/projects/')[1];
+      return projectId.charAt(0).toUpperCase() + projectId.slice(1);
+    }
     return undefined;
   };
 

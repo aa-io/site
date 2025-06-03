@@ -2,33 +2,78 @@ import { ReactNode } from 'react';
 
 // Define a simple type for MDX components
 type MDXComponents = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: React.ComponentType<any>;
 };
+
+// Helper function to generate heading IDs
+function generateHeadingId(children: ReactNode): string {
+  const text =
+    typeof children === 'string' ? children
+    : Array.isArray(children) ? children.join('')
+    : children?.toString() || '';
+
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
 
 export function useMDXComponents(components: MDXComponents = {}): MDXComponents {
   return {
     // Custom components
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Row: (props: any) => <div {...props} />,
 
     // Typography
-    h1: ({ children }: { children: ReactNode }) => (
-      <h1 className="mt-12 mb-8 text-4xl font-bold tracking-tight first:mt-0">{children}</h1>
-    ),
-    h2: ({ children }: { children: ReactNode }) => (
-      <h2 className="mt-10 mb-6 text-3xl font-semibold tracking-tight first:mt-0">{children}</h2>
-    ),
-    h3: ({ children }: { children: ReactNode }) => (
-      <h3 className="mt-8 mb-4 text-2xl font-semibold tracking-tight first:mt-0">{children}</h3>
-    ),
-    h4: ({ children }: { children: ReactNode }) => (
-      <h4 className="mt-6 mb-3 text-xl font-semibold tracking-tight">{children}</h4>
-    ),
-    h5: ({ children }: { children: ReactNode }) => (
-      <h5 className="mt-6 mb-3 text-lg font-semibold tracking-tight">{children}</h5>
-    ),
-    h6: ({ children }: { children: ReactNode }) => (
-      <h6 className="mt-6 mb-3 text-base font-semibold tracking-tight">{children}</h6>
-    ),
+    h1: ({ children }: { children: ReactNode }) => {
+      const id = generateHeadingId(children);
+      return (
+        <h1 id={id} className="mt-12 mb-8 text-4xl font-bold tracking-tight first:mt-0">
+          {children}
+        </h1>
+      );
+    },
+    h2: ({ children }: { children: ReactNode }) => {
+      const id = generateHeadingId(children);
+      return (
+        <h2 id={id} className="mt-10 mb-6 text-3xl font-semibold tracking-tight first:mt-0">
+          {children}
+        </h2>
+      );
+    },
+    h3: ({ children }: { children: ReactNode }) => {
+      const id = generateHeadingId(children);
+      return (
+        <h3 id={id} className="mt-8 mb-4 text-2xl font-semibold tracking-tight first:mt-0">
+          {children}
+        </h3>
+      );
+    },
+    h4: ({ children }: { children: ReactNode }) => {
+      const id = generateHeadingId(children);
+      return (
+        <h4 id={id} className="mt-6 mb-3 text-xl font-semibold tracking-tight">
+          {children}
+        </h4>
+      );
+    },
+    h5: ({ children }: { children: ReactNode }) => {
+      const id = generateHeadingId(children);
+      return (
+        <h5 id={id} className="mt-6 mb-3 text-lg font-semibold tracking-tight">
+          {children}
+        </h5>
+      );
+    },
+    h6: ({ children }: { children: ReactNode }) => {
+      const id = generateHeadingId(children);
+      return (
+        <h6 id={id} className="mt-6 mb-3 text-base font-semibold tracking-tight">
+          {children}
+        </h6>
+      );
+    },
 
     // Paragraphs and text
     p: ({ children }: { children: ReactNode }) => (

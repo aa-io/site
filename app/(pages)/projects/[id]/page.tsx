@@ -1,6 +1,7 @@
 'use client';
 
 import { use } from 'react';
+import { FloatingToc } from '@/components/floating-toc';
 import Catch from '@/const/catch.mdx';
 import Noyo from '@/const/noyo.mdx';
 
@@ -14,8 +15,11 @@ export default function Project({ params }: { params: Promise<{ id: string }> })
   const MdComponent = MdContent[_id as keyof typeof MdContent];
 
   return (
-    <div className="container mx-auto max-w-4xl px-6 py-8">
-      <MdComponent />
-    </div>
+    <>
+      <div className="container mx-auto max-w-4xl px-6 py-8">
+        <MdComponent />
+      </div>
+      <FloatingToc />
+    </>
   );
 }
