@@ -33,12 +33,12 @@ export type Industry =
 export interface Company {
   id: string;
   name: string;
-  description?: string;
+  description: string;
   industry: Industry;
   size: CompanySize;
   location: string;
   website?: string;
-  logo?: string;
+  logo?: string; // Path to logo image
 }
 
 export interface Role {

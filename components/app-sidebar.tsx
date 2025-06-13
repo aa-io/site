@@ -4,6 +4,7 @@ import { SearchIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import * as React from 'react';
 import { toast } from 'sonner';
+import { openChatbot } from '@/components/chatbot';
 import {
   Sidebar,
   SidebarContent,
@@ -15,19 +16,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { CONTACT } from '@/const/contact';
+import { SITE_CONFIG } from '@/const/site-config';
 import {
   IconBrandGithub,
-  IconBrandGithubFilled,
   IconBrandLinkedin,
-  IconBrandLinkedinFilled,
-  IconBrandX,
-  IconBrandXFilled,
+  IconBrandTwitter,
+  IconBriefcase,
   IconCheck,
-  IconCircles,
-  IconCirclesFilled,
-  IconInfoSquareRounded,
-  IconInfoSquareRoundedFilled,
+  IconClipboard,
+  IconDownload,
+  IconInfoSquare,
   IconInnerShadowTop,
   IconMail,
   IconStar,
@@ -45,7 +43,6 @@ const data: {
     title: string;
     url: string;
     icon: React.ElementType;
-    iconFilled: React.ElementType;
   }[];
 } = {
   navMain: [
@@ -64,34 +61,31 @@ const data: {
     {
       title: 'Work',
       url: '/projects',
-      icon: IconCircles,
-      iconFilled: IconCirclesFilled,
+      icon: IconBriefcase,
+      iconFilled: IconBriefcase,
     },
     {
       title: 'About',
       url: '/about',
-      icon: IconInfoSquareRounded,
-      iconFilled: IconInfoSquareRoundedFilled,
+      icon: IconInfoSquare,
+      iconFilled: IconInfoSquare,
     },
   ],
   navFooter: [
     {
       title: 'LinkedIn',
-      url: CONTACT.SOCIAL.LINKEDIN,
+      url: SITE_CONFIG.social.linkedin,
       icon: IconBrandLinkedin,
-      iconFilled: IconBrandLinkedinFilled,
     },
     {
       title: 'GitHub',
-      url: CONTACT.SOCIAL.GITHUB,
+      url: SITE_CONFIG.social.github,
       icon: IconBrandGithub,
-      iconFilled: IconBrandGithubFilled,
     },
     {
-      title: 'X (Twitter)',
-      url: CONTACT.SOCIAL.TWITTER,
-      icon: IconBrandX,
-      iconFilled: IconBrandXFilled,
+      title: 'Twitter',
+      url: SITE_CONFIG.social.twitter,
+      icon: IconBrandTwitter,
     },
   ],
 };
@@ -112,13 +106,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const handleEmailCopy = async () => {
     try {
-      await navigator.clipboard.writeText(CONTACT.EMAIL);
+      await navigator.clipboard.writeText(SITE_CONFIG.contact.email);
       setEmailCopied(true);
       setTimeout(() => setEmailCopied(false), 2000);
 
-      toast.success('Email copied to clipboard!', {
-        description: CONTACT.EMAIL,
-        duration: 3000,
+      toast.success('Email copied', {
+        icon: <IconClipboard className="size-4 flex-shrink-0 text-purple-500" />,
+        description: SITE_CONFIG.contact.email,
       });
     } catch (err) {
       console.error('Failed to copy email:', err);
@@ -152,6 +146,25 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 const isActive = isItemActive(item.url);
                 const IconComponent = isActive ? item.iconFilled : item.icon;
 
+                // Special handling for Ask button
+                if (item.title === 'Ask') {
+                  return (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton
+                        tooltip={item.title}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openChatbot();
+                        }}
+                        className="text-sidebar-foreground/60"
+                      >
+                        {IconComponent && <IconComponent />}
+                        <span className="text-sm font-medium">{item.title}</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                }
+
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
@@ -174,17 +187,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu className="flex flex-row">
-          {footerItems.map(
-            (item: { title: string; url: string; icon: React.ElementType; iconFilled: React.ElementType }) => (
+          {footerItems.map((item) => {
+            const IconComponent = item.icon;
+            return (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
                   <a href={item.url} target="_blank">
-                    {item.icon && <item.icon />}
+                    <IconComponent className="size-3 transition-all duration-300 hover:scale-110" />
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-            ),
-          )}
+            );
+          })}
           <SidebarMenuItem>
             <SidebarMenuButton
               onClick={handleEmailCopy}
@@ -194,6 +208,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               {emailCopied ?
                 <IconCheck />
               : <IconMail />}
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild tooltip="Download Resume">
+              <a href={SITE_CONFIG.resume.path} download={SITE_CONFIG.resume.filename}>
+                <IconDownload className="size-3 transition-all duration-300 hover:scale-110" />
+              </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

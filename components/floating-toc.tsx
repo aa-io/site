@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTableOfContents } from '@/hooks/use-table-of-contents';
 import { cn } from '@/lib/utils';
-import { IconChevronRight, IconList, IconX } from '@tabler/icons-react';
+import { IconList, IconX } from '@tabler/icons-react';
 
 interface FloatingTocProps {
   className?: string;
@@ -38,89 +39,135 @@ export function FloatingToc({ className }: FloatingTocProps) {
     return level - minLevel;
   };
 
-  return (
-    <TooltipProvider>
+  // Desktop version - fixed floating TOC using portal
+  const tocContent = (
+    <div
+      className={cn(
+        'fixed top-1/2 right-4 z-50 -translate-y-1/2',
+        'max-h-[calc(100vh-8rem)] w-auto',
+        isMobile && 'top-4 right-2 translate-y-0',
+        className,
+      )}
+    >
       <div
         className={cn(
-          'fixed top-1/2 right-6 z-40 -translate-y-1/2 transition-all duration-300',
-          isMobile ? 'right-4' : 'right-6',
-          className,
+          'border-border dark:bg-border/50 flex flex-col rounded-xl border shadow-lg backdrop-blur-xl transition-all duration-300',
+          isExpanded ? 'w-80 max-w-[calc(100vw-2rem)]' : 'w-12',
+
+          'max-h-full',
         )}
       >
-        <div
-          className={cn(
-            'bg-background/95 border-border flex flex-col rounded-lg border shadow-lg backdrop-blur-sm transition-all duration-300',
-            isExpanded ? 'w-80 max-w-[calc(100vw-2rem)]' : 'w-12',
-          )}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between p-3">
-            {isExpanded ?
-              <>
-                <h3 className="text-sm font-semibold">Contents</h3>
-                <Button variant="ghost" size="icon" onClick={toggleExpanded} className="h-6 w-6 shrink-0">
-                  <IconX className="h-4 w-4" />
-                </Button>
-              </>
-            : <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" onClick={toggleExpanded} className="h-6 w-6">
-                    <IconList className="h-4 w-4" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="left">
-                  <p>Table of Contents</p>
-                </TooltipContent>
-              </Tooltip>
-            }
-          </div>
-
-          {/* Content */}
-          {isExpanded && (
+        {/* Header */}
+        <div className="flex items-center justify-between p-3">
+          {isExpanded ?
             <>
-              <Separator />
-              <div className="max-h-96 overflow-y-auto p-2">
-                <nav className="space-y-1">
-                  {toc.map((item) => {
-                    const isActive = activeId === item.id;
-                    const indentLevel = getIndentLevel(item.level);
-
-                    return (
-                      <button
-                        key={item.id}
-                        onClick={() => handleItemClick(item.id)}
-                        className={cn(
-                          'hover:bg-muted flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors',
-                          isActive && 'bg-muted text-foreground font-medium',
-                          !isActive && 'text-muted-foreground hover:text-foreground',
-                        )}
-                        style={{
-                          paddingLeft: `${0.5 + indentLevel * 0.75}rem`,
-                        }}
-                      >
-                        {isActive && <IconChevronRight className="text-primary h-3 w-3 shrink-0" />}
-                        <span className="truncate leading-tight">{item.text}</span>
-                      </button>
-                    );
-                  })}
-                </nav>
-              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleExpanded}
+                className="hover:bg-muted/60 h-7 w-7 shrink-0 transition-colors"
+              >
+                <IconX className="h-3.5 w-3.5" />
+              </Button>
             </>
-          )}
+          : <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleExpanded}
+                  className="hover:bg-muted/60 h-8 w-8 transition-colors"
+                >
+                  <IconList className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="left">
+                <p>Table of Contents</p>
+              </TooltipContent>
+            </Tooltip>
+          }
         </div>
 
-        {/* Progress indicator */}
+        {/* Content */}
+        {isExpanded && (
+          <>
+            <Separator className="opacity-50" />
+            <div className="scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent flex-1 overflow-y-auto p-3">
+              <nav className="space-y-0.5">
+                {toc.map((item, index) => {
+                  const isActive = activeId === item.id;
+                  const indentLevel = getIndentLevel(item.level);
+
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleItemClick(item.id)}
+                      className={cn(
+                        'group flex w-full items-center gap-2 rounded-lg px-3 py-1 text-left text-xs transition-all duration-200',
+                        isActive ?
+                          'bg-primary/10 text-primary dark:bg-primary/20 font-medium'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-border/50',
+                        indentLevel > 0 && 'text-xs',
+                      )}
+                      style={{
+                        paddingLeft: `${0.75 + indentLevel * 1}rem`,
+                        animationDelay: `${index * 50}ms`,
+                      }}
+                    >
+                      {/* Active indicator */}
+                      {isActive && (
+                        <div className="bg-primary absolute top-1/2 left-0 h-4 w-1 -translate-y-1/2 rounded-r-full transition-all duration-200" />
+                      )}
+
+                      {/* Indent guide */}
+                      {indentLevel > 0 && (
+                        <div
+                          className="absolute top-0 bottom-0 w-px"
+                          style={{ left: `${0.5 + (indentLevel - 1) * 1}rem` }}
+                        />
+                      )}
+
+                      <span
+                        className={cn(
+                          'truncate leading-relaxed transition-all duration-200',
+                          isActive && 'translate-x-1',
+                        )}
+                      >
+                        {item.text}
+                      </span>
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+          </>
+        )}
+
+        {/* Progress indicator for collapsed state */}
         {!isExpanded && toc.length > 0 && (
-          <div className="bg-muted mt-2 h-1 w-12 rounded-full">
-            <div
-              className="bg-primary h-full rounded-full transition-all duration-300"
-              style={{
-                width: `${Math.max(8, ((toc.findIndex((item) => item.id === activeId) + 1) / toc.length) * 100)}%`,
-              }}
-            />
+          <div className="mt-3 flex flex-col items-center gap-1 pb-3">
+            {toc.map((item, index) => {
+              const isActive = activeId === item.id;
+              const isPast = toc.findIndex((t) => t.id === activeId) > index;
+
+              return (
+                <div
+                  key={item.id}
+                  className={cn(
+                    'h-1.5 w-1.5 rounded-full transition-all duration-300',
+                    isActive ? 'bg-primary h-2 w-2'
+                    : isPast ? 'bg-primary/50'
+                    : 'bg-muted-foreground/30',
+                  )}
+                />
+              );
+            })}
           </div>
         )}
       </div>
-    </TooltipProvider>
+    </div>
   );
+
+  // Render using portal to bypass parent container constraints
+  return typeof window !== 'undefined' ? createPortal(tocContent, document.body) : null;
 }

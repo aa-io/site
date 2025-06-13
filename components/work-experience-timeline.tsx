@@ -1,8 +1,8 @@
 import { Calendar, ExternalLink } from 'lucide-react';
-import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
-import { Separator } from '@/components/ui/separator';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { ViewTransitionLink } from '@/components/view-transition-link';
 import { WorkExperience, WorkStint } from '@/lib/work-experience';
 
 interface WorkExperienceTimelineProps {
@@ -57,7 +57,7 @@ export function WorkExperienceTimeline({ experience }: WorkExperienceTimelinePro
           </p>
         </div>
 
-        <div className="relative">
+        <div className=" ">
           {/* Timeline line */}
           <div className="bg-border absolute top-0 bottom-0 left-8 w-px" />
 
@@ -71,12 +71,24 @@ export function WorkExperienceTimeline({ experience }: WorkExperienceTimelinePro
                   {/* Company header */}
                   <div className="space-y-2">
                     <div className="flex flex-wrap items-center gap-3">
+                      {stint.company.logo && (
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={stint.company.logo}
+                            alt={`${stint.company.name} logo`}
+                            width={40}
+                            height={40}
+                            className="rounded-md object-contain"
+                            style={{ viewTransitionName: `company-logo-${stint.company.id}` } as React.CSSProperties}
+                          />
+                        </div>
+                      )}
                       {availableProjectPages.includes(stint.company.id) ?
-                        <Link href={`/projects/${stint.company.id}`}>
+                        <ViewTransitionLink href={`/projects/${stint.company.id}`}>
                           <h3 className="hover:text-primary cursor-pointer text-xl font-semibold transition-colors">
                             {stint.company.name}
                           </h3>
-                        </Link>
+                        </ViewTransitionLink>
                       : <h3 className="text-xl font-semibold">{stint.company.name}</h3>}
                       {stint.company.website && (
                         <a
@@ -114,7 +126,7 @@ export function WorkExperienceTimeline({ experience }: WorkExperienceTimelinePro
                   {/* Roles */}
                   <div className="space-y-4">
                     {stint.roles.map((role) => (
-                      <div key={role.id} className="space-y-3 rounded-lg border p-4">
+                      <div key={role.id} className="bg-card space-y-3 rounded-xl border-[0.5px] p-4 shadow-lg">
                         <div className="space-y-1">
                           <div className="flex flex-wrap items-center justify-between gap-2">
                             <h4 className="font-medium">{role.title}</h4>
@@ -179,70 +191,6 @@ export function WorkExperienceTimeline({ experience }: WorkExperienceTimelinePro
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Skills summary */}
-        <div className="space-y-4 pt-8">
-          <Separator />
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold">Skills & Expertise</h3>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-2">
-                <h4 className="text-muted-foreground text-sm font-medium">Technical Skills</h4>
-                <div className="flex flex-wrap gap-1">
-                  {experience.skills.technical.slice(0, 15).map((skill, idx) => (
-                    <span
-                      key={idx}
-                      className="bg-primary/10 text-primary inline-flex items-center rounded-md px-2 py-1 text-xs"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                  {experience.skills.technical.length > 15 && (
-                    <span className="bg-muted text-muted-foreground inline-flex items-center rounded-md px-2 py-1 text-xs">
-                      +{experience.skills.technical.length - 15} more
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <h4 className="text-muted-foreground text-sm font-medium">Leadership & Soft Skills</h4>
-                <div className="flex flex-wrap gap-1">
-                  {experience.skills.soft.slice(0, 10).map((skill, idx) => (
-                    <span
-                      key={idx}
-                      className="bg-secondary text-secondary-foreground inline-flex items-center rounded-md px-2 py-1 text-xs"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                  {experience.skills.soft.length > 10 && (
-                    <span className="bg-muted text-muted-foreground inline-flex items-center rounded-md px-2 py-1 text-xs">
-                      +{experience.skills.soft.length - 10} more
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {experience.skills.certifications.length > 0 && (
-              <div className="space-y-2">
-                <h4 className="text-muted-foreground text-sm font-medium">Certifications & Recognition</h4>
-                <div className="flex flex-wrap gap-1">
-                  {experience.skills.certifications.map((cert, idx) => (
-                    <span
-                      key={idx}
-                      className="bg-accent text-accent-foreground inline-flex items-center rounded-md px-2 py-1 text-xs"
-                    >
-                      {cert}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

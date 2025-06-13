@@ -2,6 +2,7 @@
 
 import { use } from 'react';
 import { FloatingToc } from '@/components/floating-toc';
+import { ProjectHeader } from '@/components/project-header';
 import Catch from '@/const/catch.mdx';
 import Noyo from '@/const/noyo.mdx';
 
@@ -16,7 +17,8 @@ export default function Project({ params }: { params: Promise<{ id: string }> })
 
   return (
     <>
-      <div className="container mx-auto max-w-4xl px-6 py-8">
+      <div className="mx-auto max-w-4xl px-6 py-8">
+        <ProjectHeader companyId={_id} />
         <MdComponent />
       </div>
       <FloatingToc />

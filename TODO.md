@@ -1,7 +1,7 @@
 - [ ] llms.txt
 - [ ] analytics
 - [ ] ai chatbot
-- [ ] about me
+- [x] about me
 - [x] work timeline
 - [ ] view transitions
 - [ ] command K

@@ -9,7 +9,6 @@ export const stack: Array<{ title: string; items: Array<StackItem> }> = [
   // Design
   {
     title: 'Design',
-    subtitle: 'subtitle',
     items: [
       { name: 'Figma' },
       { name: 'Play' },
@@ -23,7 +22,6 @@ export const stack: Array<{ title: string; items: Array<StackItem> }> = [
   },
   {
     title: 'Product',
-    subtitle: 'subtitle',
     items: [
       { name: 'React' },
       { name: 'React Native', also: 'RNW, Expo' },
@@ -46,7 +44,6 @@ export const stack: Array<{ title: string; items: Array<StackItem> }> = [
   },
   {
     title: 'Dev',
-    subtitle: 'subtitle',
     items: [
       { name: 'Linear', also: 'Jira' },
       { name: 'Analytics', also: 'Segment, Mixpanel, Heap, Posthog, GA' },
@@ -54,7 +51,6 @@ export const stack: Array<{ title: string; items: Array<StackItem> }> = [
   },
   {
     title: 'Fin',
-    subtitle: 'subtitle',
     items: [
       { name: 'BaaS', also: 'Unit, ACH, KYC' },
       { name: 'Plaid' },

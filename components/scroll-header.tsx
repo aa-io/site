@@ -40,7 +40,7 @@ export function ScrollHeader({ title, subtitle, className, toolbarHeight = 64, c
       {/* Large Header */}
       <div
         className={cn(
-          'relative z-10 flex min-h-[400px] flex-col items-center justify-center px-6 text-center',
+          '  z-10 flex min-h-[400px] flex-col items-center justify-center px-6 text-center',
           className,
         )}
         style={{

@@ -92,7 +92,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     // Links
     a: ({ children, href }: { children: ReactNode; href?: string }) => (
       <a
-        className="text-primary hover:text-primary/80 font-medium underline underline-offset-4 transition-colors"
+        className="text-primary hover:text-primary/80 font-medium underline decoration-1 underline-offset-4 transition-colors"
         href={href}
         target={href?.startsWith('http') ? '_blank' : undefined}
         rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -127,6 +127,20 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
 
     // Footnotes (for remark-gfm)
     sup: ({ children }: { children: ReactNode }) => <sup className="text-xs">{children}</sup>,
+
+    // Footnote section styling
+    section: ({ children, ...props }: { children: ReactNode } & React.HTMLAttributes<HTMLElement>) => {
+      // Check if this is a footnotes section
+      const isFootnotes = (props as { 'data-footnotes'?: boolean })['data-footnotes'] === true;
+      return (
+        <section
+          {...props}
+          className={isFootnotes ? 'border-border text-muted-foreground mt-8 border-t pt-4 text-sm' : ''}
+        >
+          {children}
+        </section>
+      );
+    },
 
     // Tables
     table: ({ children }: { children: ReactNode }) => (

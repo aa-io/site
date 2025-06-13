@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import remarkGfm from 'remark-gfm';
 import createMDX from '@next/mdx';
 
 const nextConfig: NextConfig = {

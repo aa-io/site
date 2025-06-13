@@ -19,7 +19,6 @@ export function IntegratedScrollHeader({
   onScrollChange,
 }: IntegratedScrollHeaderProps) {
   const [scrollY, setScrollY] = useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +28,6 @@ export function IntegratedScrollHeader({
       // Determine if we should show the compact toolbar version
       const threshold = 200; // Adjust this value to control when transition happens
       const scrolled = currentScrollY > threshold;
-      setIsScrolled(scrolled);
 
       // Notify parent component about scroll changes
       onScrollChange?.(currentScrollY, scrolled);
@@ -46,7 +44,7 @@ export function IntegratedScrollHeader({
   return (
     <div
       className={cn(
-        'relative z-10 flex min-h-[400px] flex-col items-center justify-center px-6 text-center',
+        '  z-10 flex min-h-[400px] flex-col items-center justify-center px-6 text-center',
         className,
       )}
       style={{

@@ -4,9 +4,10 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Head from 'next/head';
 import { AppSidebar } from '@/components/app-sidebar';
+import { Chatbot } from '@/components/chatbot';
+import { CommandPalette } from '@/components/command-palette';
 import { ThemeProvider } from '@/components/theme-provider';
 import { SidebarProvider } from '@/components/ui/sidebar';
-import { SidebarInset } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/sonner';
 
 const geistSans = Geist({
@@ -45,13 +46,16 @@ export default function RootLayout({
               } as React.CSSProperties
             }
           >
-            <AppSidebar variant="inset" />
-            <SidebarInset>
-              <main>{children}</main>
-            </SidebarInset>
+            <AppSidebar />
+
+            <main className="flex min-h-screen justify-center">
+              <div className="w-full">{children}</div>
+            </main>
           </SidebarProvider>
         </ThemeProvider>
         <Toaster />
+        <Chatbot />
+        <CommandPalette />
       </body>
     </html>
   );
