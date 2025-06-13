@@ -1,9 +1,20 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
 # Coding Standards & Conventions
+
+## Code Cleanup & Refactoring
+**CRITICAL**: When making changes to code, always identify and remove/cleanup any elements that become unnecessary or redundant as a result of the changes. Don't just add new functionality - actively look for what can be simplified or removed.
+
+This includes:
+- Removing unused imports, variables, functions, or components
+- Simplifying conditional logic that becomes redundant
+- Cleaning up CSS classes or styles that are no longer needed
+- Removing dead code paths
+- Consolidating duplicate logic
+- Optimizing component structure when functionality changes
 
 ## TypeScript Guidelines
 - Use strict TypeScript configuration as defined in [tsconfig.json](mdc:tsconfig.json)
@@ -12,8 +23,8 @@ alwaysApply: false
 - Leverage path aliases: `@/` maps to the root directory
 
 ## Component Structure
-- **UI Components**: Place reusable UI components in [components/ui/](mdc:components/ui/)
-- **Feature Components**: Place feature-specific components in [components/](mdc:components/)
+- **UI Components**: Place reusable UI components in [components/ui/](mdc:components/ui)
+- **Feature Components**: Place feature-specific components in [components/](mdc:components)
 - Follow shadcn/ui patterns for component composition and variants
 - Use `clsx` and `tailwind-merge` for conditional styling via `cn()` utility
 
