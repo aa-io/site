@@ -1,0 +1,33 @@
+# Cursor Rules for aa-io/site
+
+## Code Cleanup & Refactoring
+**CRITICAL**: When making changes to code, always identify and remove/cleanup any elements that become unnecessary or redundant as a result of the changes. Don't just add new functionality - actively look for what can be simplified or removed.
+
+This includes:
+- Removing unused imports, variables, functions, or components
+- Simplifying conditional logic that becomes redundant
+- Cleaning up CSS classes or styles that are no longer needed
+- Removing dead code paths
+- Consolidating duplicate logic
+- Optimizing component structure when functionality changes
+
+## General Coding Standards
+- Use TypeScript with strict typing
+- Follow React best practices and hooks patterns
+- Use Tailwind CSS for styling with the configured design system
+- Implement proper error handling and loading states
+- Write clean, readable, and maintainable code
+- Use semantic HTML and ensure accessibility
+
+## Component Guidelines
+- Keep components focused and single-purpose
+- Use composition over prop drilling
+- Implement proper TypeScript interfaces for props
+- Follow shadcn/ui patterns for UI components
+- Use proper React patterns (forwardRef, memo when needed)
+
+## Performance & Optimization
+- Remove unused dependencies and imports
+- Optimize bundle size by cleaning up unnecessary code
+- Use proper React optimization techniques when needed
+- Ensure responsive design and mobile-first approach 

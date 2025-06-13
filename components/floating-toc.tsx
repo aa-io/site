@@ -33,6 +33,18 @@ export function FloatingToc({ className }: FloatingTocProps) {
     }
   };
 
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsExpanded(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsExpanded(false);
+    }
+  };
+
   const getIndentLevel = (level: number) => {
     // Normalize heading levels (h1 = 0, h2 = 1, etc.)
     const minLevel = Math.min(...toc.map((item) => item.level));
@@ -53,14 +65,15 @@ export function FloatingToc({ className }: FloatingTocProps) {
         className={cn(
           'border-border dark:bg-border/50 flex flex-col rounded-xl border shadow-lg backdrop-blur-xl transition-all duration-300',
           isExpanded ? 'w-80 max-w-[calc(100vw-2rem)]' : 'w-12',
-
           'max-h-full',
         )}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-3">
-          {isExpanded ?
-            <>
+        {/* Header - only show on mobile */}
+        {isMobile && (
+          <div className="flex items-center justify-between p-3">
+            {isExpanded ? (
               <Button
                 variant="ghost"
                 size="icon"
@@ -69,29 +82,30 @@ export function FloatingToc({ className }: FloatingTocProps) {
               >
                 <IconX className="h-3.5 w-3.5" />
               </Button>
-            </>
-          : <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleExpanded}
-                  className="hover:bg-muted/60 h-8 w-8 transition-colors"
-                >
-                  <IconList className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="left">
-                <p>Table of Contents</p>
-              </TooltipContent>
-            </Tooltip>
-          }
-        </div>
+            ) : (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleExpanded}
+                    className="hover:bg-muted/60 h-8 w-8 transition-colors"
+                  >
+                    <IconList className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="left">
+                  <p>Table of Contents</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
+          </div>
+        )}
 
         {/* Content */}
         {isExpanded && (
           <>
-            <Separator className="opacity-50" />
+            {isMobile && <Separator className="opacity-50" />}
             <div className="scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent flex-1 overflow-y-auto p-3">
               <nav className="space-y-0.5">
                 {toc.map((item, index) => {
@@ -145,7 +159,10 @@ export function FloatingToc({ className }: FloatingTocProps) {
 
         {/* Progress indicator for collapsed state */}
         {!isExpanded && toc.length > 0 && (
-          <div className="mt-3 flex flex-col items-center gap-1 pb-3">
+          <div className={cn(
+            "flex flex-col items-center gap-1",
+            isMobile ? "mt-3 pb-3" : "p-3"
+          )}>
             {toc.map((item, index) => {
               const isActive = activeId === item.id;
               const isPast = toc.findIndex((t) => t.id === activeId) > index;
