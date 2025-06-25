@@ -1,0 +1,109 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Styling Guidelines
+
+## Tailwind CSS Usage
+
+- Use Tailwind utility classes exclusively
+- Avoid writing custom CSS unless absolutely necessary
+- Use the `cn()` utility from `@/app/components/ui/utils` for conditional classes
+- Follow mobile-first responsive design with Tailwind breakpoints
+
+## Class Organization
+
+```tsx
+// Organize classes in this order:
+<div className={cn(
+  // Layout
+  "flex flex-col items-center justify-center",
+  // Spacing
+  "p-4 m-2",
+  // Sizing
+  "w-full h-screen",
+  // Typography
+  "text-sm font-medium",
+  // Colors & Background
+  "text-gray-900 bg-white",
+  // Borders & Shadows
+  "border border-gray-200 rounded-lg shadow-sm",
+  // Transitions & Animations
+  "transition-all duration-200",
+  // State variants
+  "hover:bg-gray-50 focus:outline-none",
+  // Conditional classes
+  isActive && "bg-blue-500 text-white",
+  className
+)}>
+```
+
+## Color System
+
+- Use Tailwind's default color palette
+- Maintain consistent color usage:
+  - Primary actions: blue-500/600
+  - Destructive actions: red-500/600
+  - Success states: green-500/600
+  - Warning states: yellow-500/600
+  - Neutral/gray for text and borders
+
+## Typography
+
+- Use the custom Soehne font family
+- Font weights:
+  - `font-light`: Soehne Leicht
+  - `font-normal`: Soehne Buch
+  - `font-medium`: Soehne Halbfett
+  - `font-bold`: Soehne Kraftig
+- Use `font-mono` for code (Soehne Mono)
+
+## Spacing Scale
+
+- Use Tailwind's spacing scale consistently
+- Common patterns:
+  - Page padding: `px-4 md:px-6 lg:px-8`
+  - Section spacing: `py-12 md:py-16 lg:py-24`
+  - Component spacing: `space-y-4` or `gap-4`
+
+## Responsive Design
+
+- Always design mobile-first
+- Use Tailwind breakpoints:
+  - `sm:` (640px)
+  - `md:` (768px)
+  - `lg:` (1024px)
+  - `xl:` (1280px)
+  - `2xl:` (1536px)
+
+## Dark Mode
+
+- Use Tailwind's dark mode classes
+- Ensure all components support dark mode
+- Test both light and dark themes
+- Use `dark:` variant for dark mode styles
+
+## Animation Guidelines
+
+- Use Tailwind's transition utilities
+- Keep animations subtle and fast (200-300ms)
+- Common patterns:
+  - Hover effects: `transition-colors duration-200`
+  - Fade in: `animate-fade-in`
+  - Slide in: `animate-slide-in`
+
+## Component-Specific Styles
+
+- Buttons: Use consistent padding, rounded corners, and hover states
+- Cards: Use subtle shadows and borders
+- Inputs: Maintain consistent height and padding
+- Links: Use underline or color change on hover
+
+## Performance
+
+- Avoid excessive DOM nesting
+- Use CSS Grid or Flexbox for layouts
+- Minimize the use of arbitrary values
+- Purge unused styles in production

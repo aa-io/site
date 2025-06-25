@@ -1,0 +1,82 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Component Guidelines
+
+## Component Structure
+
+```tsx
+// Import statements
+import { type FC } from 'react';
+import { cn } from '@/app/components/ui/utils';
+
+// Type definitions
+interface ComponentNameProps {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+// Component definition
+export const ComponentName: FC<ComponentNameProps> = ({ className, children }) => {
+  // Hooks first
+  const [state, setState] = useState();
+
+  // Event handlers
+  const handleClick = () => {
+    // logic
+  };
+
+  // Render
+  return <div className={cn('base-classes', className)}>{children}</div>;
+};
+```
+
+## Component Best Practices
+
+- Always define prop types with TypeScript interfaces
+- Use `FC` type from React for functional components
+- Destructure props in the function parameters
+- Always include `className` prop for styling flexibility
+- Use the `cn` utility for conditional class names
+- Export components as named exports, not default
+
+## shadcn/ui Component Usage
+
+- Import shadcn/ui components from `@/app/components/ui/`
+- Always check existing UI components before creating new ones
+- Extend shadcn/ui components rather than creating duplicates
+- Follow shadcn/ui patterns for variants and sizing
+
+## State Management
+
+- Use React hooks for local state
+- Keep state as close to where it's needed as possible
+- Consider using URL state for filters and navigation
+- Use React Context sparingly, only for truly global state
+
+## Data Fetching
+
+- Use Server Components by default
+- Fetch data at the page level when possible
+- Use async/await in Server Components
+- Add proper error boundaries and loading states
+- Cache data appropriately using Next.js caching
+
+## Component Organization
+
+- One component per file
+- Group related components in folders
+- Keep components under 200 lines
+- Extract sub-components when complexity grows
+- Co-locate component-specific types and utilities
+
+## Accessibility
+
+- Always include proper ARIA labels
+- Ensure keyboard navigation works
+- Use semantic HTML elements
+- Test with screen readers
+- Follow WCAG 2.1 AA guidelines

@@ -1,0 +1,195 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Next.js Guidelines
+
+## App Router Conventions
+
+- Use the App Router (`app/` directory) exclusively
+- Follow the file-based routing conventions
+- Use route groups `(folder)` for organization without affecting URLs
+- Implement proper loading.tsx and error.tsx files
+
+## File Conventions
+
+```
+app/
+├── (pages)/              # Route group for pages
+│   ├── page.tsx         # Home page
+│   ├── about/
+│   │   └── page.tsx     # About page
+│   └── blog/
+│       ├── page.tsx     # Blog index
+│       └── [slug]/
+│           └── page.tsx # Dynamic blog post
+├── layout.tsx           # Root layout
+├── loading.tsx          # Global loading state
+├── error.tsx            # Global error boundary
+└── not-found.tsx        # 404 page
+```
+
+## Server Components vs Client Components
+
+```typescript
+// Server Component (default)
+// ✅ Good - Data fetching at component level
+async function ProductList() {
+  const products = await fetchProducts()
+  return <div>{/* render products */}</div>
+}
+
+// Client Component
+// ✅ Good - Only when needed for interactivity
+'use client'
+import { useState } from 'react'
+
+export function InteractiveForm() {
+  const [value, setValue] = useState('')
+  return <form>{/* form content */}</form>
+}
+```
+
+## Data Fetching
+
+```typescript
+// ✅ Fetch in Server Components
+async function Page() {
+  const data = await fetch('https://api.example.com/data', {
+    next: { revalidate: 3600 } // Cache for 1 hour
+  })
+  return <div>{/* use data */}</div>
+}
+
+// ✅ Use cache for deduplication
+import { cache } from 'react'
+
+const getUser = cache(async (id: string) => {
+  const user = await db.user.findUnique({ where: { id } })
+  return user
+})
+```
+
+## Metadata
+
+```typescript
+// Static metadata
+export const metadata = {
+  title: 'Page Title',
+  description: 'Page description',
+};
+
+// Dynamic metadata
+export async function generateMetadata({ params }) {
+  const product = await getProduct(params.id);
+  return {
+    title: product.name,
+    description: product.description,
+  };
+}
+```
+
+## Image Optimization
+
+```typescript
+import Image from 'next/image'
+
+// ✅ Good - Using Next.js Image
+<Image
+  src="/hero.jpg"
+  alt="Hero image"
+  width={1200}
+  height={600}
+  priority // For above-the-fold images
+  placeholder="blur" // With blurDataURL
+/>
+
+// ❌ Bad - Using img tag
+<img src="/hero.jpg" alt="Hero" />
+```
+
+## Font Optimization
+
+```typescript
+// ✅ Use next/font for custom fonts
+import localFont from 'next/font/local';
+
+const soehne = localFont({
+  src: [
+    {
+      path: './assets/font/soehne-buch.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './assets/font/soehne-kraftig.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-soehne',
+});
+```
+
+## API Routes
+
+```typescript
+// app/api/users/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET(request: NextRequest) {
+  const users = await getUsers();
+  return NextResponse.json(users);
+}
+
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  const user = await createUser(body);
+  return NextResponse.json(user, { status: 201 });
+}
+```
+
+## Middleware
+
+```typescript
+// middleware.ts
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(request: NextRequest) {
+  // Add security headers
+  const response = NextResponse.next();
+  response.headers.set('X-Frame-Options', 'DENY');
+  return response;
+}
+
+export const config = {
+  matcher: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+};
+```
+
+## Performance Best Practices
+
+- Use `loading.tsx` for instant loading states
+- Implement streaming with Suspense boundaries
+- Preload critical data with `<link rel="preload">`
+- Use static generation when possible
+- Implement ISR for dynamic content that changes infrequently
+
+## SEO Optimization
+
+- Always include metadata for every page
+- Use structured data with JSON-LD
+- Implement proper Open Graph tags
+- Create a sitemap.xml
+- Use canonical URLs for duplicate content
+
+## Common Patterns
+
+- Parallel routes for modals and sidebars
+- Intercepting routes for modal overlays
+- Route handlers for API endpoints
+- Server Actions for form submissions
+- Streaming SSR for better performance

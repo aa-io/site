@@ -1,0 +1,110 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Cursor Rules for Next.js Minisite
+
+This directory contains coding guidelines and best practices for the minisite project. These rules help maintain
+consistency and quality across the codebase.
+
+## 📋 Available Rules
+
+### 1. [General Rules](mdc:general.md)
+
+- Project overview and tech stack
+- File structure conventions
+- Naming conventions
+- Import ordering
+- Code quality standards
+- Performance best practices
+
+### 2. [Component Guidelines](mdc:components.md)
+
+- React component structure
+- TypeScript prop definitions
+- shadcn/ui component usage
+- State management patterns
+- Data fetching strategies
+- Accessibility requirements
+
+### 3. [Styling Guidelines](mdc:styling.md)
+
+- Tailwind CSS usage and organization
+- Color system and typography
+- Responsive design patterns
+- Dark mode implementation
+- Animation guidelines
+- Component-specific styles
+
+### 4. [TypeScript Guidelines](mdc:typescript.md)
+
+- Type safety rules
+- Interface and type definitions
+- Event handler typing
+- Generic components
+- Common patterns and anti-patterns
+
+### 5. [Next.js Guidelines](mdc:nextjs.md)
+
+- App Router conventions
+- Server vs Client Components
+- Data fetching patterns
+- Image and font optimization
+- API routes and middleware
+- SEO best practices
+
+## 🚀 Quick Start
+
+When working on this project, follow these key principles:
+
+1. **TypeScript First**: Always use proper types, never `any`
+2. **Server Components by Default**: Only use client components when needed
+3. **Tailwind Only**: Avoid custom CSS, use utility classes
+4. **Mobile First**: Design responsive layouts starting from mobile
+5. **Accessibility**: Ensure all components are keyboard navigable and screen reader friendly
+
+## 🛠️ Development Workflow
+
+1. Check the relevant rule files before implementing new features
+2. Use existing UI components from `app/components/ui/`
+3. Follow the established patterns for similar functionality
+4. Test in both light and dark modes
+5. Ensure TypeScript has no errors before committing
+
+## 📦 Project Structure
+
+```
+minisite/
+├── .cursor/rules/        # Cursor AI rules (this directory)
+├── app/                  # Next.js App Router
+│   ├── (pages)/         # Route groups
+│   ├── components/      # React components
+│   │   └── ui/         # shadcn/ui components
+│   ├── assets/         # Fonts and static assets
+│   └── globals.css     # Global styles
+├── public/             # Public assets
+└── [config files]      # Various config files
+```
+
+## 🔧 Tools & Extensions
+
+Recommended VS Code/Cursor extensions:
+
+- ESLint
+- Prettier
+- Tailwind CSS IntelliSense
+- TypeScript Error Lens
+
+## 📝 Contributing
+
+When adding new patterns or conventions:
+
+1. Update the relevant rule file
+2. Add examples of correct usage
+3. Document any exceptions
+4. Keep rules concise and actionable
+
+Remember: These rules are guidelines to help maintain code quality and consistency. Use your best judgment and discuss
+with the team when exceptions are needed.

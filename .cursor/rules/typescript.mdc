@@ -1,0 +1,169 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# TypeScript Guidelines
+
+## General Rules
+
+- Use TypeScript strict mode (already configured in tsconfig.json)
+- Never use `any` type - use `unknown` if type is truly unknown
+- Always define return types for functions
+- Prefer `interface` over `type` for object shapes
+- Use `type` for unions, intersections, and aliases
+
+## Type Definitions
+
+```typescript
+// ✅ Good - Explicit types
+interface UserProps {
+  id: string;
+  name: string;
+  email: string;
+  role: 'admin' | 'user';
+  metadata?: Record<string, unknown>;
+}
+
+// ❌ Bad - Using any
+interface BadProps {
+  data: any;
+  onClick: Function;
+}
+```
+
+## Component Props
+
+```typescript
+// Always define props interface
+interface ButtonProps {
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  onClick?: () => void;
+  disabled?: boolean;
+  className?: string;
+}
+
+// Use FC type for components
+export const Button: FC<ButtonProps> = ({ ...props }) => {
+  // implementation
+};
+```
+
+## Event Handlers
+
+```typescript
+// Be specific with event types
+const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.preventDefault();
+  // logic
+};
+
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const value = e.target.value;
+  // logic
+};
+```
+
+## Utility Types
+
+```typescript
+// Use built-in utility types
+type PartialUser = Partial<User>;
+type RequiredUser = Required<User>;
+type ReadonlyUser = Readonly<User>;
+type UserKeys = keyof User;
+type UserWithoutEmail = Omit<User, 'email'>;
+type UserNameOnly = Pick<User, 'name'>;
+```
+
+## Type Guards
+
+```typescript
+// Create type guards for runtime checks
+function isString(value: unknown): value is string {
+  return typeof value === 'string';
+}
+
+function isUser(value: unknown): value is User {
+  return typeof value === 'object' && value !== null && 'id' in value && 'email' in value;
+}
+```
+
+## Async Functions
+
+```typescript
+// Always type async function returns
+async function fetchUser(id: string): Promise<User> {
+  const response = await fetch(`/api/users/${id}`);
+  return response.json();
+}
+
+// Handle errors properly
+async function saferFetch<T>(url: string): Promise<T | null> {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+```
+
+## Generics
+
+```typescript
+// Use generics for reusable components
+interface ListProps<T> {
+  items: T[]
+  renderItem: (item: T) => React.ReactNode
+  keyExtractor: (item: T) => string
+}
+
+function List<T>({ items, renderItem, keyExtractor }: ListProps<T>) {
+  return (
+    <>
+      {items.map((item) => (
+        <div key={keyExtractor(item)}>{renderItem(item)}</div>
+      ))}
+    </>
+  )
+}
+```
+
+## Import Types
+
+```typescript
+// Use type imports when importing only types
+import type { User, Post } from '@/types';
+import { useState, type FC } from 'react';
+```
+
+## Common Patterns
+
+```typescript
+// Optional chaining and nullish coalescing
+const userName = user?.name ?? 'Anonymous';
+
+// Type assertions (use sparingly)
+const element = document.getElementById('root') as HTMLDivElement;
+
+// Const assertions for literals
+const ROUTES = {
+  HOME: '/',
+  ABOUT: '/about',
+  CONTACT: '/contact',
+} as const;
+
+type Route = (typeof ROUTES)[keyof typeof ROUTES];
+```
+
+## Avoid Common Mistakes
+
+- Don't use `Function` type - be specific about function signatures
+- Don't use `object` type - use `Record<string, unknown>` or specific interface
+- Don't ignore TypeScript errors - fix them properly
+- Don't overuse type assertions - let TypeScript infer when possible

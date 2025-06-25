@@ -1,5 +1,5 @@
-- [ ] Fix readme
+- [x] Fix readme
 - [ ] Custom OG image
-- [ ] Social links
+- [x] Social links
 - [ ] OG header links
 - [ ] llms.txt

@@ -1,0 +1,61 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# General Project Rules
+
+## Project Overview
+
+This is a Next.js 14+ application with App Router, TypeScript, shadcn/ui components, and Tailwind CSS.
+
+## Tech Stack
+
+- **Framework**: Next.js 14+ with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Package Manager**: pnpm
+- **Font**: Custom Soehne font family
+
+## File Structure Conventions
+
+- Use the App Router structure (`app/` directory)
+- Group related pages in route groups using `(folder-name)/`
+- Keep components in `app/components/`
+- Store shared UI components in `app/components/ui/`
+- Place static assets in `public/`
+- Custom fonts go in `app/assets/font/`
+
+## Naming Conventions
+
+- **Files**: Use kebab-case for all files (e.g., `work-row.tsx`, `social-link.tsx`)
+- **Components**: Use PascalCase for component names (e.g., `WorkRow`, `SocialLink`)
+- **Functions**: Use camelCase for function names
+- **CSS Classes**: Use Tailwind utility classes, avoid custom CSS when possible
+
+## Import Order
+
+1. React/Next.js imports
+2. Third-party library imports
+3. Local component imports
+4. Type imports
+5. Style/asset imports
+
+## Code Quality
+
+- Always use TypeScript strict mode
+- Prefer functional components with hooks
+- Use proper TypeScript types, avoid `any`
+- Keep components small and focused
+- Extract reusable logic into custom hooks
+- Format code with Prettier configuration
+
+## Performance Best Practices
+
+- Use Next.js Image component for all images
+- Implement proper loading states
+- Use dynamic imports for heavy components
+- Optimize font loading with next/font
+- Minimize client-side JavaScript when possible
