@@ -59,6 +59,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --md-spacing: 24px;
+  --padding-pageMargin: var(--md-spacing);
+  --margin-pageMargin: var(--md-spacing);
 }
 
 :root {
@@ -95,6 +99,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --md-spacing: 24px;
 }
 
 .dark {
@@ -145,6 +151,20 @@
     @apply text-base font-normal tracking-normal;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
+  }
+}
+
+@layer components {
+  h1 {
+    @apply text-4xl font-semibold;
+  }
+
+  h2 {
+    @apply text-3xl font-medium;
+  }
+
+  h3 {
+    @apply text-2xl font-medium;
   }
 }
 

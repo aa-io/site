@@ -1,3 +1,4 @@
+import React from 'react';
 import { cn } from './ui/utils';
 
 export const Section = ({ title, children, faded }: { title?: string; children: React.ReactNode; faded?: boolean }) => {
@@ -8,7 +9,12 @@ export const Section = ({ title, children, faded }: { title?: string; children: 
           {title}
         </h3>
       )}
-      <div className={cn('flex flex-col transition-all', faded && '[&>div]:opacity-50 [&>div]:hover:opacity-100')}>
+      <div
+        className={cn(
+          'flex flex-col transition-all',
+          faded && '[&>div]:opacity-50 [&>div]:grayscale [&>div]:hover:opacity-100 [&>div]:hover:grayscale-0',
+        )}
+      >
         {children}
       </div>
     </div>

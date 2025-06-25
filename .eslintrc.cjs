@@ -1,6 +1,6 @@
 /* eslint-env node */
 module.exports = {
-  extends: ['next', 'eslint:recommended', 'prettier', 'plugin:storybook/recommended'],
+  extends: ['next', 'eslint:recommended', 'prettier'],
   parser: '@typescript-eslint/parser',
 
   plugins: ['unicorn', '@typescript-eslint', 'eslint-plugin-unused-imports', 'react-hooks-extra'],
@@ -38,36 +38,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off',
     '@next/next/no-img-element': 'off',
     'unused-imports/no-unused-imports': 'error',
-    'react-hooks-extra/no-direct-set-state-in-use-effect': 'warn', // https://react.dev/learn/you-might-not-need-an-effect
-    'no-restricted-imports': [
-      'warn',
-      {
-        patterns: [
-          {
-            group: ['@/server/*'],
-            message: 'Use client components and graphql instead',
-          },
-          {
-            group: ['@/app/hooks/useOptionalFetch'],
-            message: 'Use graphql instead',
-          },
-          {
-            group: ['@/app/components/lib/button'],
-            message: 'Use ui/Button instead of lib/Button',
-          },
-        ],
-      },
-    ],
+    'react-hooks-extra/no-direct-set-state-in-use-effect': 'warn',
   },
-  overrides: [
-    {
-      files: ['src/server/**/*', 'src/app/(auth)/**/*', 'src/app/api/**/*'],
-      rules: { 'no-restricted-imports': 'off' },
-    },
-    {
-      files: ['**/*.graphql', '**/*.gql'],
-      parser: '@graphql-eslint/eslint-plugin',
-      plugins: ['@graphql-eslint'],
-    },
-  ],
 };

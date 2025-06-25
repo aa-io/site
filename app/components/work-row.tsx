@@ -41,10 +41,10 @@ export const WorkRow = ({
   }>;
 }) => {
   return (
-    <div className="flex cursor-default flex-col items-start gap-3 border-t-[0.5px] py-4 transition-all md:flex-row">
+    <div className="flex cursor-default flex-col items-start gap-3 border-t-[0.5px] py-3 transition-all md:flex-row">
       <div className="flex w-30 items-center gap-3">
         <img src={logo} alt={company} className="h-4 w-4" />
-        <h3 className="font-medium">{company}</h3>
+        <div className="font-medium">{company}</div>
       </div>
       <div className="flex grow flex-col self-stretch">
         {roles.map((role) => (

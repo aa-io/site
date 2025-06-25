@@ -1,19 +1,15 @@
 import './globals.css';
 
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import Head from 'next/head';
+import React from 'react';
 import { ThemeProvider } from '@/app/components/theme-provider';
 import { Toaster } from '@/app/components/ui/sonner';
 
 const _sans = localFont({
   src: './assets/font/sohne.woff2',
-});
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({

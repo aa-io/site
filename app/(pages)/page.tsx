@@ -1,17 +1,12 @@
 import '../globals.css';
 
-import Link from 'next/link';
-import { ReactNode } from 'react';
 import { WorkRow } from '@/app/components/work-row';
 import {
-  IconAt,
   IconBrandDribbble,
-  IconBrandFigma,
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandOpenai,
   IconBrandX,
-  IconFile,
   IconFileTypePdf,
 } from '@tabler/icons-react';
 import { Section } from '../components/section';
@@ -22,21 +17,16 @@ export const metadata = {
   description: 'Founder, Design Engineer, Product Leader',
 };
 
-type SocialLink = {
+type SocialLinkType = {
   href: string;
   icon: any;
   label?: string;
   text?: string;
 };
 
-const primaryLinks: Array<SocialLink> = [
-  //   {
-  //     href: 'mailto:andrew@noyo.com',
-  //     icon: IconAt,
-  //     text: 'Copy email',
-  //   },
+const primaryLinks: Array<SocialLinkType> = [
   {
-    label: 'Chat',
+    label: 'GPT',
     text: 'Custom GPT',
     icon: IconBrandOpenai,
     href: 'https://chatgpt.com/g/g-684c1fb423ec819196a438a140ccc3bf-andrew-ambrosino',
@@ -49,7 +39,7 @@ const primaryLinks: Array<SocialLink> = [
   },
 ];
 
-const socialLinks: Array<SocialLink> = [
+const socialLinks: Array<SocialLinkType> = [
   {
     href: 'https://www.linkedin.com/in/ajambrosino/',
     icon: IconBrandLinkedin,
@@ -80,7 +70,7 @@ const socialLinks: Array<SocialLink> = [
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto max-w-2xl px-6 py-24">
+    <div className="px-pageMargin container mx-auto max-w-2xl py-24">
       <h1 className="text-2xl font-semibold">Andrew Ambrosino</h1>
       <h2 className="text-muted-foreground text-lg">Founder, Design Engineer, Product Leader</h2>
 
@@ -181,7 +171,7 @@ export default function HomePage() {
               <SocialLink
                 key={link.text}
                 href={link.href}
-                icon={<link.icon className="h-5 w-5" />}
+                icon={<link.icon className="h-5 w-5" strokeWidth={1.85} />}
                 text={link.text}
                 label={link.label}
               />
@@ -192,7 +182,7 @@ export default function HomePage() {
               <SocialLink
                 key={link.text}
                 href={link.href}
-                icon={<link.icon className="h-5 w-5" />}
+                icon={<link.icon className="h-5 w-5" strokeWidth={1.85} />}
                 text={link.text}
                 label={link.label}
               />
