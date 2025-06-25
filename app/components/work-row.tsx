@@ -1,14 +1,6 @@
-export const Role = ({
-  title,
-  subtitle,
-  startDate,
-  endDate,
-}: {
-  title: string;
-  subtitle?: string;
-  startDate: string;
-  endDate?: string;
-}) => {
+import { WorkExperience, WorkExperienceRole } from '@/data/work';
+
+export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole) => {
   const willShowEndDate = endDate && endDate !== startDate;
   const isCurrentRole = !endDate;
   return (
@@ -26,20 +18,7 @@ export const Role = ({
   );
 };
 
-export const WorkRow = ({
-  company,
-  logo,
-  roles,
-}: {
-  company: string;
-  logo: string;
-  roles: Array<{
-    title: string;
-    subtitle?: string;
-    startDate: string;
-    endDate?: string;
-  }>;
-}) => {
+export const WorkRow = ({ company, logo, roles }: WorkExperience) => {
   return (
     <div className="flex cursor-default flex-col items-start gap-3 border-t-[0.5px] py-3 transition-all md:flex-row">
       <div className="flex w-30 items-center gap-3">
