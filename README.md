@@ -1,65 +1,49 @@
-# Andrew Ambrosino - Portfolio Website
+# Andrew Ambrosino - Personal Minisite
 
-A modern, performant portfolio website showcasing Andrew Ambrosino's work as a software engineer, designer, and product
-builder. Built with Next.js 15, React 19, and Tailwind CSS 4.
+A modern, minimalist personal portfolio website built with Next.js 15 and React 19. This site showcases professional
+experience, projects, and serves as a digital presence for Andrew Ambrosino.
 
-## 🚀 Live Site
+## 🚀 Features
 
-Visit the live site at [your-domain.com](https://your-domain.com)
+- **Modern Tech Stack**: Built with Next.js 15, React 19, and TypeScript
+- **Responsive Design**: Fully responsive layout using Tailwind CSS
+- **Dark/Light Mode**: Theme switching with next-themes
+- **Work Experience**: Clean display of professional background
+- **Project Showcase**: Portfolio section with project details and images
+- **Performance Optimized**: Leverages Next.js Turbopack for fast development
+- **Accessible**: Built with Radix UI components for accessibility
 
-## ✨ Features
+## 🛠️ Tech Stack
 
-- **Modern Design System**: Built with Tailwind CSS 4 and Radix UI components
-- **Dark/Light Mode**: Seamless theme switching with next-themes
-- **MDX Content**: Rich content authoring with MDX support
-- **Project Showcase**: Dynamic project pages with detailed case studies
-- **Work Timeline**: Interactive work experience timeline
-- **AI Integration**: Built-in AI capabilities with OpenAI SDK
-- **Responsive Design**: Optimized for all device sizes
-- **Performance Optimized**: Built with Next.js 15 and Turbopack
-- **Type Safe**: Full TypeScript implementation
-- **Accessible**: WCAG compliant with Radix UI primitives
-- **Toast Notifications**: User feedback with Sonner
-- **Copy Email Functionality**: Easy contact with toast confirmation
-
-## 🛠 Tech Stack
-
-- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
-- **Language**: [TypeScript 5](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Runtime**: [React 19](https://react.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [Radix UI](https://www.radix-ui.com/)
-- **Content**: [MDX](https://mdxjs.com/) with remark-gfm
-- **Icons**: [Tabler Icons](https://tabler.io/icons) & [Lucide React](https://lucide.dev/)
-- **Animations**: Custom CSS animations with tw-animate-css
-- **AI**: [AI SDK](https://sdk.vercel.ai/) with OpenAI integration
-- **Notifications**: [Sonner](https://sonner.emilkowal.ski/)
+- **Icons**: [Tabler Icons](https://tabler.io/icons)
 - **Theme**: [next-themes](https://github.com/pacocoursey/next-themes)
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/)
 - **Package Manager**: [pnpm](https://pnpm.io/)
 
-## 🏗 Project Structure
+## 🏗️ Project Structure
 
 ```
-site/
+minisite/
 ├── app/
-│   ├── (pages)/           # Route groups
-│   │   ├── (home)/        # Homepage
-│   │   ├── about/         # About page with MDX content
-│   │   └── projects/      # Project showcase
-│   │       └── [id]/      # Dynamic project pages
-│   ├── layout.tsx         # Root layout
-│   ├── globals.css        # Global styles
-│   └── favicon.ico        # Site favicon
-├── components/
-│   ├── ui/                # Reusable UI components
-│   └── mdx/               # MDX-specific components
-├── lib/
-│   └── work-experience/   # Work experience data
-├── hooks/                 # Custom React hooks
-├── const/                 # Constants and configuration
-├── docs/                  # Documentation
-└── public/
-    └── img/               # Static images and assets
-        └── projects/      # Project-specific images
+│   ├── (pages)/
+│   │   └── page.tsx          # Main homepage
+│   ├── components/
+│   │   ├── ui/               # Reusable UI components
+│   │   ├── theme-provider.tsx
+│   │   └── work-row.tsx      # Work experience component
+│   ├── globals.css           # Global styles
+│   └── layout.tsx            # Root layout
+├── public/
+│   ├── img/
+│   │   ├── logos/            # Company logos
+│   │   └── projects/         # Project screenshots
+│   └── Andrew_Ambrosino_Resume.pdf
+└── components.json           # shadcn/ui configuration
 ```
 
 ## 🚦 Getting Started
@@ -67,30 +51,30 @@ site/
 ### Prerequisites
 
 - Node.js 18+
-- pnpm (recommended) or npm/yarn
+- pnpm (recommended) or npm
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository**
 
-```bash
-git clone <repository-url>
-cd site
-```
+   ```bash
+   git clone <repository-url>
+   cd minisite
+   ```
 
-2. Install dependencies:
+2. **Install dependencies**
 
-```bash
-pnpm install
-```
+   ```bash
+   pnpm install
+   ```
 
-3. Start the development server:
+3. **Start the development server**
 
-```bash
-pnpm dev
-```
+   ```bash
+   pnpm dev
+   ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. **Open your browser** Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Available Scripts
 
@@ -99,100 +83,72 @@ pnpm dev
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint
 
-## 📝 Content Management
-
-### Adding Projects
-
-1. Create a new directory in `app/(pages)/projects/[id]/`
-2. Add a `page.tsx` file with your project content
-3. Include project images in `public/img/projects/[project-name]/`
-
-### Editing About Content
-
-The about page content is managed through MDX files in the about directory.
-
-### Work Experience
-
-Work experience data is managed in `lib/work-experience/` and displayed as an interactive timeline.
-
 ## 🎨 Customization
 
-### Theme Configuration
+### Adding Work Experience
 
-The site uses a custom design system built on Tailwind CSS 4. Key configuration files:
+Edit the `app/(pages)/page.tsx` file to add new work experiences:
+
+```tsx
+<WorkRow
+  company="Company Name"
+  title="Job Title"
+  description="Brief description of role"
+  startDate="2020"
+  endDate="2023"
+/>
+```
+
+### Updating Content
+
+- **Personal Info**: Update name and title in `app/(pages)/page.tsx`
+- **Resume**: Replace `public/Andrew_Ambrosino_Resume.pdf` with your resume
+- **Images**: Add company logos to `public/img/logos/`
+- **Projects**: Add project images to `public/img/projects/`
+
+### Styling
+
+The project uses Tailwind CSS for styling. Customize the theme by editing:
 
 - `tailwind.config.js` - Tailwind configuration
-- `components.json` - shadcn/ui configuration
 - `app/globals.css` - Global styles and CSS variables
-
-### Adding Components
-
-UI components follow the shadcn/ui pattern and are located in `components/ui/`. The project uses:
-
-- Radix UI primitives for accessibility
-- Class Variance Authority for component variants
-- Tailwind Merge for style composition
-- Clsx for conditional classes
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+This project is optimized for deployment on [Vercel](https://vercel.com):
 
-1. Push your code to GitHub
-2. Connect your repository to [Vercel](https://vercel.com)
-3. Deploy automatically on every push to main
+1. **Push to GitHub**
+2. **Connect to Vercel**
+3. **Deploy automatically**
 
-### Other Platforms
+For other platforms:
 
-The site can be deployed to any platform that supports Next.js:
+```bash
+pnpm build
+```
 
-- **Netlify**: Use the Next.js build command
-- **Railway**: Connect your GitHub repository
-- **AWS Amplify**: Use the Next.js SSR configuration
+The build output will be in the `.next` folder.
 
-## 📊 Performance
+## 📝 Todo
 
-This site is optimized for performance with:
-
-- Next.js 15 App Router for optimal loading
-- React 19 for improved performance
-- Turbopack for faster development builds
-- Optimized images with Next.js Image component
-- Font optimization with next/font
-- Tree-shaking and code splitting
-- Tailwind CSS 4 for smaller bundle sizes
-
-## 🔮 Planned Features
-
-- [ ] Analytics integration
-- [ ] AI chatbot functionality
-- [ ] View transitions
-- [ ] Command palette (⌘K)
-- [ ] Glassy iOS-inspired design elements
-- [ ] Resume download functionality
-- [ ] Additional project showcases (Canvas, Linear roadmap, consulting work)
+- [x] Fix readme
+- [ ] Custom OG image
+- [ ] Social links
+- [ ] OG header links
+- [ ] llms.txt
 
 ## 🤝 Contributing
 
-This is a personal portfolio site, but if you find bugs or have suggestions:
+This is a personal portfolio project, but feel free to:
 
-1. Open an issue describing the problem
-2. Fork the repository
-3. Create a feature branch
-4. Submit a pull request
+- Report bugs
+- Suggest improvements
+- Submit pull requests
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## 📧 Contact
-
-**Andrew Ambrosino**
-
-- Website: [your-domain.com](https://your-domain.com)
-- Email: [your-email@domain.com](mailto:your-email@domain.com)
-- LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+This project is for personal use. Feel free to use as inspiration for your own portfolio.
 
 ---
 
-Built with ❤️ using Next.js 15, React 19, TypeScript, and modern web technologies.
+Built with ❤️ by Andrew Ambrosino

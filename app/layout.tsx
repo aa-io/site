@@ -1,14 +1,15 @@
 import './globals.css';
 
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import Head from 'next/head';
-import { AppSidebar } from '@/components/app-sidebar';
-import { Chatbot } from '@/components/chatbot';
-import { CommandPalette } from '@/components/command-palette';
-import { ThemeProvider } from '@/components/theme-provider';
-import { SidebarProvider } from '@/components/ui/sidebar';
-import { Toaster } from '@/components/ui/sonner';
+import { ThemeProvider } from '@/app/components/theme-provider';
+import { Toaster } from '@/app/components/ui/sonner';
+
+const _sans = localFont({
+  src: './assets/font/sohne.woff2',
+});
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -22,7 +23,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Andrew Ambrosino',
-  description: 'founder, design engineer, product leader',
+  description: 'Founder, Design Engineer, Product Leader',
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+  ],
 };
 
 export default function RootLayout({
@@ -33,29 +41,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-        <title>Andrew Jambrosino</title>
-        <meta name="theme-color" content="var(--sidebar)" />
+        <title>Andrew Ambrosino</title>
       </Head>
-      <body className={`${geistSans.className} ${geistMono.variable} antialiased`}>
+      <body className={`${_sans.className} ${geistMono.variable} bg-background antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <SidebarProvider
-            style={
-              {
-                '--sidebar-width': 'calc(var(--spacing) * 72)',
-                '--header-height': 'calc(var(--spacing) * 12)',
-              } as React.CSSProperties
-            }
-          >
-            <AppSidebar />
-
-            <main className="flex min-h-screen justify-center">
-              <div className="w-full">{children}</div>
-            </main>
-          </SidebarProvider>
+          <main className="flex min-h-screen justify-center">
+            <div className="w-full">{children}</div>
+          </main>
         </ThemeProvider>
         <Toaster />
-        <Chatbot />
-        <CommandPalette />
       </body>
     </html>
   );
