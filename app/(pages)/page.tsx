@@ -16,7 +16,7 @@ export default function HomePage() {
     <div className="px-pageMargin container mx-auto max-w-2xl pt-24">
       <AnimateIn idx={0}>
         <div className="flex flex-col gap-1.5">
-          <h1 className="text-3xl font-semibold">Andrew Ambrosino</h1>
+          <h1 className="text-3xl font-medium">Andrew Ambrosino</h1>
           <div className="text-muted-foreground text-base font-normal text-pretty">
             Founder, Design Engineer, Product Leader
           </div>

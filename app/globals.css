@@ -15,7 +15,7 @@
 
   --tracking-tighter: -0.05em;
   --tracking-tight: -0.025em;
-  --tracking-normal: 0.01em;
+  --tracking-normal: 0em;
   --tracking-wide: 0.025em;
   --tracking-wider: 0.05em;
   --tracking-widest: 0.1em;
@@ -61,7 +61,7 @@
   --md-spacing: 24px;
   --padding-pageMargin: var(--md-spacing);
   --margin-pageMargin: var(--md-spacing);
-  --text-base: 14px;
+  --text-base: 14.5px;
   --iconSize: 20px; /* w-5  */
 }
 

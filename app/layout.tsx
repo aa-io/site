@@ -1,7 +1,7 @@
 import './globals.css';
 
 import type { Metadata, Viewport } from 'next';
-import { Geist_Mono } from 'next/font/google';
+import { Geist_Mono, Newsreader } from 'next/font/google';
 import localFont from 'next/font/local';
 import React from 'react';
 import { ThemeProvider } from '@/app/components/theme-provider';
@@ -9,6 +9,13 @@ import { Toaster } from '@/app/components/ui/sonner';
 
 const _sans = localFont({
   src: './assets/font/sohne.woff2',
+});
+
+const _serif = Newsreader({
+  variable: '--font-serif',
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['400', '500', '600', '700'],
 });
 
 const geistMono = Geist_Mono({
@@ -58,7 +65,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${_sans.className} ${geistMono.variable} bg-background antialiased`}>
+      <body className={`${_sans.className} ${_serif.variable} ${geistMono.variable} bg-background antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <main className="flex min-h-screen justify-center">
             <div className="w-full">{children}</div>
