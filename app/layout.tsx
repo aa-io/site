@@ -18,8 +18,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Andrew Ambrosino',
+  title: {
+    default: 'Andrew Ambrosino',
+    template: '%s | Andrew Ambrosino',
+  },
   description: 'Founder, Design Engineer, Product Leader',
+  authors: [{ name: 'Andrew Ambrosino', url: 'https://ambrosino.io' }],
+  creator: 'Andrew Ambrosino',
+  generator: 'Next.js',
+  // twitter: {
+  //   card: 'summary_large_image',
+  //   title: 'Next.js',
+  //   description: 'The React Framework for the Web',
+  //   siteId: '1467726470533754880',
+  //   creator: '@nextjs',
+  //   creatorId: '1467726470533754880',
+  //   images: ['https://nextjs.org/og.png'], // Must be an absolute URL
+  // },
+  // verification: {
+  //   google: 'google',
+  //   yandex: 'yandex',
+  //   yahoo: 'yahoo',
+  //   other: {
+  //     me: ['my-email', 'my-link'],
+  //   },
+  // },
 };
 
 export const viewport: Viewport = {

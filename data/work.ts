@@ -8,6 +8,7 @@ export type WorkExperienceRole = {
 export type WorkExperience = {
   company: string;
   logo: string;
+  slug?: string;
   roles: Array<WorkExperienceRole>;
 };
 
@@ -15,6 +16,7 @@ export const workItems: Array<WorkExperience> = [
   {
     company: 'Noyo',
     logo: '/img/logos/noyo.png',
+    // slug: 'noyo',
     roles: [
       {
         title: 'Head of Product',
@@ -29,6 +31,7 @@ export const workItems: Array<WorkExperience> = [
   {
     company: 'Catch',
     logo: '/img/logos/catch.png',
+    // slug: 'catch',
     roles: [
       {
         title: 'Founder & CTO/CPO',

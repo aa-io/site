@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import { WorkExperience, WorkExperienceRole } from '@/data/work';
+import { cn } from './ui/utils';
 
 export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole) => {
   const willShowEndDate = endDate && endDate !== startDate;
@@ -18,9 +20,16 @@ export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole
   );
 };
 
-export const WorkRow = ({ company, logo, roles }: WorkExperience) => {
+export const WorkRow = ({ company, logo, slug, roles }: WorkExperience) => {
+  const Element = slug ? Link : 'div';
   return (
-    <div className="flex cursor-default flex-col items-start gap-3 border-t-[0.5px] py-3 transition-all md:flex-row">
+    <Element
+      href={`/work/${slug}`}
+      className={cn(
+        'flex flex-col items-start gap-3 border-t-[0.5px] py-3 text-[15px] md:flex-row',
+        slug ? 'hover:bg-accent cursor-pointer' : 'cursor-default transition-all',
+      )}
+    >
       <div className="flex w-30 items-center gap-3">
         <img src={logo} alt={company} className="h-4 w-4" />
         <div className="font-medium">{company}</div>
@@ -30,6 +39,6 @@ export const WorkRow = ({ company, logo, roles }: WorkExperience) => {
           <Role key={role.title} {...role} />
         ))}
       </div>
-    </div>
+    </Element>
   );
 };

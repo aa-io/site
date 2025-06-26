@@ -6,7 +6,7 @@ import { cn } from './ui/utils';
 const _cns = {
   button:
     'hover:bg-accent gap-1.5 flex items-center justify-center rounded-sm leading-none  p-1.5 opacity-75 hover:opacity-100',
-  text: ' hidden text-[13px]  font-medium tracking-wide sm:block md:inline',
+  text: ' hidden text-sm  font-medium tracking-wide sm:block md:inline',
 };
 
 export const SocialLink = ({
@@ -50,7 +50,6 @@ export const LinkButton = ({
 }) => {
   return (
     <Link
-      target="_blank"
       className={cn(_cns.button, 'group/linkButton bg-accent/50 inline-flex grow-0 px-3 opacity-100', className)}
       href={href}
     >
