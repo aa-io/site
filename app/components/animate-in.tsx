@@ -14,7 +14,7 @@ export default function AnimateIn({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.99 - idx * 0.02, translateY: 0, filter: `blur(${4 + idx * 2}px)` }}
+      initial={{ opacity: 0, scale: 0.99, translateY: idx * 10, filter: `blur(${4 + idx * 2}px)` }}
       animate={{ opacity: 1, scale: 1, translateY: 0, filter: 'blur(0px)' }}
       transition={{
         type: 'spring',

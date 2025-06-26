@@ -5,7 +5,7 @@ import { cn } from './ui/utils';
 
 const _cns = {
   button:
-    'hover:bg-accent gap-1.5 flex items-center justify-center rounded-sm leading-none  p-1.5 opacity-75 hover:opacity-100',
+    'hover:bg-accent gap-1.5 flex items-center justify-center rounded-sm leading-none  p-1.5 opacity-65 hover:opacity-100',
   text: ' hidden text-sm  font-medium tracking-wide sm:block md:inline',
 };
 
