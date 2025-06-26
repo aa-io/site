@@ -28,7 +28,7 @@ export const WorkRow = ({ company, logo, slug, roles }: WorkExperience) => {
       className={cn(
         'flex flex-col items-start gap-3 py-4 pb-6 shadow-[inset_0_0.5px_0_var(--color-border)] peer-hover:shadow-none md:flex-row md:pb-4',
         slug ?
-          'peer hover:bg-accentTransparent/75 active:bg-accentTransparent dark:hover:bg-accentTransparent dark:active:bg-accentTransparent/75 cursor-pointer bg-clip-padding hover:-mx-4 hover:rounded-md hover:border-transparent hover:px-4 hover:shadow-[inset_0_0.5px_1.5px_0px_#FFFFFF11,0_25px_200px_50px_var(--color-background)]'
+          'peer hover:bg-accentTransparent/75 active:bg-accentTransparent dark:hover:bg-accentTransparent/75 dark:active:bg-accentTransparent/50 cursor-pointer bg-clip-padding hover:-mx-4 hover:rounded-md hover:border-transparent hover:px-4 hover:shadow-[inset_0_0.5px_1.5px_0px_#FFFFFF0A]'
         : 'cursor-default transition-all',
       )}
     >
