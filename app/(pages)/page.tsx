@@ -1,5 +1,6 @@
 import '../globals.css';
 
+import * as motion from 'motion/react-client';
 import { WorkRow } from '@/app/components/work-row';
 import { primaryLinks, socialLinks } from '@/data/links';
 import { workItems } from '@/data/work';
@@ -23,18 +24,28 @@ export default function HomePage() {
         </div>
       </AnimateIn>
 
-      <div className="flex flex-col gap-12 pt-12">
+      <div className="flex flex-col gap-6 pt-12">
         <AnimateIn idx={1}>
-          <Section title="Recent">
+          <Section title="Latest">
             {recentWorkItems.map((work) => (
               <WorkRow key={work.company} {...work} />
             ))}
           </Section>
         </AnimateIn>
         <AnimateIn idx={2}>
-          <Section title="Earlier" faded>
-            {earlierWorkItems.map((work) => (
-              <WorkRow key={work.company} {...work} />
+          <Section title="Earlier">
+            {earlierWorkItems.map((work, idx) => (
+              <motion.div
+                key={work.company}
+                style={{
+                  filter: `blur(${0.5 + idx * 0.25}px) grayscale(${idx * 0.5})`,
+                  opacity: 0.5 - idx * 0.1,
+                }}
+                whileHover={{ filter: 'blur(0px)', opacity: 0.75 }}
+                transition={{ duration: 0.1 }}
+              >
+                <WorkRow {...work} />
+              </motion.div>
             ))}
           </Section>
         </AnimateIn>

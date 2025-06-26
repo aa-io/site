@@ -8,7 +8,7 @@ export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole
   return (
     <div key={title} className="flex justify-between gap-1 py-1 first:pt-0 last:pb-0">
       <div className="flex gap-2">
-        <div className="font-medium text-balance">{title}</div>
+        <div className="text-balance md:font-medium">{title}</div>
         {subtitle && <div className="text-muted-foreground hidden sm:block">{subtitle}</div>}
       </div>
       <div className="text-muted-foreground flex min-w-24 gap-0.5 tabular-nums">
@@ -28,7 +28,7 @@ export const WorkRow = ({ company, logo, slug, roles }: WorkExperience) => {
       className={cn(
         'flex flex-col items-start gap-3 py-4 pb-6 shadow-[inset_0_0.5px_0_var(--color-border)] peer-hover:shadow-none md:flex-row md:pb-4',
         slug ?
-          'peer hover:bg-accentTransparent/50 active:bg-accentTransparent dark:hover:bg-accentTransparent dark:active:bg-accentTransparent/75 hover:-mx-pageMargin hover:px-pageMargin cursor-pointer hover:rounded-md hover:border-transparent hover:shadow-[inset_0_0_1px_var(--color-border)]'
+          'peer hover:bg-accentTransparent/75 active:bg-accentTransparent dark:hover:bg-accentTransparent dark:active:bg-accentTransparent/75 cursor-pointer hover:-mx-4 hover:rounded-md hover:border-transparent hover:px-4 hover:shadow-[inset_0_0.25px_1.5px_0px_var(--color-border)]'
         : 'cursor-default transition-all',
       )}
     >
