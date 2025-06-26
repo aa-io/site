@@ -28,7 +28,7 @@ export function WorkPageWrapper({ title, children, description }: WorkPageWrappe
         <div className="-ml-1.5 sm:-ml-1.5">
           <LinkButton href="/" className="rounded-full" icon={<IconChevronLeft className="iconSize" />} label="All" />
         </div>
-        <AnimateIn id="work-breadcrumb-portal" className="col-span-1 flex justify-center">
+        <AnimateIn idx={0} className="col-span-1 flex justify-center">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
