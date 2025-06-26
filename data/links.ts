@@ -36,7 +36,7 @@ export const socialLinks: Array<SocialLinkType> = [
     text: 'LinkedIn',
   },
   {
-    href: 'https://github.com/aa-io',
+    href: 'https://github.com/aa-io/site',
     icon: IconBrandGithub,
     text: 'GitHub',
   },
