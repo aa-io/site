@@ -3,7 +3,6 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
-import Head from 'next/head';
 import React from 'react';
 import { ThemeProvider } from '@/app/components/theme-provider';
 import { Toaster } from '@/app/components/ui/sonner';
