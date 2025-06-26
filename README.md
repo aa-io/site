@@ -1,4 +1,4 @@
-# Andrew Ambrosino - Personal Minisite
+# Andrew Ambrosino - Personal Site
 
 A modern, minimalist personal portfolio website built with Next.js 15 and React 19. This site showcases professional
 experience, projects, and serves as a digital presence for Andrew Ambrosino.
@@ -6,44 +6,74 @@ experience, projects, and serves as a digital presence for Andrew Ambrosino.
 ## 🚀 Features
 
 - **Modern Tech Stack**: Built with Next.js 15, React 19, and TypeScript
-- **Responsive Design**: Fully responsive layout using Tailwind CSS
+- **Responsive Design**: Fully responsive layout using Tailwind CSS 4
 - **Dark/Light Mode**: Theme switching with next-themes
-- **Work Experience**: Clean display of professional background
-- **Project Showcase**: Portfolio section with project details and images
+- **Work Experience**: Clean display of professional background with structured data
+- **Project Showcase**: Individual work project pages with MDX content
+- **Custom Animations**: Smooth animations with Motion (Framer Motion)
+- **Social Links**: Integrated social media and professional links
+- **Custom Fonts**: Soehne font family with multiple weights and styles
+- **MDX Support**: Rich content authoring with custom MDX components
 - **Performance Optimized**: Leverages Next.js Turbopack for fast development
 - **Accessible**: Built with Radix UI components for accessibility
+- **Custom GPT Integration**: Link to personalized GPT assistant
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
 - **Runtime**: [React 19](https://react.dev/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [Radix UI](https://www.radix-ui.com/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/) with shadcn/ui
 - **Icons**: [Tabler Icons](https://tabler.io/icons)
+- **Content**: [MDX](https://mdxjs.com/) with custom components
+- **Animations**: [Motion](https://motion.dev/) (Framer Motion)
 - **Theme**: [next-themes](https://github.com/pacocoursey/next-themes)
 - **Notifications**: [Sonner](https://sonner.emilkowal.ski/)
+- **Code Highlighting**: [Sugar High](https://github.com/huozhi/sugar-high)
+- **Typography**: [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin)
 - **Package Manager**: [pnpm](https://pnpm.io/)
 
 ## 🏗️ Project Structure
 
 ```
-minisite/
+site/
 ├── app/
 │   ├── (pages)/
-│   │   └── page.tsx          # Main homepage
+│   │   ├── page.tsx              # Main homepage
+│   │   └── work/
+│   │       ├── catch/
+│   │       │   ├── content.mdx   # Catch project content
+│   │       │   └── page.tsx      # Catch project page
+│   │       └── noyo/
+│   │           ├── content.mdx   # Noyo project content
+│   │           └── page.tsx      # Noyo project page
+│   ├── assets/
+│   │   └── font/                 # Soehne font family files
 │   ├── components/
-│   │   ├── ui/               # Reusable UI components
-│   │   ├── theme-provider.tsx
-│   │   └── work-row.tsx      # Work experience component
-│   ├── globals.css           # Global styles
-│   └── layout.tsx            # Root layout
+│   │   ├── ui/                   # shadcn/ui components
+│   │   ├── animate-in.tsx        # Animation wrapper
+│   │   ├── section.tsx           # Section component
+│   │   ├── social-link.tsx       # Social link components
+│   │   ├── theme-provider.tsx    # Theme context
+│   │   ├── work-page-wrapper.tsx # Work project layout
+│   │   └── work-row.tsx          # Work experience row
+│   ├── lib/
+│   │   └── mdx.ts               # MDX utilities
+│   ├── globals.css              # Global styles and CSS variables
+│   └── layout.tsx               # Root layout
+├── data/
+│   ├── links.ts                 # Social and primary links
+│   ├── licenses.ts              # Professional licenses
+│   └── work.ts                  # Work experience data
 ├── public/
 │   ├── img/
-│   │   ├── logos/            # Company logos
-│   │   └── projects/         # Project screenshots
-│   └── Andrew_Ambrosino_Resume.pdf
-└── components.json           # shadcn/ui configuration
+│   │   ├── logos/               # Company logos
+│   │   └── projects/            # Project screenshots
+│   └── resume.pdf               # Resume download
+├── mdx-components.tsx           # Custom MDX components
+├── next.config.ts               # Next.js configuration with MDX
+└── components.json              # shadcn/ui configuration
 ```
 
 ## 🚦 Getting Started
@@ -59,7 +89,7 @@ minisite/
 
    ```bash
    git clone <repository-url>
-   cd minisite
+   cd site
    ```
 
 2. **Install dependencies**
@@ -87,31 +117,64 @@ minisite/
 
 ### Adding Work Experience
 
-Edit the `app/(pages)/page.tsx` file to add new work experiences:
+Edit the `data/work.ts` file to add new work experiences:
 
 ```tsx
-<WorkRow
-  company="Company Name"
-  title="Job Title"
-  description="Brief description of role"
-  startDate="2020"
-  endDate="2023"
-/>
+{
+  company: 'Company Name',
+  logo: '/img/logos/company.png',
+  slug: 'company-slug', // Optional: for dedicated project pages
+  roles: [
+    {
+      title: 'Job Title',
+      subtitle: 'Optional subtitle',
+      startDate: '2020',
+      endDate: '2023', // Optional: omit for current role
+    },
+  ],
+}
 ```
 
-### Updating Content
+### Creating Work Project Pages
 
-- **Personal Info**: Update name and title in `app/(pages)/page.tsx`
-- **Resume**: Replace `public/Andrew_Ambrosino_Resume.pdf` with your resume
-- **Images**: Add company logos to `public/img/logos/`
-- **Projects**: Add project images to `public/img/projects/`
+1. Create a new directory in `app/(pages)/work/[project-name]/`
+2. Add `page.tsx` with the page component
+3. Add `content.mdx` with the project content
+4. Add project images to `public/img/projects/[project-name]/`
+
+### Updating Social Links
+
+Edit `data/links.ts` to modify social and primary links:
+
+```tsx
+export const socialLinks: Array<SocialLinkType> = [
+  {
+    href: 'https://linkedin.com/in/username',
+    icon: IconBrandLinkedin,
+    text: 'LinkedIn',
+  },
+  // ... more links
+];
+```
+
+### Custom MDX Components
+
+The site includes rich MDX components in `mdx-components.tsx`:
+
+- **Cover**: Image with caption
+- **Typography**: Custom heading styles with auto-generated IDs
+- **Code blocks**: Syntax highlighting with Sugar High
+- **Tables**: Styled table components
+- **Links**: External link handling
 
 ### Styling
 
-The project uses Tailwind CSS for styling. Customize the theme by editing:
+The project uses Tailwind CSS 4 with custom CSS variables:
 
-- `tailwind.config.js` - Tailwind configuration
 - `app/globals.css` - Global styles and CSS variables
+- Custom font loading with Soehne font family
+- Dark/light mode support with CSS variables
+- Responsive design with mobile-first approach
 
 ## 🚀 Deployment
 
@@ -132,10 +195,43 @@ The build output will be in the `.next` folder.
 ## 📝 Todo
 
 - [x] Fix readme
+- [x] Social links
 - [ ] Custom OG image
-- [ ] Social links
 - [ ] OG header links
 - [ ] llms.txt
+- [ ] Domain setup
+- [ ] Analytics integration
+- [ ] Additional content sections
+
+## 🔧 Features in Detail
+
+### Animation System
+
+- Custom `AnimateIn` component with staggered animations
+- Motion-powered smooth transitions
+- Performance-optimized animations
+
+### Work Experience Display
+
+- Structured data in TypeScript
+- Company logos and role hierarchies
+- Date range handling for current and past roles
+- Optional project page linking
+
+### MDX Content System
+
+- Custom MDX components for rich content
+- Automatic heading ID generation
+- Image optimization with Next.js Image
+- Code syntax highlighting
+- Responsive typography
+
+### Theme System
+
+- Light/dark mode toggle
+- CSS custom properties for consistent theming
+- Tailwind CSS integration
+- Smooth theme transitions
 
 ## 🤝 Contributing
 
@@ -144,6 +240,7 @@ This is a personal portfolio project, but feel free to:
 - Report bugs
 - Suggest improvements
 - Submit pull requests
+- Use as inspiration for your own portfolio
 
 ## 📄 License
 
