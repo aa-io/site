@@ -26,7 +26,7 @@ export const WorkRow = ({ company, logo, slug, roles }: WorkExperience) => {
     <Element
       href={`/work/${slug}`}
       className={cn(
-        'flex flex-col items-start gap-3 border-t-[0.5px] py-3 text-[15px] md:flex-row',
+        'flex flex-col items-start gap-3 border-t-[0.5px] py-3 pb-6 text-[15px] md:flex-row md:pb-3',
         slug ? 'hover:bg-accent cursor-pointer' : 'cursor-default transition-all',
       )}
     >
