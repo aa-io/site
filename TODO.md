@@ -20,4 +20,4 @@
 ## Features
 
 - [ ] Command menu
-- [ ] llms.txt
+- [x] llms.txt

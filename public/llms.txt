@@ -1,0 +1,90 @@
+# Andrew Ambrosino
+
+Founder, design engineer, and product leader based in San Francisco.
+
+## About
+
+I'm a multidisciplinary technologist who builds products at the intersection of design, engineering, and business. I've founded companies, led teams, and shipped products used by millions. My work spans fintech, insurtech, and enterprise software.
+
+## Current Role
+
+**Head of Product at Noyo** (2025–Present)
+Previously Head of Frontend & Design (2023–2025)
+
+Building the infrastructure layer for benefits data. Leading product development for our core platform, AI initiatives, and developer tools. Managing a team of 8 in product and working closely with 25+ engineers.
+
+## Site Navigation
+
+- **Homepage**: /
+- **Work - Catch**: /work/catch
+- **Work - Noyo**: /work/noyo
+- **Resume**: /resume.pdf
+
+## Professional History
+
+### Noyo (2023–Present)
+Head of Product (2025–Present), Head of Frontend & Design (2023–2025)
+
+Key achievements:
+- Led development of BenefitsOS, AI Canvas, Dynamic Mapping, and other core features
+- Doubled customer base and grew policies 50% year-over-year
+- Built new customer-facing web application and unified API architecture
+- Created AI team leveraging generative AI for product features
+- Designed new company website and API documentation
+
+### Catch (2016–2023)
+Founder & CTO/CPO | Y Combinator W19
+
+Founded and sold the company. Built the only B2C platform with integrated banking, investing, and health insurance capabilities. Our design patterns and features were later adopted by Gusto, Square, Cash App, Wealthfront, and others.
+
+Key contributions:
+- Led product, engineering, and design teams
+- Built platform supporting banking (via Unit, Bond, BBVA), investing (Goldman Sachs), and health insurance (CMS EDE)
+- Developed features including Autopilot, Tax Withholding, Tax Payments, Retirement accounts (IRA, Roth, SEP), and Health Insurance enrollment
+- Maintained regulatory compliance across SEC/FINRA (Series 65), state insurance licenses, and banking regulations
+- Built cross-platform apps (React, React Native) with unified codebase for web, iOS, and Android
+
+### MITRE (2011–2015)
+Senior Design Engineer
+
+Worked on classified projects in national security and defense technology.
+
+### Upthere (2014)
+Product Design | Kleiner Perkins Design Fellow
+
+Designed consumer cloud storage products at KPCB portfolio company.
+
+### Microsoft (2013)
+Software Engineer Intern
+
+Worked on developer tools and platforms.
+
+## Technical Expertise
+
+- **Product**: Strategy, roadmapping, user research, data analysis, growth
+- **Design**: User experience, interface design, design systems, brand
+- **Engineering**: Full-stack development, React/TypeScript, GraphQL, infrastructure
+- **Leadership**: Team building, hiring, cross-functional collaboration
+- **Operations**: Regulatory compliance, financial services, healthcare
+
+## Professional Licenses & Certifications
+
+- Series 65 (Investment Adviser Representative)
+- Licensed Insurance Agent (multiple states)
+- SEC/FINRA registered through Catch Capital Management, LLC
+
+## External Links
+
+- **LinkedIn**: https://www.linkedin.com/in/ajambrosino/
+- **GitHub**: https://github.com/aa-io
+- **Twitter/X**: https://x.com/ajambrosino
+- **Dribbble**: https://dribbble.com/aa-io
+- **Custom GPT**: https://gpt.ambrosino.io
+
+## Contact
+
+For professional inquiries, please reach out via LinkedIn or Twitter.
+
+---
+
+This is Andrew Ambrosino's personal portfolio website showcasing his work in product, design, and engineering. The site features detailed case studies of his work at Catch and Noyo, along with his professional background and achievements.

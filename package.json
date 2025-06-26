@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "aeo": "next build && npx -y next-aeo@latest"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
