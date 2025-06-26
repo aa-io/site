@@ -39,7 +39,9 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
           />
         </div>
         {caption && (
-          <figcaption className="text-muted-foreground/50 mt-1.5 text-center text-xs break-words">{caption}</figcaption>
+          <figcaption className="text-muted-foreground mt-2 -mb-2 text-center text-xs break-words">
+            {caption}
+          </figcaption>
         )}
       </figure>
     ),
