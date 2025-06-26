@@ -25,23 +25,18 @@ export const metadata: Metadata = {
   authors: [{ name: 'Andrew Ambrosino', url: 'https://ambrosino.io' }],
   creator: 'Andrew Ambrosino',
   generator: 'Next.js',
-  // twitter: {
-  //   card: 'summary_large_image',
-  //   title: 'Next.js',
-  //   description: 'The React Framework for the Web',
-  //   siteId: '1467726470533754880',
-  //   creator: '@nextjs',
-  //   creatorId: '1467726470533754880',
-  //   images: ['https://nextjs.org/og.png'], // Must be an absolute URL
-  // },
-  // verification: {
-  //   google: 'google',
-  //   yandex: 'yandex',
-  //   yahoo: 'yahoo',
-  //   other: {
-  //     me: ['my-email', 'my-link'],
-  //   },
-  // },
+  openGraph: {
+    siteName: 'Andrew Ambrosino',
+    title: 'Andrew Ambrosino',
+    description: 'Founder, Design Engineer, Product Leader',
+    url: 'https://ambrosino.io',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Andrew Ambrosino',
+    description: 'Founder, Design Engineer, Product Leader',
+    creator: '@ajambrosino',
+  },
 };
 
 export const viewport: Viewport = {
