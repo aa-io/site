@@ -53,10 +53,10 @@ export function WorkPageWrapper({ title, children, description }: WorkPageWrappe
       </AnimateIn>
 
       <article className="z-0 flex flex-col items-center px-[var(--padding-pageMargin)] pb-[calc(var(--padding-pageMargin)*2)] text-[16px]">
-        <AnimateIn idx={1} className="mx-auto flex max-w-4xl flex-col items-center pt-[5vh] pb-[5vh]">
+        <AnimateIn idx={0} className="mx-auto flex max-w-4xl flex-col items-center pt-[5vh] pb-[5vh]">
           <h1 className="text-center leading-tight font-medium tracking-tight text-balance">{description}</h1>
         </AnimateIn>
-        <AnimateIn idx={2} className="mx-auto w-full max-w-2xl justify-center">
+        <AnimateIn idx={1} className="mx-auto w-full max-w-2xl justify-center">
           {children}
         </AnimateIn>
       </article>
