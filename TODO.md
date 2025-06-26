@@ -1,14 +1,12 @@
 - [x] Fix readme
-- [ ] Custom OG image
+- [x] Custom OG image
 - [x] Social links
-- [ ] OG header links
-- [ ] llms.txt
+- [x] OG header links
 
 ## Deployment
 
-- [ ] Domain
+- [x] Domain
 - [ ] Analytics
-- [ ] Vercel VSCode
 
 ## Content
 
@@ -16,3 +14,10 @@
 - [ ] Misc
 - [ ] Licenses
 - [ ] Images
+- [ ] Old articles
+- [ ] New full writeups
+
+## Features
+
+- [ ] Command menu
+- [ ] llms.txt
