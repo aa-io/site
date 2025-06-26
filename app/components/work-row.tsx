@@ -8,7 +8,7 @@ export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole
   return (
     <div key={title} className="flex justify-between gap-1 py-1 first:pt-0 last:pb-0">
       <div className="flex gap-2">
-        <div className="font-medium">{title}</div>
+        <div className="font-medium text-balance">{title}</div>
         {subtitle && <div className="text-muted-foreground hidden sm:block">{subtitle}</div>}
       </div>
       <div className="text-muted-foreground flex w-24 gap-0.5 tabular-nums">
@@ -26,12 +26,12 @@ export const WorkRow = ({ company, logo, slug, roles }: WorkExperience) => {
     <Element
       href={`/work/${slug}`}
       className={cn(
-        'flex flex-col items-start gap-3 border-t-[0.5px] py-3 pb-6 text-[15px] md:flex-row md:pb-3',
+        'flex flex-col items-start gap-3 border-t-[0.5px] py-3 pb-6 md:flex-row md:pb-3',
         slug ? 'hover:bg-accent cursor-pointer' : 'cursor-default transition-all',
       )}
     >
       <div className="flex w-30 items-center gap-3">
-        <img src={logo} alt={company} className="h-4 w-4" />
+        <img src={logo} alt={company} className="iconSize" />
         <div className="font-medium">{company}</div>
       </div>
       <div className="flex grow flex-col self-stretch">

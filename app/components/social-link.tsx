@@ -23,7 +23,7 @@ export const SocialLink = ({
   className?: string;
 }) => {
   return (
-    <div className={cn(text ? 'first:-ml-1.5 last:-mr-1.5' : '', className)}>
+    <div className={cn(className)}>
       <Tooltip>
         <TooltipTrigger asChild>
           <Link target="_blank" className={cn(_cns.button)} href={href}>

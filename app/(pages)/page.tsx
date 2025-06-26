@@ -17,7 +17,9 @@ export default function HomePage() {
       <AnimateIn idx={0}>
         <div className="flex flex-col gap-1.5">
           <h1 className="text-3xl font-semibold">Andrew Ambrosino</h1>
-          <div className="text-muted-foreground text-base font-normal">Founder, Design Engineer, Product Leader</div>
+          <div className="text-muted-foreground text-base font-normal text-pretty">
+            Founder, Design Engineer, Product Leader
+          </div>
         </div>
       </AnimateIn>
 
@@ -37,30 +39,31 @@ export default function HomePage() {
           </Section>
         </AnimateIn>
 
-        <AnimateIn idx={3}>
-          <div className="from-background/0 to-background/100 pb-pageMargin sticky bottom-0 flex items-center gap-12 bg-gradient-to-b pt-6">
-            <div className="flex items-center gap-3">
-              {socialLinks.map((link) => (
-                <SocialLink
-                  key={link.text}
-                  href={link.href}
-                  icon={<link.icon className="h-5 w-5" strokeWidth={1.85} />}
-                  text={link.text}
-                  label={link.label}
-                />
-              ))}
-            </div>
-            <div className="flex items-center gap-3">
-              {primaryLinks.map((link) => (
-                <SocialLink
-                  key={link.text}
-                  href={link.href}
-                  icon={<link.icon className="h-5 w-5" strokeWidth={1.85} />}
-                  text={link.text}
-                  label={link.label}
-                />
-              ))}
-            </div>
+        <AnimateIn
+          idx={3}
+          className="from-background/0 to-background/100 sticky bottom-0 -mx-1.5 flex items-center justify-around gap-6 bg-gradient-to-b pt-6 pb-[calc(var(--padding-pageMargin)/2)] md:justify-start md:gap-12"
+        >
+          <div className="flex items-center justify-between gap-3">
+            {socialLinks.map((link) => (
+              <SocialLink
+                key={link.text}
+                href={link.href}
+                icon={<link.icon className="iconSize" strokeWidth={1.85} />}
+                text={link.text}
+                label={link.label}
+              />
+            ))}
+          </div>
+          <div className="flex items-center justify-between gap-3">
+            {primaryLinks.map((link) => (
+              <SocialLink
+                key={link.text}
+                href={link.href}
+                icon={<link.icon className="iconSize" strokeWidth={1.85} />}
+                text={link.text}
+                label={link.label}
+              />
+            ))}
           </div>
         </AnimateIn>
       </div>
