@@ -202,10 +202,10 @@
     height: var(--iconSize);
   }
   .glass {
-    @apply shadow-[inset_0px_0.5px_1px_0px_#FFFFFF,inset_0_-12px_6px_0px_#ffffffaa,0_8px_60px_-12px_#000000,0_0px_25px_0px_#FFFFFF88,1px_1px_15px_5px_#00000000];
+    @apply shadow-[inset_0px_0.5px_1px_0px_#FFFFFF,inset_0_-12px_6px_0px_#ffffffaa,0_12px_32px_-10px_#00000055,0_0px_25px_0px_#FFFFFF88,1px_1px_15px_5px_#00000000];
     @apply dark:shadow-[inset_0px_0.5px_1px_0px_#FFFFFF33,inset_-1px_-3px_3px_-2px_#FFFFFF11,inset_0_24px_6px_-12px_#00000005,0_10px_60px_-10px_#00000055,0_0px_25px_0px_#00000033,1px_1px_7px_-4.5px_#000000ff];
     @apply bg-background/25 dark:bg-foreground/10 hover:bg-background/75 dark:hover:bg-accentTransparent active:bg-background/100 dark:active:bg-accentTransparent;
-    @apply drop-shadow-[0px_15px_20px_#00000055] sm:drop-shadow-none;
+    @apply drop-shadow-[0px_10px_16px_#00000022] sm:drop-shadow-none;
 
     @apply backdrop-blur-md backdrop-brightness-[102%] backdrop-saturate-250;
     @apply text-foreground/90 hover:text-foreground/100;
