@@ -164,6 +164,10 @@
     font-smooth: always;
     min-width: 0;
   }
+  html {
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+  }
   body {
     @apply bg-background text-foreground;
     @apply text-base font-normal tracking-normal;
