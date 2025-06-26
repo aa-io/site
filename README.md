@@ -17,6 +17,7 @@ experience, projects, and serves as a digital presence for Andrew Ambrosino.
 - **Performance Optimized**: Leverages Next.js Turbopack for fast development
 - **Accessible**: Built with Radix UI components for accessibility
 - **Custom GPT Integration**: Link to personalized GPT assistant
+- **SEO Optimized**: Custom OG images and meta tags for social sharing
 
 ## 🛠️ Tech Stack
 
@@ -61,13 +62,16 @@ site/
 │   ├── lib/
 │   │   └── mdx.ts               # MDX utilities
 │   ├── globals.css              # Global styles and CSS variables
-│   └── layout.tsx               # Root layout
+│   ├── layout.tsx               # Root layout
+│   ├── opengraph-image.jpg     # OG image for social sharing
+│   └── twitter-image.jpg        # Twitter card image
 ├── data/
 │   ├── links.ts                 # Social and primary links
 │   ├── licenses.ts              # Professional licenses
 │   └── work.ts                  # Work experience data
 ├── public/
 │   ├── img/
+│   │   ├── covers/              # Project cover images
 │   │   ├── logos/               # Company logos
 │   │   └── projects/            # Project screenshots
 │   └── resume.pdf               # Resume download
@@ -192,16 +196,40 @@ pnpm build
 
 The build output will be in the `.next` folder.
 
-## 📝 Todo
+## 📱 SEO & Social
+
+The site includes comprehensive SEO optimization:
+
+- **Custom OG Images**: Automatically generated Open Graph images for social sharing
+- **Meta Tags**: Proper meta tags for all pages
+- **Structured Data**: Work experience and project data structured for search engines
+- **Sitemap**: Automatically generated sitemap
+- **Twitter Cards**: Optimized Twitter card support
+
+## 🎯 Roadmap
+
+### Completed ✅
 
 - [x] Fix readme
-- [x] Social links
-- [ ] Custom OG image
-- [ ] OG header links
-- [ ] llms.txt
-- [ ] Domain setup
+- [x] Social links implementation
+- [x] Custom OG image generation
+- [x] OG header links
+- [x] Domain setup and deployment
+
+### In Progress 🚧
+
 - [ ] Analytics integration
+- [ ] Stack section with technologies used
+- [ ] Professional licenses display
+- [ ] llms.txt implementation
+
+### Future Features 🔮
+
+- [ ] Command menu (⌘K) for quick navigation
 - [ ] Additional content sections
+- [ ] Blog/Articles section
+- [ ] Project case studies with detailed write-ups
+- [ ] Interactive project demos
 
 ## 🔧 Features in Detail
 
@@ -233,19 +261,6 @@ The build output will be in the `.next` folder.
 - Tailwind CSS integration
 - Smooth theme transitions
 
-## 🤝 Contributing
-
-This is a personal portfolio project, but feel free to:
-
-- Report bugs
-- Suggest improvements
-- Submit pull requests
-- Use as inspiration for your own portfolio
-
 ## 📄 License
 
 This project is for personal use. Feel free to use as inspiration for your own portfolio.
-
----
-
-Built with ❤️ by Andrew Ambrosino
