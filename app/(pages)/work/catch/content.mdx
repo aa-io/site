@@ -1,81 +1,70 @@
-At this point it’s not too controversial to say it.
+ <Cover
+  src="/img/covers/catch.png"
+  alt="Catch"
+  caption="Catch"
+/> 
 
-We started in 2017.
+- Founded the company; sold the company
+- Built and led the product, engineering, and design teams
+- Built the only B2C company with the technical capability and regulatory approval in banking, investing (retirement), and health insurance
+- Built a feature set and design direction that has since been directly copied by [Gusto](https://twitter.com/CatchKristen/status/1321212601947312133?s=20&t=9p3X1Eh_DQ_jtbP57t2NzA), [Square](https://squareup.com/us/en/banking), [Cash App](https://cash.app/savings), [Wealthfront](https://www.wealthfront.com/blog/meet-autopilot-a-new-service-that-automates-your-savings-strategy/), [Found](https://found.com/taxes/), [Lance](https://www.lance.app/), and many more
 
-- We’d connect to your bank(s) where you get paid
-- We’d identify your income, no matter how messy, and divvy it up the way you set up at a “normal” job. 
-- We did the stuff
-- Every quarter, we’d submit those quarterly tax payments
-- We’d open SEP IRA
-- We’d enroll in health & dental at the lowest price 
+### Product
 
+- Led roadmap and product strategy
+- Led scoping and specs for all major feature releases<br/>*Coordinated design, technical implementation, and operational reqs*
+    - Autopilot/Autoroll
+    - Tax Withholding *(via BaaS integration + Autoroll)*
+    - Tax Payments *(via [IRS EFTPS](https://www.irs.gov/payments/eftps-the-electronic-federal-tax-payment-system) integration)*
+    - Time Off, Emergency Savings, etc. *(via BaaS integration + Autoroll)*
+    - Retirement *(Traditional, Roth, and [SEP](https://catch.co/post/catch-launches-sep-ira-retirement) IRAs)*
+    - Health & Dental Insurance *(via [CMS Enhanced Direct Enrollment](https://www.cms.gov/programs-and-initiatives/health-insurance-marketplaces/direct-enrollment-and-enhanced-direct-enrollment))*
+    - HSA w/Debit Card *(built and tested internally, but never launched)*
+- Led strategy and overall implementation for product integrations/providers
+    - Banking as a Service *(aka "BaaS" –* [Unit](https://www.unit.co/), [Bond](https://www.bond.tech/), [BBVA Open Platform](https://www.bbva.com/en/bbva-launches-first-baas-platform-in-the-u-s/))*
+    - Card Issuance *(Visa via [Unit](https://www.unit.co/))*
+    - Investment Brokerage *([Goldman Sachs Advisor Solutions](https://advisorsolutions.gs.com/home) fka Folio)*
+    - Health Insurance *([CMS EDE](https://www.cms.gov/programs-and-initiatives/health-insurance-marketplaces/direct-enrollment-and-enhanced-direct-enrollment), [GAEP](https://www.cms.gov/CCIIO/Programs-and-Initiatives/State-Innovation-Waivers/Downloads/1332-GA-Suspension-Letter-of-GA-Access-Model-for-PY-2023.pdf))*
+    - Account Aggregation *([Plaid](https://plaid.com/), [Quovo](https://www.forbes.com/sites/donnafuscaldo/2019/01/08/plaid-buys-quovo-in-its-first-major-acquisition/?sh=6cca0dbc648d))*
 
+### Design
 
-It was a true zero to one. 3 bank contracts. Standing up an RIA and an insurance brokerage. Passing exams. Trying to hire during ’21-’22. 2 years for EDE approval. Learning too many lessons the hardest way possible.
+- Built and led the design team<br/>_(served as the sole designer for the final year)_
+    
+- Led design of the major features<br/>*We mostly used [Figma](https://www.figma.com/) and [Notion](https://www.notion.so/), but occasionally used [Framer](https://www.framer.com/), [Play](https://www.createwithplay.com/), [Playbook](https://www.playbookux.com/), [ZeroHeight](https://zeroheight.com/)*
+    
+- Led the brand redesign project<br/>*with [Red Antler](https://redantler.com/)*
+    
 
-We did YC, raised a few rounds from some great folks, and we had a good run. 
+### Engineering
 
-But in early ’23, we had no choice but to shut it down [^1]
+- Built and led the engineering organization
+    - Led hiring efforts, including sourcing, interviews, and offers
+    - Managed frontend and backend team leads
 
-The things we built proved popular to copy– [Gusto](https://twitter.com/CatchKristen/status/1321212601947312133?s=20&t=9p3X1Eh_DQ_jtbP57t2NzA), [Square](https://squareup.com/us/en/banking), [Wealthfront](https://www.wealthfront.com/blog/meet-autopilot-a-new-service-that-automates-your-savings-strategy/), [Found](https://found.com/taxes/), [Wingspan](https://www.wingspan.app/platform/contractor-benefits), Lance, [Acorns](https://support.acorns.com/hc/en-us/articles/1500001694582-What-is-Smart-Deposit-), [Qapital](https://www.qapital.com/budgeting/), [Thatch](https://thatch.ai), and eventually [Cash App](https://twitter.com/fintechkristen/status/1726992634961658236?s=46&t=zA8dRezFEPph9WhUIpbQBA) by Kristen herself. [Stride](https://www.stridehealth.com) rebranded in a Catch direction.
+- Largest individual contributor to the apps codebase<br/> Web, iOS, and Android<br/>*[React](https://reactjs.org/), [React Native](https://reactnative.dev/), [React Native for Web](https://necolas.github.io/react-native-web/), [React Navigation](https://reactnavigation.org/), [GraphQL](https://graphql.org/) via [Apollo Client](https://www.apollographql.com/docs/react/), [TypeScript](https://www.typescriptlang.org/)*
+    - Contributed to most major feature development
+    - Contributed to abstractions wrapping implementation for both web/native differences and size-based responsiveness. Every feature was built once and immediately worked across web/iOS/Android at all sizes.
+    - Contributed to what was the only mobile app that supported enrolling in health insurance with tax credits (i.e. the only EDE mobile app).
+    - Built CI/CD pipelines *([Bitrise](https://bitrise.io/))* with code push *([AppCenter](https://appcenter.ms/))*. Released to production daily with a fully automated/dynamic testing suite.
+- Built Catch’s public website and tools like [Plan Explorer](https://catch.co/explorer/plans?sid=58198a77-5c4c-4d17-b85b-ae52342786b3) *([Gatsby](https://www.gatsbyjs.com/docs))*
+    
+- Built Catch’s internal admin tool *([Electron](https://www.electronjs.org/))*
+- Led strategy/selection for analytics and observability<br/>*[Segment](https://segment.com/), [Mixpanel](https://mixpanel.com/), [Sentry](https://sentry.io/welcome/), [CloudWatch](https://aws.amazon.com/cloudwatch/), [Castle](https://castle.io/), [LogRocket](https://logrocket.com/)*
+    
 
-We met a lot of amazing people along the way (https://catch.co/creatour)
+## Operations
 
-We built a lot that never saw the light of day– HSAs, ICHRAs, SEP IRAs, contractor benefits, invoicing, an API. Our team continues to advise in multiple industries.
+- Led regulatory compliance operations for Catch’s banking activities and identity verification program<br/>*KYC, CIP, OCC/BSA, NACHA*
+    - Developed a tiering system and identity triangulation approach that achieved some of the lowest ACH return rates in all of fintech
 
-AB5, Prop 22, SECURE, COVID, ACA, EFTPS, RIA, IAR, SEC, FINRA, OCC
+- Led regulatory compliance operations for Catch Capital Management, LLC<br/>Registered Investment Adviser<br/>*SEC/FINRA*
+    - Served as principal Adviser/Representative ([Series 65 Exam](https://www.finra.org/registration-exams-ce/qualification-exams/series65))
+    - Maintained SEC/FINRA obligations for RIA subsidiary registered federally under [67 FR 77619](https://www.govinfo.gov/app/details/FR-2002-12-18/02-31843).
 
-### A real postmortem will never get written. But here are some loose personal thoughts:
-
-- Like other first-time founders before us (and inevitably after us), we refused to pick a customer. It (in a way that is only now painfully obvious) not only inserted a factor of uncertainty in the PDLC, but tainted every decision we made. 
-- We structured our revenue expectations to balance insurance commissions with float on balances, and we were far too slow to adapt when interest rates went to zero. We were also too quick to undervalue what we built– primarily in making it all free starting Jan ’22.
-- (and TBH–) We were just far too sluggish in shipping in ~2018-21.
-- The nature of our offering meant we were pretty reliant on third-parties (banks, brokerages, CMS, etc), and we got burned hard once or twice.
-- The entire business was cyclical – and particularly with OE in November, underperforming set the pace for the next year without a ton of room to budge. One the enrollments were locked in during OE, we couldn’t easily nudge MoM until the next cycle.
-
-### What we did really well:
-
-- We became the only U.S. consumer company to ever build capability (and required approvals for) banking, tax payment filing, investment advisory (retirement), and insurance enrollment (health+dental). We did it with a tight, focused team not afraid to Do The Stuff.
-- We became ruthlessly efficient in building apps. With React Native Web, we supported web, iOS, and Android. Lexi and I shipped daily to all three platforms. Yes, RN is a pain in the ass.
-- I know it’s become unpopular to praise GraphQL, but in what we did, it was a pretty good fit.
-- We build damn good predictions and automation around income.
-- We built on 3 different banks (no, not by choice).
-- We built wildly good internal tooling (and probably spent far too much time on it).
-- We pushed the envelope on what was possible with EDE more than anyone else has to date (including building the only federal insurance enrollment mobile app)[^2].
-- We saved individuals thousands of dollars every year, across both savings on health insurance and quarterly tax payments
-- The team did whatever was needed at every step. Multiple engineers passed the MA insurance licensure exam. I passed the Series 65. 
-- We got great partnerships– Square, DoorDash, Upwork. Fiverr, Patreon
-- We probably had the tightest annual NIST 800-53 audit ever run[^3]
-- We maxed out at ~22 people, across all functions
-
-There are versions of this story that work, but this wasn’t one of them.
-
-
-This whole space needs something. 
-
-It wasn’t us. But it will happen.
-
-Catch [lives on](https://techcrunch.com/2023/10/19/catch-health-insurance-gig-workers-relaunches/) in name, now focused specifically on health insurance[^4]
-
- 
- 
-{/* <Row pre="link" title="https://techcrunch.com/2019/03/21/to-back-the-best-y-combinator-graduates-vcs-must-act-quickly/" />
-<Row pre="link" title="https://techcrunch.com/2019/03/21/catch-benefits/" />
-<Row pre="link" title="https://techcrunch.com/2021/07/30/catch-takes-hold-of-12m-to-provide-benefits-that-arent-tied-to-employers/" />
-<Row pre="link" title="https://www.forbes.com/sites/elenabotella/2021/07/31/simplifying-retirement-and-benefits-for-freelancers-catch-raises-12m-in-series-a" />
-<Row pre="link" title="https://www.businesswire.com/news/home/20220110005199/en/Upwork-Partners-with-Catch-to-Expand-Freelancers’-Access-to-Benefits" />
-<Row pre="link" title="https://techcrunch.com/2023/10/19/catch-health-insurance-gig-workers-relaunches" /> */}
-
-[^1]: https://techcrunch.com/2023/03/06/catch-insurtech-shutting-down/
-
-[^2]: Unfortunately, due to the nature of how federal programs get derisked as a default, the program mostly produces [healthcare.gov](http://healthcare.gov) clones 
-
-[^3]: I can’t prove it, but it’s probably true
-
-[^4]: https://techcrunch.com/2023/10/19/catch-health-insurance-gig-workers-relaunches
-
-[^5]: Fintech fraud note
-
-[^6]: This exam is pretty annoying
-
-[^7]: There should definitely be an equivalent in insurance. Seriously.
+- Led regulatory compliance operations for Catch Insurance, LLC<br/>Licensed Insurance Agency/Brokerage<br/>*CMS/CCIIO, states*    
+    - Served as principal Insurance Agent
+    - Maintained state-by-state insurance obligations and licensing
+    - Maintained CMS obligations, including annual audits required for [EDE](https://www.cms.gov/programs-and-initiatives/health-insurance-marketplaces/direct-enrollment-and-enhanced-direct-enrollment) program participation
+        - Led four annual [NIST 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) privacy and security audits
+        - Led two annual product audits

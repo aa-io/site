@@ -3,7 +3,7 @@ import { WorkPageWrapper } from '@/app/components/work-page-wrapper';
 import CatchContent from './content.mdx';
 
 const title = 'Catch';
-const description = "There's always been a catch.";
+const description = 'Catch';
 
 export const metadata: Metadata = {
   title: title,

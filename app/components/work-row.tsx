@@ -11,7 +11,7 @@ export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole
         <div className="font-medium text-balance">{title}</div>
         {subtitle && <div className="text-muted-foreground hidden sm:block">{subtitle}</div>}
       </div>
-      <div className="text-muted-foreground flex w-24 gap-0.5 tabular-nums">
+      <div className="text-muted-foreground flex min-w-24 gap-0.5 tabular-nums">
         <div>{startDate}</div>
         {(isCurrentRole || willShowEndDate) && <div>–</div>}
         {willShowEndDate && <div>{endDate?.slice(2, 4)}</div>}
@@ -26,8 +26,10 @@ export const WorkRow = ({ company, logo, slug, roles }: WorkExperience) => {
     <Element
       href={`/work/${slug}`}
       className={cn(
-        'flex flex-col items-start gap-3 border-t-[0.5px] py-3 pb-6 md:flex-row md:pb-3',
-        slug ? 'hover:bg-accent cursor-pointer' : 'cursor-default transition-all',
+        'flex flex-col items-start gap-3 py-4 pb-6 shadow-[inset_0_0.5px_0_var(--color-border)] peer-hover:shadow-none md:flex-row md:pb-4',
+        slug ?
+          'peer hover:bg-accentTransparent/50 active:bg-accentTransparent dark:hover:bg-accentTransparent dark:active:bg-accentTransparent/75 hover:-mx-pageMargin hover:px-pageMargin cursor-pointer hover:rounded-md hover:border-transparent hover:shadow-[inset_0_0_1px_var(--color-border)]'
+        : 'cursor-default transition-all',
       )}
     >
       <div className="flex w-30 items-center gap-3">

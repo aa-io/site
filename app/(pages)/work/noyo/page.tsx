@@ -3,7 +3,7 @@ import { WorkPageWrapper } from '@/app/components/work-page-wrapper';
 import NoyoContent from './content.mdx';
 
 const title = 'Noyo';
-const description = 'Work at Noyo - Command Center, Website & Docs, Marketing, and more';
+const description = 'Noyo';
 
 export const metadata: Metadata = {
   title: title,

@@ -28,7 +28,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
 
     // Cover component for images with captions
     Cover: ({ src, alt, caption }: { src: string; alt: string; caption?: string }) => (
-      <figure className="my-8">
+      <figure className="my-8 w-full max-w-full">
         <div className="relative aspect-video w-full overflow-hidden rounded-lg">
           <Image
             src={src}
@@ -38,7 +38,9 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
           />
         </div>
-        {caption && <figcaption className="text-muted-foreground mt-2 text-center text-sm">{caption}</figcaption>}
+        {caption && (
+          <figcaption className="text-muted-foreground mt-2 text-center text-sm break-words">{caption}</figcaption>
+        )}
       </figure>
     ),
 
@@ -92,27 +94,31 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     },
 
     // Paragraphs and text
-    p: ({ children }: { children: ReactNode }) => <p className="my-[var(--md-spacing)] leading-relaxed">{children}</p>,
+    p: ({ children }: { children: ReactNode }) => (
+      <p className="my-[var(--md-spacing)] max-w-full leading-relaxed break-words">{children}</p>
+    ),
 
     // Lists
     ul: ({ children }: { children: ReactNode }) => (
-      <ul className="my-[var(--md-spacing)] ml-[var(--md-spacing)] list-disc space-y-[var(--md-spacing)/2] [&>li]:mt-[var(--md-spacing)/2]">
+      <ul className="my-[var(--md-spacing)] ml-4 max-w-full list-disc space-y-[var(--md-spacing)/2] sm:ml-[var(--md-spacing)] [&>li]:mt-[var(--md-spacing)/2]">
         {children}
       </ul>
     ),
     ol: ({ children }: { children: ReactNode }) => (
-      <ol className="my-[var(--md-spacing)] ml-[var(--md-spacing)] list-decimal space-y-[var(--md-spacing)/2] [&>li]:mt-[var(--md-spacing)/2]">
+      <ol className="my-[var(--md-spacing)] ml-4 max-w-full list-decimal space-y-[var(--md-spacing)/2] sm:ml-[var(--md-spacing)] [&>li]:mt-[var(--md-spacing)/2]">
         {children}
       </ol>
     ),
     li: ({ children }: { children: ReactNode }) => (
-      <li className="pl-[calc(var(--md-spacing)/3)] leading-normal">{children}</li>
+      <li className="max-w-full pl-1 leading-normal sm:pl-[calc(var(--md-spacing)/3)] [&_ol]:mt-[calc(var(--md-spacing)/2)] [&_ul]:mt-[calc(var(--md-spacing)/2)]">
+        {children}
+      </li>
     ),
 
     // Links
     a: ({ children, href }: { children: ReactNode; href?: string }) => (
       <a
-        className="text-primary hover:text-primary/80 decoration-muted-foreground font-medium underline decoration-[0.5px] underline-offset-4 transition-colors"
+        className="hover:text-primary/80 decoration-muted-foreground break-words underline decoration-[0.5px] underline-offset-4 transition-colors"
         href={href}
         target={href?.startsWith('http') ? '_blank' : undefined}
         rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -123,17 +129,17 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
 
     // Emphasis
     strong: ({ children }: { children: ReactNode }) => <strong className="font-semibold">{children}</strong>,
-    em: ({ children }: { children: ReactNode }) => <em className="italic">{children}</em>,
+    em: ({ children }: { children: ReactNode }) => <em className="text-muted-foreground italic">{children}</em>,
 
     // Code
     code: ({ children }: { children: ReactNode }) => (
-      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold break-words">
         {children}
       </code>
     ),
     pre: ({ children }: { children: ReactNode }) => (
-      <pre className="bg-muted mb-6 overflow-x-auto rounded-lg p-4">
-        <code className="bg-muted relative rounded font-mono text-sm">{children}</code>
+      <pre className="bg-muted mb-6 max-w-full overflow-x-auto rounded-lg p-2 sm:p-4">
+        <code className="bg-muted relative rounded font-mono text-xs break-words sm:text-sm">{children}</code>
       </pre>
     ),
 
@@ -161,17 +167,21 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
 
     // Tables
     table: ({ children }: { children: ReactNode }) => (
-      <div className="mb-6 overflow-x-auto">
-        <table className="border-border w-full border-collapse border">{children}</table>
+      <div className="mb-6 max-w-full overflow-x-auto">
+        <table className="border-border w-full min-w-full border-collapse border">{children}</table>
       </div>
     ),
     thead: ({ children }: { children: ReactNode }) => <thead className="bg-muted">{children}</thead>,
     tbody: ({ children }: { children: ReactNode }) => <tbody>{children}</tbody>,
     tr: ({ children }: { children: ReactNode }) => <tr className="border-border border-b">{children}</tr>,
     th: ({ children }: { children: ReactNode }) => (
-      <th className="border-border border px-4 py-2 text-left font-semibold">{children}</th>
+      <th className="border-border border px-2 py-2 text-left text-xs font-semibold break-words sm:px-4 sm:text-sm">
+        {children}
+      </th>
     ),
-    td: ({ children }: { children: ReactNode }) => <td className="border-border border px-4 py-2">{children}</td>,
+    td: ({ children }: { children: ReactNode }) => (
+      <td className="border-border border px-2 py-2 text-xs break-words sm:px-4 sm:text-sm">{children}</td>
+    ),
 
     ...components,
   };

@@ -21,7 +21,7 @@ export default function AnimateIn({
         stiffness: 150,
         damping: 15,
         bounce: 0.5,
-        delay: 0.25 + idx * 0.1,
+        delay: 0.1 + idx * 0.05,
       }}
       className={className}
     >
