@@ -4,9 +4,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { cn } from './ui/utils';
 
 const _cns = {
-  button:
-    'hover:bg-accent gap-1.5 flex items-center justify-center rounded-sm leading-none  p-1.5 opacity-65 hover:opacity-100',
-  text: ' hidden text-sm  font-medium tracking-wide sm:block md:inline',
+  button: 'hover:bg-accent gap-1.5 flex items-center justify-center rounded-sm    p-1.5 opacity-65 hover:opacity-100',
+  text: ' hidden text-sm  font-medium tracking-wide sm:block  text-box-trim',
 };
 
 export const SocialLink = ({
@@ -50,11 +49,15 @@ export const LinkButton = ({
 }) => {
   return (
     <Link
-      className={cn(_cns.button, 'group/linkButton bg-accent/50 inline-flex grow-0 px-3 opacity-100', className)}
+      className={cn(
+        _cns.button,
+        'group/linkButton pop-in glass inline-flex grow-0 gap-0.5 bg-clip-padding opacity-100 transition-all duration-100 active:scale-95',
+        className,
+      )}
       href={href}
     >
-      {icon && <div className="-ml-1.5 opacity-25 group-hover/linkButton:opacity-100">{icon}</div>}
-      {label && <span className={cn(_cns.text)}>{label}</span>}
+      {icon && <div className="opacity-75 group-hover/linkButton:opacity-100">{icon}</div>}
+      {label && <div className={cn(_cns.text, 'pr-1.5')}>{label}</div>}
     </Link>
   );
 };

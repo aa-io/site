@@ -24,19 +24,14 @@ export function WorkPageWrapper({ title, children, description }: WorkPageWrappe
 
   return (
     <>
-      <AnimateIn
+      <div
         idx={0}
         className="p-pageMargin align-stretch from-background/100 via-background/75 group/nav top-pageMargin sticky top-0 z-50 mx-auto grid translate-z-0 grid-cols-[1fr_auto_1fr] items-center bg-gradient-to-b transition-colors duration-1000 hover:duration-250 md:p-[max(var(--padding-pageMargin),5vh)]"
       >
-        <div>
-          <LinkButton
-            href="/"
-            className="rounded-full backdrop-blur-sm"
-            icon={<IconChevronLeft className="iconSize" />}
-            label="Back"
-          />
+        <div className="-ml-1.5 sm:-ml-1.5">
+          <LinkButton href="/" className="rounded-full" icon={<IconChevronLeft className="iconSize" />} label="All" />
         </div>
-        <div id="work-breadcrumb-portal" className="col-span-1 flex justify-center">
+        <AnimateIn id="work-breadcrumb-portal" className="col-span-1 flex justify-center">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -48,9 +43,9 @@ export function WorkPageWrapper({ title, children, description }: WorkPageWrappe
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-        </div>
+        </AnimateIn>
         <div className="col-span-1"> </div>
-      </AnimateIn>
+      </div>
 
       <article className="z-0 flex flex-col items-center px-[var(--padding-pageMargin)] pb-[calc(var(--padding-pageMargin)*2)] text-[16px]">
         <AnimateIn idx={0} className="mx-auto flex max-w-4xl flex-col items-center pt-[5vh] pb-[5vh]">
