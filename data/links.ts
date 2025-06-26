@@ -19,7 +19,7 @@ export const primaryLinks: Array<SocialLinkType> = [
     label: 'GPT',
     text: 'Custom GPT',
     icon: IconBrandOpenai,
-    href: 'https://chatgpt.com/g/g-684c1fb423ec819196a438a140ccc3bf-andrew-ambrosino',
+    href: 'https://gpt.ambrosino.io',
   },
   {
     text: 'Download resume',
