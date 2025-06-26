@@ -1,6 +1,7 @@
 'use client';
 
 import * as motion from 'motion/react-client';
+import React from 'react';
 
 export default function AnimateIn({ children, idx = 0 }: { children: React.ReactNode; idx: number }) {
   return (
