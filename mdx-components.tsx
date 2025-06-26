@@ -28,7 +28,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
 
     // Cover component for images with captions
     Cover: ({ src, alt, caption }: { src: string; alt: string; caption?: string }) => (
-      <figure className="my-8 w-full max-w-full">
+      <figure className="my-3 w-full max-w-full first:mt-0">
         <div className="relative aspect-video w-full overflow-hidden rounded-lg">
           <Image
             src={src}
@@ -39,7 +39,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
           />
         </div>
         {caption && (
-          <figcaption className="text-muted-foreground mt-2 text-center text-sm break-words">{caption}</figcaption>
+          <figcaption className="text-muted-foreground/50 mt-1.5 text-center text-xs break-words">{caption}</figcaption>
         )}
       </figure>
     ),
