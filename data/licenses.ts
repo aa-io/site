@@ -26,7 +26,7 @@ export const licenses: Array<License> = [
   },
   {
     entity: 'Massachusetts Division of Insurance',
-    name: 'Insurance Agent (Health, Property, Casualty)',
+    name: 'Insurance Agent',
     credential: {
       type: 'NPN',
       number: '18946575',

@@ -2,9 +2,13 @@ import '../globals.css';
 
 import * as motion from 'motion/react-client';
 import { WorkRow } from '@/app/components/work-row';
+import { licenses } from '@/data/licenses';
 import { primaryLinks, socialLinks } from '@/data/links';
+import { mentions } from '@/data/mentions';
 import { workItems } from '@/data/work';
 import AnimateIn from '../components/animate-in';
+import { LicenseRow } from '../components/license-row';
+import { MentionRow } from '../components/mention-row';
 import { Section } from '../components/section';
 import { SocialLink } from '../components/social-link';
 
@@ -24,7 +28,7 @@ export default function HomePage() {
         </div>
       </AnimateIn>
 
-      <div className="flex flex-col gap-6 pt-12">
+      <div className="flex flex-col gap-12 pt-12">
         <AnimateIn idx={1}>
           <Section title="Latest">
             {recentWorkItems.map((work) => (
@@ -35,17 +39,35 @@ export default function HomePage() {
         <AnimateIn idx={2}>
           <Section title="Earlier">
             {earlierWorkItems.map((work, idx) => (
-              <motion.div
-                key={work.company}
-                style={{
-                  filter: `blur(${0.5 + idx * 0.25}px) grayscale(${idx * 0.5})`,
-                  opacity: 0.5 - idx * 0.1,
-                }}
-                whileHover={{ filter: 'blur(0px)', opacity: 0.75 }}
-                transition={{ duration: 0.1 }}
-              >
+              <div className="text-foreground/65">
                 <WorkRow {...work} />
-              </motion.div>
+              </div>
+            ))}
+          </Section>
+        </AnimateIn>
+        <AnimateIn idx={3}>
+          <Section title="Certifications">
+            {licenses.map((license) => (
+              <LicenseRow
+                key={license.credential.number}
+                entity={license.entity}
+                name={license.name}
+                credential={license.credential.type}
+                number={license.credential.number}
+              />
+            ))}
+          </Section>
+        </AnimateIn>
+        <AnimateIn idx={4}>
+          <Section title="Misc">
+            {mentions.map((mention) => (
+              <MentionRow
+                key={mention.title}
+                link={mention.url}
+                title={mention.title}
+                date={mention.year}
+                description={mention.description}
+              />
             ))}
           </Section>
         </AnimateIn>
