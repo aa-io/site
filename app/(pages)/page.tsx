@@ -1,6 +1,5 @@
 import '../globals.css';
 
-import * as motion from 'motion/react-client';
 import { WorkRow } from '@/app/components/work-row';
 import { licenses } from '@/data/licenses';
 import { primaryLinks, socialLinks } from '@/data/links';
@@ -39,7 +38,7 @@ export default function HomePage() {
         <AnimateIn idx={2}>
           <Section title="Earlier">
             {earlierWorkItems.map((work, idx) => (
-              <div className="text-foreground/65">
+              <div key={idx} className="text-foreground/65">
                 <WorkRow {...work} />
               </div>
             ))}

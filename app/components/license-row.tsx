@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { IconArrowUpRight } from '@tabler/icons-react';
-
 export const LicenseRow = ({
   entity,
   name,
