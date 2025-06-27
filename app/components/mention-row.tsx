@@ -16,7 +16,7 @@ export const MentionRow = ({
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group/mention text-foreground/65 flex items-start gap-2 py-3 text-sm"
+      className="group/mention text-foreground/65 flex items-start gap-2 py-1.5 text-sm"
     >
       <div className="w-16 shrink-0 grow-0">
         <div className="text-muted-foreground tabular-nums">{date}</div>

@@ -13,7 +13,7 @@ export const LicenseRow = ({
   number: string;
 }) => {
   return (
-    <div className="group/license text-foreground/65 flex items-start gap-3 py-3 text-sm leading-relaxed">
+    <div className="group/license text-foreground/65 flex items-start gap-3 py-1.5 text-sm leading-relaxed">
       <div className="group-hover/mention:text-foreground grow gap-1.5 md:flex">
         <div className="line-clamp-1 truncate">{name}</div>
         <div className="text-muted-foreground truncate opacity-65">{entity}</div>

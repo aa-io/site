@@ -9,7 +9,7 @@ export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole
     <div key={title} className="flex justify-between gap-1 py-1 first:pt-0 last:pb-0">
       <div className="flex gap-2">
         <div className="text-balance md:font-medium">{title}</div>
-        {subtitle && <div className="text-muted-foreground hidden sm:block">{subtitle}</div>}
+        {subtitle && <div className="text-muted-foreground hidden opacity-65 sm:block">{subtitle}</div>}
       </div>
       <div className="text-muted-foreground flex min-w-24 gap-0.5 tabular-nums">
         <div>{startDate}</div>
