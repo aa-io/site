@@ -18,10 +18,12 @@ experience, projects, and serves as a digital presence for Andrew Ambrosino.
 - **Accessible**: Built with Radix UI components for accessibility
 - **Custom GPT Integration**: Link to personalized GPT assistant
 - **SEO Optimized**: Custom OG images and meta tags for social sharing
+- **Professional Licenses**: Display of certifications and licenses
+- **Media Mentions**: Showcase of press coverage and mentions
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **Framework**: [Next.js 15](https://nextjs.org/) with App Router and Turbopack
 - **Runtime**: [React 19](https://react.dev/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
@@ -45,15 +47,19 @@ site/
 │   │   └── work/
 │   │       ├── catch/
 │   │       │   ├── content.mdx   # Catch project content
+│   │       │   ├── content-draft.mdx # Draft content
 │   │       │   └── page.tsx      # Catch project page
 │   │       └── noyo/
 │   │           ├── content.mdx   # Noyo project content
+│   │           ├── content-draft.mdx # Draft content
 │   │           └── page.tsx      # Noyo project page
 │   ├── assets/
 │   │   └── font/                 # Soehne font family files
 │   ├── components/
 │   │   ├── ui/                   # shadcn/ui components
 │   │   ├── animate-in.tsx        # Animation wrapper
+│   │   ├── license-row.tsx       # Professional license display
+│   │   ├── mention-row.tsx       # Media mention display
 │   │   ├── section.tsx           # Section component
 │   │   ├── social-link.tsx       # Social link components
 │   │   ├── theme-provider.tsx    # Theme context
@@ -68,13 +74,17 @@ site/
 ├── data/
 │   ├── links.ts                 # Social and primary links
 │   ├── licenses.ts              # Professional licenses
+│   ├── mentions.ts              # Media mentions and press
 │   └── work.ts                  # Work experience data
 ├── public/
 │   ├── img/
 │   │   ├── covers/              # Project cover images
 │   │   ├── logos/               # Company logos
 │   │   └── projects/            # Project screenshots
+│   ├── llms.txt                 # LLM-friendly site description
 │   └── resume.pdf               # Resume download
+├── .cursor/
+│   └── rules/                   # Cursor AI coding rules
 ├── mdx-components.tsx           # Custom MDX components
 ├── next.config.ts               # Next.js configuration with MDX
 └── components.json              # shadcn/ui configuration
@@ -116,6 +126,7 @@ site/
 - `pnpm build` - Build for production
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint
+- `pnpm aeo` - Build and run automated export optimization
 
 ## 🎨 Customization
 
@@ -139,6 +150,38 @@ Edit the `data/work.ts` file to add new work experiences:
 }
 ```
 
+### Adding Professional Licenses
+
+Edit the `data/licenses.ts` file to add professional certifications:
+
+```tsx
+{
+  entity: 'Issuing Organization',
+  name: 'License/Certification Name',
+  credential: {
+    type: 'License Type',
+    number: 'License Number',
+  },
+  dates: {
+    start: '2020',
+    end: '2023',
+  },
+}
+```
+
+### Adding Media Mentions
+
+Edit the `data/mentions.ts` file to add press coverage:
+
+```tsx
+{
+  title: 'Article Title',
+  description: 'Brief description',
+  url: 'https://example.com/article',
+  year: '2023',
+}
+```
+
 ### Creating Work Project Pages
 
 1. Create a new directory in `app/(pages)/work/[project-name]/`
@@ -156,6 +199,7 @@ export const socialLinks: Array<SocialLinkType> = [
     href: 'https://linkedin.com/in/username',
     icon: IconBrandLinkedin,
     text: 'LinkedIn',
+    label: 'LinkedIn Profile',
   },
   // ... more links
 ];
@@ -205,6 +249,7 @@ The site includes comprehensive SEO optimization:
 - **Structured Data**: Work experience and project data structured for search engines
 - **Sitemap**: Automatically generated sitemap
 - **Twitter Cards**: Optimized Twitter card support
+- **llms.txt**: LLM-friendly site description for AI assistants
 
 ## 🎯 Roadmap
 
@@ -215,13 +260,14 @@ The site includes comprehensive SEO optimization:
 - [x] Custom OG image generation
 - [x] OG header links
 - [x] Domain setup and deployment
+- [x] Professional licenses display
+- [x] Media mentions section
+- [x] llms.txt implementation
 
 ### In Progress 🚧
 
 - [ ] Analytics integration
 - [ ] Stack section with technologies used
-- [ ] Professional licenses display
-- [ ] llms.txt implementation
 
 ### Future Features 🔮
 
@@ -260,6 +306,13 @@ The site includes comprehensive SEO optimization:
 - CSS custom properties for consistent theming
 - Tailwind CSS integration
 - Smooth theme transitions
+
+### Professional Information
+
+- Structured license and certification display
+- Media mentions with external links
+- Work experience with role progression
+- Social and professional links
 
 ## 📄 License
 

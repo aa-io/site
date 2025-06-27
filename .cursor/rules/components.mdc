@@ -1,9 +1,8 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
-
 # Component Guidelines
 
 ## Component Structure
@@ -34,6 +33,42 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
 };
 ```
 
+## Project-Specific Components
+
+### Core Components
+
+- **AnimateIn**: Animation wrapper with staggered entrance animations
+- **Section**: Content section wrapper with consistent spacing
+- **WorkRow**: Display component for work experience entries
+- **SocialLink**: Social media and professional link components
+- **LicenseRow**: Professional license and certification display
+- **MentionRow**: Media mention and press coverage display
+- **WorkPageWrapper**: Layout wrapper for detailed work project pages
+
+### Usage Examples
+
+```tsx
+// AnimateIn component for staggered animations
+<AnimateIn idx={0}>
+  <h1>Title</h1>
+</AnimateIn>
+
+// Section component for content organization
+<Section title="Work Experience">
+  {workItems.map((work) => (
+    <WorkRow key={work.company} {...work} />
+  ))}
+</Section>
+
+// SocialLink for external links
+<SocialLink
+  href="https://linkedin.com/in/username"
+  icon={<IconBrandLinkedin className="iconSize" />}
+  text="LinkedIn"
+  label="LinkedIn Profile"
+/>
+```
+
 ## Component Best Practices
 
 - Always define prop types with TypeScript interfaces
@@ -42,6 +77,7 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
 - Always include `className` prop for styling flexibility
 - Use the `cn` utility for conditional class names
 - Export components as named exports, not default
+- Follow React 19 patterns and conventions
 
 ## shadcn/ui Component Usage
 
@@ -49,6 +85,27 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
 - Always check existing UI components before creating new ones
 - Extend shadcn/ui components rather than creating duplicates
 - Follow shadcn/ui patterns for variants and sizing
+- Available components: Button, Card, Dialog, Sheet, Tooltip, Breadcrumb, Separator, Skeleton, Sonner
+
+## Animation Components
+
+```tsx
+// AnimateIn component with Motion
+import { motion } from 'motion/react';
+
+export function AnimateIn({ children, idx = 0, className }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: idx * 0.1, duration: 0.5 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+```
 
 ## State Management
 
@@ -56,6 +113,7 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
 - Keep state as close to where it's needed as possible
 - Consider using URL state for filters and navigation
 - Use React Context sparingly, only for truly global state
+- Leverage React 19's improved state management features
 
 ## Data Fetching
 
@@ -64,6 +122,7 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
 - Use async/await in Server Components
 - Add proper error boundaries and loading states
 - Cache data appropriately using Next.js caching
+- Structure data in TypeScript files in the `data/` directory
 
 ## Component Organization
 
@@ -72,6 +131,24 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
 - Keep components under 200 lines
 - Extract sub-components when complexity grows
 - Co-locate component-specific types and utilities
+- Follow the established naming conventions (kebab-case files, PascalCase components)
+
+## Theme Integration
+
+```tsx
+// Use theme-aware components
+import { useTheme } from 'next-themes';
+
+export function ThemeAwareComponent() {
+  const { theme, setTheme } = useTheme();
+  
+  return (
+    <div className="bg-background text-foreground">
+      {/* Component content */}
+    </div>
+  );
+}
+```
 
 ## Accessibility
 
@@ -80,3 +157,4 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
 - Use semantic HTML elements
 - Test with screen readers
 - Follow WCAG 2.1 AA guidelines
+- Use Radix UI primitives for complex interactive components

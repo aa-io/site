@@ -1,21 +1,25 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: true
 ---
-
 # General Project Rules
 
 ## Project Overview
 
-This is a Next.js 14+ application with App Router, TypeScript, shadcn/ui components, and Tailwind CSS.
+This is a Next.js 15 application with App Router, React 19, TypeScript, shadcn/ui components, and Tailwind CSS 4.
 
 ## Tech Stack
 
-- **Framework**: Next.js 14+ with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
+- **Framework**: Next.js 15 with App Router and Turbopack
+- **Runtime**: React 19
+- **Language**: TypeScript with strict mode
+- **Styling**: Tailwind CSS 4
+- **UI Components**: Radix UI with shadcn/ui
+- **Animations**: Motion (Framer Motion)
+- **Theme**: next-themes for dark/light mode
+- **Icons**: Tabler Icons
+- **Content**: MDX with custom components
 - **Package Manager**: pnpm
 - **Font**: Custom Soehne font family
 
@@ -27,6 +31,8 @@ This is a Next.js 14+ application with App Router, TypeScript, shadcn/ui compone
 - Store shared UI components in `app/components/ui/`
 - Place static assets in `public/`
 - Custom fonts go in `app/assets/font/`
+- Data files go in `data/` directory
+- Cursor AI rules in `.cursor/rules/`
 
 ## Naming Conventions
 
@@ -34,6 +40,7 @@ This is a Next.js 14+ application with App Router, TypeScript, shadcn/ui compone
 - **Components**: Use PascalCase for component names (e.g., `WorkRow`, `SocialLink`)
 - **Functions**: Use camelCase for function names
 - **CSS Classes**: Use Tailwind utility classes, avoid custom CSS when possible
+- **Data Types**: Use PascalCase for TypeScript types and interfaces
 
 ## Import Order
 
@@ -51,11 +58,13 @@ This is a Next.js 14+ application with App Router, TypeScript, shadcn/ui compone
 - Keep components small and focused
 - Extract reusable logic into custom hooks
 - Format code with Prettier configuration
+- Use proper prop types for all components
 
 ## Performance Best Practices
 
 - Use Next.js Image component for all images
 - Implement proper loading states
 - Use dynamic imports for heavy components
-- Optimize font loading with next/font
+- Optimize font loading with custom font files
 - Minimize client-side JavaScript when possible
+- Leverage Turbopack for fast development builds

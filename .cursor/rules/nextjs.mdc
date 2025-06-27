@@ -1,17 +1,17 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
-
-# Next.js Guidelines
+# Next.js 15 Guidelines
 
 ## App Router Conventions
 
-- Use the App Router (`app/` directory) exclusively
+- Use the App Router (`app/` directory) exclusively with Next.js 15
 - Follow the file-based routing conventions
 - Use route groups `(folder)` for organization without affecting URLs
 - Implement proper loading.tsx and error.tsx files
+- Leverage Turbopack for fast development builds
 
 ## File Conventions
 
@@ -21,27 +21,35 @@ app/
 │   ├── page.tsx         # Home page
 │   ├── about/
 │   │   └── page.tsx     # About page
-│   └── blog/
-│       ├── page.tsx     # Blog index
-│       └── [slug]/
-│           └── page.tsx # Dynamic blog post
-├── layout.tsx           # Root layout
-├── loading.tsx          # Global loading state
-├── error.tsx            # Global error boundary
-└── not-found.tsx        # 404 page
+│   └── work/
+│       ├── catch/
+│       │   ├── page.tsx     # Catch project page
+│       │   ├── content.mdx  # MDX content
+│       │   └── content-draft.mdx # Draft content
+│       └── noyo/
+│           ├── page.tsx     # Noyo project page
+│           ├── content.mdx  # MDX content
+│           └── content-draft.mdx # Draft content
+├── components/          # Shared components
+├── assets/             # Static assets (fonts, etc.)
+├── lib/               # Utilities and configurations
+├── layout.tsx         # Root layout
+├── loading.tsx        # Global loading state
+├── error.tsx          # Global error boundary
+└── not-found.tsx      # 404 page
 ```
 
-## Server Components vs Client Components
+## React 19 with Next.js 15
 
 ```typescript
-// Server Component (default)
+// Server Component (default) - React 19 compatible
 // ✅ Good - Data fetching at component level
 async function ProductList() {
   const products = await fetchProducts()
   return <div>{/* render products */}</div>
 }
 
-// Client Component
+// Client Component with React 19 features
 // ✅ Good - Only when needed for interactivity
 'use client'
 import { useState } from 'react'
@@ -72,6 +80,36 @@ const getUser = cache(async (id: string) => {
 })
 ```
 
+## MDX Integration
+
+```typescript
+// next.config.ts
+import createMDX from '@next/mdx'
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+})
+
+export default withMDX({
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+})
+
+// Using MDX in components
+import Content from './content.mdx'
+
+export default function Page() {
+  return (
+    <div>
+      <Content />
+    </div>
+  )
+}
+```
+
 ## Metadata
 
 ```typescript
@@ -79,6 +117,15 @@ const getUser = cache(async (id: string) => {
 export const metadata = {
   title: 'Page Title',
   description: 'Page description',
+  openGraph: {
+    title: 'Page Title',
+    description: 'Page description',
+    images: ['/opengraph-image.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/twitter-image.jpg'],
+  },
 };
 
 // Dynamic metadata
@@ -130,7 +177,21 @@ const soehne = localFont({
     },
   ],
   variable: '--font-soehne',
+  display: 'swap', // Improve font loading performance
 });
+```
+
+## Turbopack Development
+
+```json
+// package.json
+{
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start"
+  }
+}
 ```
 
 ## API Routes
@@ -162,6 +223,7 @@ export function middleware(request: NextRequest) {
   // Add security headers
   const response = NextResponse.next();
   response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('X-Content-Type-Options', 'nosniff');
   return response;
 }
 
@@ -177,6 +239,8 @@ export const config = {
 - Preload critical data with `<link rel="preload">`
 - Use static generation when possible
 - Implement ISR for dynamic content that changes infrequently
+- Leverage Turbopack for faster development builds
+- Use React 19's improved concurrent features
 
 ## SEO Optimization
 
@@ -185,6 +249,7 @@ export const config = {
 - Implement proper Open Graph tags
 - Create a sitemap.xml
 - Use canonical URLs for duplicate content
+- Include llms.txt for AI assistant optimization
 
 ## Common Patterns
 
@@ -193,3 +258,4 @@ export const config = {
 - Route handlers for API endpoints
 - Server Actions for form submissions
 - Streaming SSR for better performance
+- MDX integration for rich content

@@ -13,6 +13,22 @@ Previously Head of Frontend & Design (2023–2025)
 
 Building the infrastructure layer for benefits data. Leading product development for our core platform, AI initiatives, and developer tools. Managing a team of 8 in product and working closely with 25+ engineers.
 
+## Site Technical Details
+
+This is a modern Next.js 15 application built with React 19, TypeScript, and Tailwind CSS 4. The site uses:
+
+- **Framework**: Next.js 15 with App Router and Turbopack
+- **Runtime**: React 19
+- **Language**: TypeScript with strict mode
+- **Styling**: Tailwind CSS 4 with custom CSS variables
+- **UI Components**: Radix UI with shadcn/ui components
+- **Animations**: Motion (Framer Motion) with custom AnimateIn component
+- **Content**: MDX with custom components for rich content
+- **Theme**: next-themes for dark/light mode switching
+- **Icons**: Tabler Icons
+- **Typography**: Custom Soehne font family with multiple weights
+- **Package Manager**: pnpm
+
 ## Site Navigation
 
 - **Homepage**: /
@@ -69,9 +85,15 @@ Worked on developer tools and platforms.
 
 ## Professional Licenses & Certifications
 
-- Series 65 (Investment Adviser Representative)
-- Licensed Insurance Agent (multiple states)
+- Series 65 (Investment Adviser Representative) - CRD #6984304 (2019-2023)
+- Licensed Insurance Agent - NPN #18946575 (2018-2023)
 - SEC/FINRA registered through Catch Capital Management, LLC
+
+## Media Mentions
+
+- **TechCrunch Series A**: "Catch takes hold of $12M to provide benefits that aren't tied to employers" (2021)
+- **TechCrunch Seed**: "Gig workers need health & benefits — Catch is their safety net" (2019)
+- **Medium**: "macOS: It's time to take the next step" - Early concept work (2016)
 
 ## External Links
 
@@ -87,4 +109,4 @@ For professional inquiries, please reach out via LinkedIn or Twitter.
 
 ---
 
-This is Andrew Ambrosino's personal portfolio website showcasing his work in product, design, and engineering. The site features detailed case studies of his work at Catch and Noyo, along with his professional background and achievements.
+This is Andrew Ambrosino's personal portfolio website showcasing his work in product, design, and engineering. The site features detailed case studies of his work at Catch and Noyo, along with his professional background and achievements. Built with modern web technologies for optimal performance and user experience.
