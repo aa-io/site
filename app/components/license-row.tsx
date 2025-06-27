@@ -10,14 +10,16 @@ export const LicenseRow = ({
   number: string;
 }) => {
   return (
-    <div className="group/license text-foreground/65 flex items-start gap-3 py-1.5 text-sm leading-relaxed">
+    <div className="group/license text-foreground/65 flex flex-col py-1.5 text-sm leading-relaxed">
       <div className="group-hover/mention:text-foreground grow gap-1.5 md:flex">
         <div className="line-clamp-1 truncate">{name}</div>
-        <div className="text-muted-foreground truncate opacity-65">{entity}</div>
       </div>
 
-      <div className="text-muted-foreground shrink-0 grow-0 text-right tabular-nums">
-        {credential} {number}
+      <div className="text-muted-foreground flex shrink-0 grow-0 gap-1 tabular-nums">
+        <div className="text-muted-foreground grow truncate opacity-65">{entity}</div>
+        <div className="flex shrink-0 gap-1">
+          <div className="opacity-65">{credential}</div> <div className="line-clamp-1">{number}</div>
+        </div>
       </div>
     </div>
   );
