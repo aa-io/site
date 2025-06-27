@@ -45,7 +45,7 @@ export default function HomePage() {
           </Section>
         </AnimateIn>
         <AnimateIn idx={3}>
-          <Section title="Certifications">
+          <Section title="Licenses">
             {licenses.map((license) => (
               <LicenseRow
                 key={license.credential.number}
