@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://ambrosino.io',
-  generateRobotsTxt: true,
+  generateRobotsTxt: false,
   sitemapSize: 7000,
 };
