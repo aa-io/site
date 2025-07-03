@@ -3,7 +3,7 @@
 A modern, minimalist personal portfolio website built with Next.js 15 and React 19. This site showcases professional
 experience, projects, and serves as a digital presence for Andrew Ambrosino.
 
-## 🚀 Features
+## 🚀 Features 
 
 - **Modern Tech Stack**: Built with Next.js 15, React 19, and TypeScript
 - **Responsive Design**: Fully responsive layout using Tailwind CSS 4
