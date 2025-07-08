@@ -10,9 +10,21 @@ export type WorkExperience = {
   logo: string;
   slug?: string;
   roles: Array<WorkExperienceRole>;
+  invertDark?: boolean;
 };
 
 export const workItems: Array<WorkExperience> = [
+  {
+    company: 'OpenAI',
+    logo: '/img/logos/openai.png',
+    invertDark: true,
+    roles: [
+      {
+        title: 'Member of Technical Staff',
+        startDate: '2025',
+      },
+    ],
+  },
   {
     company: 'Noyo',
     logo: '/img/logos/noyo.png',
@@ -21,10 +33,12 @@ export const workItems: Array<WorkExperience> = [
       {
         title: 'Head of Product',
         startDate: '2025',
+        endDate: '2025',
       },
       {
         title: 'Head of Frontend & Design',
         startDate: '2023',
+        endDate: '2025',
       },
     ],
   },

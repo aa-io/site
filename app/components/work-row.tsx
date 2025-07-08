@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { WorkExperience, WorkExperienceRole } from '@/data/work';
+import { IconArrowRight } from '@tabler/icons-react';
 import { cn } from './ui/utils';
 
 export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole) => {
@@ -20,26 +21,29 @@ export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole
   );
 };
 
-export const WorkRow = ({ company, logo, slug, roles }: WorkExperience) => {
+export const WorkRow = ({ company, logo, slug, roles, invertDark }: WorkExperience) => {
   const Element = slug ? Link : 'div';
   return (
     <Element
       href={`/work/${slug}`}
       className={cn(
-        'flex flex-col items-start gap-3 py-4 pb-6 shadow-[inset_0_0.5px_0_var(--color-border)] peer-hover:shadow-none md:flex-row md:pb-4',
+        'group/workitem flex flex-col items-start gap-3 py-4 pb-6 leading-tight shadow-[inset_0_0.5px_0_var(--color-border)] peer-hover:shadow-none md:flex-row md:pb-4',
         slug ?
           'peer hover:bg-accentTransparent/75 active:bg-accentTransparent dark:hover:bg-accentTransparent/75 dark:active:bg-accentTransparent/50 cursor-pointer bg-clip-padding hover:-mx-4 hover:rounded-md hover:border-transparent hover:px-4 hover:shadow-[inset_0_0.5px_1.5px_0px_#FFFFFF0A]'
         : 'cursor-default transition-all',
       )}
     >
       <div className="flex w-30 items-center gap-3">
-        <img src={logo} alt={company} className="iconSize" />
+        <img src={logo} alt={company} className={cn('iconSize', invertDark && 'dark:invert')} />
         <div className="font-medium">{company}</div>
       </div>
       <div className="flex grow flex-col self-stretch">
         {roles.map((role) => (
           <Role key={role.title} {...role} />
         ))}
+      </div>
+      <div className="iconSize text-muted-foreground group-hover/workitem:text-foreground -ml-1 hidden items-center justify-center md:flex">
+        {slug && <IconArrowRight className="h-3.5 w-3.5" />}
       </div>
     </Element>
   );
