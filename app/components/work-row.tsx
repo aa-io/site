@@ -3,13 +3,13 @@ import { WorkExperience, WorkExperienceRole } from '@/data/work';
 import { IconArrowRight } from '@tabler/icons-react';
 import { cn } from './ui/utils';
 
-export const Role = ({ title, subtitle, startDate, endDate }: WorkExperienceRole) => {
+export const Role = ({ title, subtitle, startDate, endDate, hasLink }: WorkExperienceRole & { hasLink: boolean }) => {
   const willShowEndDate = endDate && endDate !== startDate;
   const isCurrentRole = !endDate;
   return (
     <div key={title} className="flex justify-between gap-1 py-1 first:pt-0 last:pb-0">
       <div className="flex gap-2">
-        <div className="text-balance md:font-medium">{title}</div>
+        <div className={cn('text-balance md:font-medium', hasLink && 'uline')}>{title}</div>
         {subtitle && <div className="text-muted-foreground hidden opacity-65 sm:block">{subtitle}</div>}
       </div>
       <div className="text-muted-foreground flex min-w-24 gap-0.5 tabular-nums">
@@ -39,7 +39,7 @@ export const WorkRow = ({ company, logo, slug, roles, invertDark }: WorkExperien
       </div>
       <div className="flex grow flex-col self-stretch">
         {roles.map((role) => (
-          <Role key={role.title} {...role} />
+          <Role key={role.title} hasLink={!!slug} {...role} />
         ))}
       </div>
       <div className="iconSize text-muted-foreground group-hover/workitem:text-foreground -ml-1 hidden items-center justify-center md:flex">

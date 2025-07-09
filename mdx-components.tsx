@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ReactNode } from 'react';
+import { Tag, Tags } from './app/components/tag';
 
 // Define a simple type for MDX components
 type MDXComponents = {
@@ -25,6 +26,8 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     // Custom components
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Row: (props: any) => <div {...props} />,
+    Tag: (props: any) => <Tag {...props} />,
+    Tags: (props: any) => <Tags {...props} />,
 
     // Cover component for images with captions
     Cover: ({ src, alt, caption }: { src: string; alt: string; caption?: string }) => (
@@ -120,7 +123,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     // Links
     a: ({ children, href }: { children: ReactNode; href?: string }) => (
       <a
-        className="hover:text-primary/80 decoration-muted-foreground break-words underline decoration-[0.5px] underline-offset-4 transition-colors"
+        className="uline hover:text-foreground/75 !decoration-muted-foreground"
         href={href}
         target={href?.startsWith('http') ? '_blank' : undefined}
         rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}

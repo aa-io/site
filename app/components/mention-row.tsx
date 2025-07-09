@@ -25,7 +25,7 @@ export const MentionRow = ({
       <div className=" "></div>
       <div className="flex grow gap-1.5">
         <div className="group-hover/mention:text-foreground leading-relaxed">
-          <span>{title}</span>
+          <span className="uline">{title}</span>
           {description && <span className="text-muted-foreground ml-3 opacity-65">{description}</span>}
         </div>
       </div>
