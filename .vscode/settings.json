@@ -1,0 +1,12 @@
+{
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/route.ts": "${dirname}•route",
+    "**/app/**/content.mdx": "mdx/${dirname}",
+    "**/app/**/draft.mdx": "mdx/${dirname}•draft",
+    "**/app/**/page.tsx": "page/${dirname}",
+    "**/app/**/loading.tsx": "page/${dirname}•loading",
+    "**/app/**/layout.tsx": "page/${dirname}•layout",
+    "**/server/**": "server/${filename}.${extname}",
+    "**/app/components/**": "${filename}"
+  }
+}
