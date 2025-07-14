@@ -13,6 +13,7 @@
 - jasonyuan.design
 - jordan.cv
 - jordanhughes.co
+- laurasinisterra.com
 - leerob.com
 - lobau.io
 - mahlke.design
