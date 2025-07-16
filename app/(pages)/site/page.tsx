@@ -8,13 +8,13 @@ import { Section } from '../../components/section';
 export default function SiteInfoPage() {
   return (
     <WorkPageWrapper title="Inspiration">
-      <div className="mx-auto flex max-w-lg grid-cols-2 grid-rows-[auto_1fr] flex-col content-start items-start justify-start gap-12 sm:grid">
+      <div className="flex flex-col gap-12 py-12">
         {Object.entries(inspiration).map(([key, value], idx) => (
-          <AnimateIn key={key} idx={idx} className={idx === 0 ? 'row-span-2' : ''}>
+          <AnimateIn key={key} idx={idx}>
             <Section title={key}>
-              <ul className="space-y-1">
-                {value.map((item) => (
-                  <li key={item}>
+              <div className="grid grid-cols-1 space-y-0.5 space-x-3 sm:grid-cols-2 md:grid-cols-3 pointer-coarse:space-y-1.5">
+                {value.map((item, idx) => (
+                  <div key={item} className="max-w-full truncate">
                     <a
                       href={`https://${item}`}
                       target="_blank"
@@ -22,9 +22,9 @@ export default function SiteInfoPage() {
                     >
                       {item}
                     </a>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </Section>
           </AnimateIn>
         ))}
