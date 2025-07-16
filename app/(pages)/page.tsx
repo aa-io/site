@@ -5,7 +5,7 @@ import { licenses } from '@/data/licenses';
 import { primaryLinks, socialLinks } from '@/data/links';
 import { mentions } from '@/data/mentions';
 import { workItems } from '@/data/work';
-import { IconEye, IconInbox, IconInfoCircle } from '@tabler/icons-react';
+import { IconInfoCircle } from '@tabler/icons-react';
 import AnimateIn from '../components/animate-in';
 import { LicenseRow } from '../components/license-row';
 import { MentionRow } from '../components/mention-row';
