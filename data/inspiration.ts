@@ -41,8 +41,10 @@ const misc = [
   'animations.dev',
   'devouringdetails.com',
   'godly.website',
-  'makingsoftware.com',
   'liquid-glass.maxrovensky.com',
+  'makingsoftware.com',
+  'nan.fyi',
+  'spottedinprod.com',
 ];
 
 const corporate = [
