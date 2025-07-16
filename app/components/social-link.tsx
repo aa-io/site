@@ -14,18 +14,20 @@ export const SocialLink = ({
   text,
   label,
   className,
+  target = '_blank',
 }: {
   href: string;
   icon: ReactNode;
   text?: string | undefined;
   label?: string | undefined;
   className?: string;
+  target?: string;
 }) => {
   return (
     <div className={cn(className)}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Link target="_blank" className={cn(_cns.button)} href={href}>
+          <Link target={target} className={cn(_cns.button)} href={href}>
             {icon}
             {label && <span className={cn(_cns.text)}>{label}</span>}
           </Link>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function CatchPage() {
   return (
-    <WorkPageWrapper title={title} description={description}>
+    <WorkPageWrapper title={title} description={description} parent="Work">
       <CatchContent />
     </WorkPageWrapper>
   );
