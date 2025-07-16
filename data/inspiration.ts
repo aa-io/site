@@ -14,6 +14,7 @@ const personal = [
   'gunnargray.com',
   'haydenbleasel.com',
   'jasonyuan.design',
+  'jhey.dev',
   'jordan.cv',
   'jordanhughes.co',
   'kons.fyi',
@@ -72,3 +73,11 @@ export const inspiration = {
   misc,
   corporate,
 };
+
+// export const writing = [
+//   yglesias (slowboring)
+//   signull
+//   derek thomson
+//   p graham
+//   cutlefish.substack.com
+// ]
