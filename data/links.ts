@@ -23,7 +23,7 @@ export const primaryLinks: Array<SocialLinkType> = [
   },
   {
     text: 'Download resume',
-    label: 'Download',
+    label: 'PDF',
     icon: IconFileTypePdf,
     href: '/resume.pdf',
   },

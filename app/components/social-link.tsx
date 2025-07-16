@@ -5,7 +5,7 @@ import { cn } from './ui/utils';
 
 const _cns = {
   button: 'hover:bg-accent gap-1.5 flex items-center justify-center rounded-sm    p-1.5   hover:opacity-100',
-  text: ' hidden text-sm  font-medium tracking-wide sm:block  text-box-trim',
+  text: ' hidden text-xs  font-medium tracking-wide sm:block  text-box-trim',
 };
 
 export const SocialLink = ({
