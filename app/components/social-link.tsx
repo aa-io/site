@@ -5,7 +5,7 @@ import { cn } from './ui/utils';
 
 const _cns = {
   button: 'hover:bg-accent gap-1.5 flex items-center justify-center rounded-sm    p-1.5   hover:opacity-100',
-  text: ' hidden text-xs  font-medium tracking-wide sm:block  text-box-trim',
+  text: ' hidden  font-medium tracking-wide sm:block  text-box-trim',
 };
 
 export const SocialLink = ({
@@ -29,7 +29,7 @@ export const SocialLink = ({
         <TooltipTrigger asChild>
           <Link target={target} className={cn(_cns.button)} href={href}>
             {icon}
-            {label && <span className={cn(_cns.text)}>{label}</span>}
+            {label && <span className={cn(_cns.text, 'text-xs')}>{label}</span>}
           </Link>
         </TooltipTrigger>
         {text && <TooltipContent>{text}</TooltipContent>}
@@ -53,13 +53,13 @@ export const LinkButton = ({
     <Link
       className={cn(
         _cns.button,
-        'group/linkButton pop-in glass inline-flex grow-0 gap-0.5 overflow-hidden bg-clip-padding opacity-100 transition-all duration-100 active:scale-95',
+        'group/linkButton pop-in glass inline-flex grow-0 gap-0.5 overflow-hidden bg-clip-padding text-sm opacity-100 transition-all duration-100 active:scale-95',
         className,
       )}
       href={href}
     >
       {icon && <div className="opacity-75 group-hover/linkButton:opacity-100">{icon}</div>}
-      {label && <div className={cn(_cns.text, 'pr-1.5')}>{label}</div>}
+      {label && <div className={cn(_cns.text, 'pr-1.5 text-sm')}>{label}</div>}
       <video
         autoPlay
         playsInline
