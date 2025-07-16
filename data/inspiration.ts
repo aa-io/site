@@ -24,10 +24,12 @@ const personal = [
   'mahlke.design',
   'majacerar.design',
   'marco.fyi',
+  'marijanapav.com',
   'mikematas.com',
   'nat.org',
   'nelson.co',
   'oguzyagiz.com',
+  'os.ryo.lu',
   'paco.me',
   'paulgraham.com',
   'ped.ro',
@@ -52,6 +54,7 @@ const misc = [
 ];
 
 const corporate = [
+  'attio.com',
   'craft.do',
   'fey.com',
   'linear.app',
@@ -74,10 +77,19 @@ export const inspiration = {
   corporate,
 };
 
-// export const writing = [
-//   yglesias (slowboring)
-//   signull
-//   derek thomson
-//   p graham
-//   cutlefish.substack.com
-// ]
+/* export const writing = [
+yglesias (slowboring)
+signull
+derek thomson
+p graham
+cutlefish.substack.com
+thdxr.com
+linear.app/readme
+parkerortolani.blog
+medium.com/@LouisMassuel/sidenotes-figma-config-2024-the-heirloom-tomato-org-chart-nan-yu-head-of-product-linear-1eb4514012bd
+patrickcollison.com
+thetransitguy.substack.com
+
+random
+tbpn.com
+] */
