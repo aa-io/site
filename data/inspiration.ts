@@ -8,6 +8,7 @@ const personal = [
   'calv.info',
   'dimillian.app',
   'emilkowal.ski',
+  'evilrabbit.com',
   'fonsmans.com',
   'gunnargray.com',
   'haydenbleasel.com',
