@@ -32,6 +32,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Andrew Ambrosino', url: 'https://ambrosino.io' }],
   creator: 'Andrew Ambrosino',
   generator: 'Next.js',
+  metadataBase: new URL('https://ambrosino.io'),
   openGraph: {
     siteName: 'Andrew Ambrosino',
     title: 'Andrew Ambrosino',

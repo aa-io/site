@@ -1,5 +1,6 @@
 import '../../globals.css';
 
+import * as React from 'react';
 import AnimateIn from '@/app/components/animate-in';
 import { WorkPageWrapper } from '@/app/components/work-page-wrapper';
 import { inspiration } from '@/data/inspiration';
