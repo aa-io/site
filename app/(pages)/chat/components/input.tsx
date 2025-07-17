@@ -52,7 +52,7 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
         }
       </div>
 
-      <div className="text-muted-foreground mt-2 text-xs">Press Enter to send, Shift+Enter for new line {input}</div>
+      <div className="text-muted-foreground mt-2 text-xs">Press Enter to send, Shift+Enter for new line </div>
     </form>
   );
 }
