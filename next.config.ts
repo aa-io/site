@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     browserDebugInfoInTerminal: true,
+    clientSegmentCache: true,
+    devtoolSegmentExplorer: true,
   },
   devIndicators: {
     position: 'top-right',
