@@ -31,3 +31,31 @@ export default function AnimateIn({
     </motion.div>
   );
 }
+
+export function AnimateInUp({
+  children,
+  idx = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  idx: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      style={{ originY: 0.25 }}
+      initial={{ opacity: 0, translateY: 10, scale: 0.99 }}
+      animate={{ opacity: 1, translateY: 0, scale: 1 }}
+      transition={{
+        type: 'spring',
+        stiffness: 100,
+        damping: 5,
+        bounce: 0.5,
+        mass: 0.2,
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}

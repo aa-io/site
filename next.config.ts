@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  experimental: {
+    browserDebugInfoInTerminal: true,
+  },
   devIndicators: {
     position: 'top-right',
   },
