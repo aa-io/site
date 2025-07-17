@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { WorkPageWrapper } from '@/app/components/work-page-wrapper';
-import { Chat } from './components/chat';
+import { Chat } from '../../components/chat/chat';
 
 export default function ChatPage() {
   return (

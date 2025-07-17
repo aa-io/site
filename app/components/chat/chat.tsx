@@ -3,9 +3,9 @@
 import { DefaultChatTransport } from 'ai';
 import React from 'react';
 import { AnimateInUp } from '@/app/components/animate-in';
+import { ChatInput } from '@/app/components/chat/input';
+import { Message } from '@/app/components/chat/message';
 import { useChat } from '@ai-sdk/react';
-import { ChatInput } from './input';
-import { Message } from './message';
 
 export function Chat() {
   const { messages, sendMessage, error, status, stop } = useChat({
