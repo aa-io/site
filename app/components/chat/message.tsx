@@ -1,8 +1,11 @@
 'use client';
 
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { ChatMessage } from '@/app/api/chat/route';
 import { cn } from '@/app/components/ui/utils';
+import { chatMdxComponents } from '@/mdx-components';
 
 interface MessageProps {
   message: ChatMessage;
@@ -14,9 +17,6 @@ export function Message({ message }: MessageProps) {
   return (
     <div className={cn('flex gap-3', isUser && 'flex-row-reverse')}>
       <div className={cn('flex max-w-[80%] flex-col gap-1')}>
-        {/** @ts-expect-error */}
-        <div className="break-words whitespace-pre-wrap">{message.content}</div>
-
         {/* Show tool calls if any */}
         {message.parts && message.parts.length > 0 && (
           <div className="space-y-1">
@@ -41,13 +41,16 @@ export function Message({ message }: MessageProps) {
                   <div
                     key={idx}
                     className={cn(
-                      'rounded-lg border px-3 py-2 text-sm break-words whitespace-pre-wrap transition-all',
-                      isUser ? 'bg-primary text-primary-foreground border-transparent'
-                      : part.state === 'done' ? 'bg-accent border-transparent'
-                      : 'text-foreground/75 border-border/50',
+                      'rounded-lg text-base transition-all',
+                      'prose prose-sm max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0',
+                      isUser ? 'bg-primary text-primary-foreground prose-invert px-3 py-2'
+                      : part.state === 'done' ? 'px-4'
+                      : 'text-foreground/75 px-4',
                     )}
                   >
-                    {part.text}
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} components={chatMdxComponents}>
+                      {part.text}
+                    </ReactMarkdown>
                   </div>
                 );
               }

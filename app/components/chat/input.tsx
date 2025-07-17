@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Button } from '@/app/components/ui/button';
 import { IconSend, IconSquare } from '@tabler/icons-react';
+import { Hdr } from '../hdr';
+import { cn } from '../ui/utils';
 
 interface ChatInputProps {
   handleSubmit: (text: string) => void;
@@ -30,18 +32,20 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
   };
 
   return (
-    <form onSubmit={_handleSubmit} className="border-t p-4">
+    <form onSubmit={_handleSubmit} className="">
       <div className="flex gap-2">
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.currentTarget.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Ask about Andrew's experience, skills, or projects..."
-          className="bg-accent ring-none placeholder:text-muted-foreground focus-visible:ring-ring max-h-[200px] min-h-[60px] flex-1 resize-none rounded-md border border-none px-3 py-3 text-sm focus-visible:ring-[1.5px] focus-visible:ring-offset-0 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-          rows={2}
-          disabled={isLoading}
-        />
-
+        <div className="glass focus-within:ring-ring relative flex-1 overflow-hidden rounded-lg border border-none focus-within:ring-[1.5px] focus-within:ring-offset-0">
+          <Hdr className={cn('rounded-lg', isLoading && 'opacity-0 transition-all')} />
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.currentTarget.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Ask about Andrew's experience, skills, or projects..."
+            className="placeholder:text-muted-foreground relative z-10 max-h-[200px] min-h-[60px] w-full resize-none bg-transparent px-3 py-3 text-base outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            rows={2}
+            disabled={isLoading}
+          />
+        </div>
         {isLoading ?
           <Button type="button" size="icon" variant="secondary" onClick={stop} className="shrink-0 rounded-full">
             <IconSquare className="h-4 w-4" />
@@ -51,8 +55,6 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
           </Button>
         }
       </div>
-
-      <div className="text-muted-foreground mt-2 text-xs">Press Enter to send, Shift+Enter for new line </div>
     </form>
   );
 }

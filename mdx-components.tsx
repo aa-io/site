@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ReactNode } from 'react';
+import { Components } from 'react-markdown';
 import { Tag, Tags } from './app/components/tag';
 
 // Define a simple type for MDX components
@@ -191,3 +192,66 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     ...components,
   };
 }
+
+// Override MDX components for chat context - more compact styling
+export const chatMdxComponents: Components = {
+  ...useMDXComponents({}),
+  // More compact headings for chat
+  h1: ({ children, ...props }) => (
+    <h1 className="mt-4 mb-2 text-xl font-semibold first:mt-0" {...props}>
+      {children}
+    </h1>
+  ),
+  h2: ({ children, ...props }) => (
+    <h2 className="mt-4 mb-2 text-lg font-semibold first:mt-0" {...props}>
+      {children}
+    </h2>
+  ),
+  h3: ({ children, ...props }) => (
+    <h3 className="mt-3 mb-1 text-base font-semibold first:mt-0" {...props}>
+      {children}
+    </h3>
+  ),
+  // More compact paragraphs
+  p: ({ children, ...props }) => (
+    <p className="mb-2 last:mb-0" {...props}>
+      {children}
+    </p>
+  ),
+  // More compact lists
+  ul: ({ children, ...props }) => (
+    <ul className="mb-2 ml-4 list-disc space-y-1" {...props}>
+      {children}
+    </ul>
+  ),
+  ol: ({ children, ...props }) => (
+    <ol className="mb-2 ml-4 list-decimal space-y-1" {...props}>
+      {children}
+    </ol>
+  ),
+  li: ({ children, ...props }) => (
+    <li className="pl-2" {...props}>
+      {children}
+    </li>
+  ),
+  // Compact code blocks
+  pre: ({ children, ...props }) => (
+    <pre className="bg-border border-border/50 mb-2 overflow-x-auto rounded-md border p-2 text-xs" {...props}>
+      {children}
+    </pre>
+  ),
+  code: ({ children, ...props }) => (
+    <code
+      className="bg-border border-border/50 mx-0.5 rounded border px-0.5 py-0 font-mono text-xs leading-none font-semibold"
+      {...props}
+    >
+      {children}
+    </code>
+  ),
+  // Compact blockquotes
+  blockquote: ({ children, ...props }) => (
+    <blockquote className="border-border/50 mb-2 border-l-2 pl-3 italic opacity-80" {...props}>
+      {children}
+    </blockquote>
+  ),
+};

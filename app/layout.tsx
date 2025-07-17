@@ -19,7 +19,8 @@ const _serif = Newsreader({
 });
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+  variable: '--font-mono',
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
 });
 

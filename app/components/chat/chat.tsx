@@ -1,56 +1,52 @@
 'use client';
 
 import { DefaultChatTransport } from 'ai';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import type { ChatMessage } from '@/app/api/chat/route';
 import { AnimateInUp } from '@/app/components/animate-in';
 import { ChatInput } from '@/app/components/chat/input';
 import { Message } from '@/app/components/chat/message';
 import { useChat } from '@ai-sdk/react';
 
 export function Chat() {
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const { messages, sendMessage, error, status, stop } = useChat({
     transport: new DefaultChatTransport({
       api: '/api/chat',
     }),
-    messages: [
-      {
-        id: '1',
-        role: 'user',
-        parts: [{ type: 'text', text: 'Hello, how are you?' }],
-      },
-      {
-        id: '2',
-        role: 'assistant',
-        parts: [
-          { type: 'text', text: 'I am good, thank you!' },
-          // { type: 'tool-call', toolCallId: '1', state: 'output-available', output: { city: 'Paris' } },
-          // { type: 'tool-call', toolCallId: '2', state: 'output-available', output: { city: 'Paris' } },
-        ],
-      },
-      {
-        id: '3',
-        role: 'user',
-        parts: [{ type: 'text', text: 'What is the capital of France?' }],
-      },
-    ],
   });
 
-  return (
-    <div className="border-border flex h-[70vh] w-full flex-col rounded-lg border">
-      <div className="flex-1 space-y-1 overflow-y-auto p-4">
-        {messages.map((message, idx) => (
-          <AnimateInUp key={message.id} idx={messages.length - idx}>
-            <Message message={message} />
-          </AnimateInUp>
-        ))}
-        {error && (
-          <div className="text-destructive bg-destructive/5 max-h-[100px] overflow-y-auto rounded p-2 text-xs">
-            Error: {error.message}
-          </div>
-        )}
-      </div>
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
-      <ChatInput handleSubmit={(text) => sendMessage({ text: text })} isLoading={status === 'streaming'} stop={stop} />
+  return (
+    <div className="fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center">
+      <div className="relative mx-auto h-full w-full max-w-xl">
+        <div className="absolute top-0 bottom-0 w-full flex-1 scroll-m-30 space-y-1 overflow-y-auto p-4 pt-30 pb-30">
+          <div className="flex-1">
+            {messages.map((message, idx) => (
+              <AnimateInUp key={message.id} idx={messages.length - idx}>
+                <Message message={message as ChatMessage} />
+              </AnimateInUp>
+            ))}
+          </div>
+          {error && (
+            <div className="text-destructive bg-destructive/5 max-h-[100px] overflow-y-auto rounded p-2 text-xs">
+              Error: {error.message}
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div className="absolute right-0 bottom-0 left-0 h-30 p-4">
+          <ChatInput
+            handleSubmit={(text) => sendMessage({ text: text })}
+            isLoading={status === 'streaming'}
+            stop={stop}
+          />
+        </div>
+      </div>
     </div>
   );
 }
