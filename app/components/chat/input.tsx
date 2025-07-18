@@ -42,8 +42,8 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
   return (
     <form onSubmit={_handleSubmit} className="">
       <div className="flex gap-2">
-        <div className="glass focus-within:ring-ring relative flex-1 overflow-hidden rounded-lg border border-none focus-within:ring-[1.5px] focus-within:ring-offset-0">
-          <Hdr className={cn('rounded-lg', isLoading && 'opacity-0 transition-all')} />
+        <div className="glass-bg border-border focus-within:ring-ring relative flex-1 overflow-hidden rounded-xl border border-[0.5px] shadow-sm focus-within:ring-[1.5px] focus-within:ring-offset-0">
+          <Hdr className={cn('rounded-xl', isLoading && 'opacity-0 transition-all')} />
           <textarea
             ref={textareaRef}
             value={input}

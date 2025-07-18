@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import { marked } from 'marked';
+import React, { memo, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ChatMessage } from '@/app/api/chat/route';
@@ -12,12 +13,12 @@ interface MessageProps {
   message: ChatMessage;
 }
 
-// @todo extract
+// @todo extract, make sure it's typesafe between server tools and client tool ui
 const ToolComponent = ({ toolName, output }: { toolName: string; output: any }) => {
   switch (toolName) {
     case 'provideLink':
       return (
-        <a href={output?.url} target="_blank" className="glass relative flex gap-3 rounded-md p-3">
+        <a href={output?.url} target="_blank" className="glass-bg relative flex gap-3 rounded-md p-3">
           <div className="bg-accent flex h-9 w-9 shrink-0 grow-0 items-center justify-center rounded-full p-1">
             <IconFile className="h-5 w-5" />
           </div>
@@ -37,6 +38,35 @@ const ToolComponent = ({ toolName, output }: { toolName: string; output: any }) 
   }
 };
 
+function parseMarkdownIntoBlocks(markdown: string): string[] {
+  const tokens = marked.lexer(markdown);
+  return tokens.map((token) => token.raw);
+}
+
+const MemoizedMarkdownBlock = memo(
+  ({ content }: { content: string }) => {
+    return (
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={chatMdxComponents}>
+        {content}
+      </ReactMarkdown>
+    );
+  },
+  (prevProps, nextProps) => {
+    if (prevProps.content !== nextProps.content) return false;
+    return true;
+  },
+);
+
+MemoizedMarkdownBlock.displayName = 'MemoizedMarkdownBlock';
+
+const MemoizedMarkdown = memo(({ content, id }: { content: string; id: string }) => {
+  const blocks = useMemo(() => parseMarkdownIntoBlocks(content), [content]);
+
+  return blocks.map((block, index) => <MemoizedMarkdownBlock content={block} key={`${id}-block_${index}`} />);
+});
+
+MemoizedMarkdown.displayName = 'MemoizedMarkdown';
+
 /**
  * @todo memoize markdown (https://v5.ai-sdk.dev/cookbook/next/markdown-chatbot-with-memoization)
  */
@@ -45,7 +75,7 @@ export function Message({ message }: MessageProps) {
 
   return (
     <div className={cn('flex gap-3', isUser && 'flex-row-reverse')}>
-      <div className={cn('flex max-w-[80%] flex-col gap-1')}>
+      <div className={cn('flex flex-col gap-1 md:max-w-[80%]')}>
         {/* Show tool calls if any */}
         {message.parts && message.parts.length > 0 && (
           <div className="space-y-1">
@@ -66,13 +96,11 @@ export function Message({ message }: MessageProps) {
                       'rounded-lg text-base transition-all',
                       'prose prose-sm max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0',
                       isUser ? 'bg-primary text-primary-foreground prose-invert px-3 py-2'
-                      : part.state === 'done' ? 'px-4'
-                      : 'text-foreground/75 px-4',
+                      : part.state === 'done' ? ''
+                      : 'text-foreground/75',
                     )}
                   >
-                    <ReactMarkdown remarkPlugins={[remarkGfm]} components={chatMdxComponents}>
-                      {part.text}
-                    </ReactMarkdown>
+                    <MemoizedMarkdown content={part.text} id={`${message.id}-${idx}`} />
                   </div>
                 );
               }

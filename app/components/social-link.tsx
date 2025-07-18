@@ -54,7 +54,7 @@ export const LinkButton = ({
     <Link
       className={cn(
         _cns.button,
-        'group/linkButton pop-in glass relative inline-flex grow-0 gap-0.5 overflow-hidden bg-clip-padding text-sm opacity-100 transition-all duration-100 active:scale-95',
+        'group/linkButton pop-in glass-bg glass-shadow relative inline-flex grow-0 gap-0.5 overflow-hidden bg-clip-padding text-sm opacity-100 transition-all duration-100 active:scale-95',
         className,
       )}
       href={href}
