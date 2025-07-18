@@ -55,6 +55,15 @@ consistency and quality across the codebase.
 - API routes and middleware
 - SEO best practices
 
+### 6. [Testing Guidelines](mdc:testing.md)
+
+- Vitest configuration and setup
+- Component testing with React Testing Library
+- API route testing patterns
+- Data validation testing
+- Mocking strategies
+- Test coverage goals
+
 ## 🚀 Quick Start
 
 When working on this project, follow these key principles:

@@ -1,0 +1,359 @@
+# Testing Guidelines
+
+## Overview
+
+This project uses Vitest for testing with React Testing Library for component testing. The testing stack includes:
+
+- **Vitest**: Fast test runner with ES modules support
+- **React Testing Library**: Component testing utilities
+- **jsdom**: DOM environment for browser APIs
+- **@testing-library/jest-dom**: Custom Jest matchers
+
+## Test Structure
+
+### File Organization
+
+```
+app/test/
+├── setup.ts                    # Global test setup and mocks
+├── components/
+│   ├── work-row.test.tsx       # Component tests
+│   └── social-link.test.tsx    # Component tests
+├── api/
+│   └── chat.test.ts            # API route tests
+├── data/
+│   └── work.test.ts            # Data validation tests
+└── utils.test.ts               # Utility function tests
+```
+
+### Test Categories
+
+1. **Unit Tests**: Test individual functions and utilities
+2. **Component Tests**: Test React components in isolation
+3. **API Tests**: Test API routes and handlers
+4. **Data Tests**: Validate data structures and schemas
+5. **Integration Tests**: Test component interactions
+
+## Running Tests
+
+```bash
+# Run all tests once
+pnpm test:run
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests with UI
+pnpm test:ui
+
+# Run tests with coverage
+pnpm test:coverage
+
+# Run tests (interactive mode)
+pnpm test
+```
+
+## Writing Tests
+
+### Component Tests
+
+```tsx
+import { describe, expect, it } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { ComponentName } from '@/app/components/component-name';
+
+describe('ComponentName', () => {
+  it('should render correctly', () => {
+    render(<ComponentName prop="value" />);
+
+    expect(screen.getByText('Expected Text')).toBeInTheDocument();
+  });
+
+  it('should handle user interactions', async () => {
+    const user = userEvent.setup();
+    render(<ComponentName onAction={mockFunction} />);
+
+    await user.click(screen.getByRole('button'));
+    expect(mockFunction).toHaveBeenCalled();
+  });
+});
+```
+
+### API Route Tests
+
+```typescript
+import { describe, expect, it, vi } from 'vitest';
+import { NextRequest } from 'next/server';
+import { POST } from '@/app/api/route-name/route';
+
+describe('API Route', () => {
+  it('should handle valid requests', async () => {
+    const request = new NextRequest('http://localhost/api/route', {
+      method: 'POST',
+      body: JSON.stringify({ data: 'test' }),
+    });
+
+    const response = await POST(request);
+    expect(response.status).toBe(200);
+  });
+
+  it('should handle invalid requests', async () => {
+    const request = new NextRequest('http://localhost/api/route', {
+      method: 'POST',
+      body: JSON.stringify({}),
+    });
+
+    const response = await POST(request);
+    expect(response.status).toBe(400);
+  });
+});
+```
+
+### Data Validation Tests
+
+```typescript
+import { describe, expect, it } from 'vitest';
+import { dataItems } from '@/data/data-file';
+
+describe('Data validation', () => {
+  it('should have valid structure', () => {
+    dataItems.forEach((item) => {
+      expect(item).toHaveProperty('requiredField');
+      expect(typeof item.requiredField).toBe('string');
+    });
+  });
+
+  it('should have unique identifiers', () => {
+    const ids = dataItems.map((item) => item.id);
+    expect(ids.length).toBe([...new Set(ids)].length);
+  });
+});
+```
+
+### Utility Function Tests
+
+```typescript
+import { describe, expect, it } from 'vitest';
+import { utilityFunction } from '@/app/lib/utils';
+
+describe('utilityFunction', () => {
+  it('should return expected result', () => {
+    expect(utilityFunction('input')).toBe('expected output');
+  });
+
+  it('should handle edge cases', () => {
+    expect(utilityFunction(null)).toBe(null);
+    expect(utilityFunction('')).toBe('');
+  });
+});
+```
+
+## Test Configuration
+
+### Setup File (`app/test/setup.ts`)
+
+The setup file includes:
+
+- Global test environment configuration
+- Mock implementations for Next.js components
+- Mock browser APIs (IntersectionObserver, ResizeObserver)
+- Mock external dependencies
+
+### Vitest Configuration (`vitest.config.mjs`)
+
+The configuration uses `.mjs` extension to explicitly mark it as an ES module, avoiding CommonJS/ESM conflicts in CI
+environments.
+
+```javascript
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { defineConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./app/test/setup.ts'],
+    globals: true,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html', 'lcov'],
+      thresholds: {
+        global: {
+          branches: 70,
+          functions: 70,
+          lines: 70,
+          statements: 70,
+        },
+      },
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './'),
+    },
+  },
+});
+```
+
+## Best Practices
+
+### Test Naming
+
+- Use descriptive test names that explain what is being tested
+- Follow the pattern: "should [expected behavior] when [condition]"
+- Group related tests using `describe` blocks
+
+### Mocking
+
+- Mock external dependencies in the setup file
+- Use `vi.mock()` for module mocking
+- Mock only what's necessary for the test
+
+### Assertions
+
+- Use specific assertions (e.g., `toBeInTheDocument()` vs `toBeTruthy()`)
+- Test both positive and negative cases
+- Verify user-visible behavior, not implementation details
+
+### Component Testing
+
+- Test components in isolation
+- Mock child components when necessary
+- Focus on user interactions and accessibility
+- Use `screen.getByRole()` for better accessibility testing
+
+### Data Testing
+
+- Validate data structure and types
+- Test edge cases and boundary conditions
+- Ensure data consistency across the application
+
+## Coverage Goals
+
+Aim for high coverage in these areas:
+
+1. **Critical Components**: WorkRow, SocialLink, AnimateIn
+2. **API Routes**: All routes should have error handling tests
+3. **Utility Functions**: All exported functions should be tested
+4. **Data Validation**: All data structures should be validated
+5. **User Interactions**: All interactive elements should be tested
+
+## Common Patterns
+
+### Testing Async Components
+
+```tsx
+// For Server Components, test the rendered output
+it('should render async data', async () => {
+  const AsyncComponent = async () => {
+    const data = await fetchData();
+    return <div>{data.title}</div>;
+  };
+
+  render(await AsyncComponent());
+  expect(screen.getByText('Expected Title')).toBeInTheDocument();
+});
+```
+
+### Testing Error Boundaries
+
+```tsx
+it('should handle errors gracefully', () => {
+  const ThrowError = () => {
+    throw new Error('Test error');
+  };
+
+  render(
+    <ErrorBoundary>
+      <ThrowError />
+    </ErrorBoundary>,
+  );
+
+  expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+});
+```
+
+### Testing Custom Hooks
+
+```tsx
+import { renderHook, act } from '@testing-library/react';
+
+it('should manage state correctly', () => {
+  const { result } = renderHook(() => useCustomHook());
+
+  act(() => {
+    result.current.updateValue('new value');
+  });
+
+  expect(result.current.value).toBe('new value');
+});
+```
+
+## Debugging Tests
+
+### Console Debugging
+
+```tsx
+import { screen } from '@testing-library/react';
+
+// Debug the rendered DOM
+screen.debug();
+
+// Debug a specific element
+screen.debug(screen.getByRole('button'));
+```
+
+### Test Environment
+
+- Tests run in jsdom environment
+- Use browser APIs as they would work in a real browser
+- Console logs and errors are captured and displayed
+
+## Continuous Integration
+
+The project uses GitHub Actions for automated testing:
+
+### CI Pipeline
+
+1. **Type Checking**: TypeScript compilation check
+2. **Linting**: ESLint code quality check
+3. **Testing**: All tests with coverage reporting
+4. **Building**: Production build verification
+5. **Performance**: Lighthouse CI for web vitals
+
+### Workflow Configuration
+
+- **Triggers**: Push to main/develop, pull requests
+- **Node Versions**: 18.x, 20.x matrix testing
+- **Coverage**: Uploaded to Codecov for tracking
+- **Lighthouse**: Performance testing on PR
+
+### Required Checks
+
+Before merging, ensure:
+
+- All tests pass
+- No TypeScript errors
+- No linting errors
+- Build succeeds
+- Coverage thresholds met
+
+### Required Secrets
+
+The following GitHub secrets must be configured in your repository:
+
+- `OPENAI_API_KEY`: Required for API route tests and build process
+- `LHCI_GITHUB_APP_TOKEN`: Optional, for enhanced Lighthouse CI integration
+
+Tests are automatically run on:
+
+- Pull requests
+- Push to main/develop branches
+- Before deployment description: globs: alwaysApply: false
+
+---

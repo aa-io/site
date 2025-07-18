@@ -49,6 +49,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  height: '100vh',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
