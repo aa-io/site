@@ -46,6 +46,9 @@ pnpm test:watch
 # Run tests with UI
 pnpm test:ui
 
+# Run tests with coverage
+pnpm test:coverage
+
 # Run tests (interactive mode)
 pnpm test
 ```
@@ -293,12 +296,37 @@ screen.debug(screen.getByRole('button'));
 
 ## Continuous Integration
 
+The project uses GitHub Actions for automated testing:
+
+### CI Pipeline
+
+1. **Type Checking**: TypeScript compilation check
+2. **Linting**: ESLint code quality check
+3. **Testing**: All tests with coverage reporting
+4. **Building**: Production build verification
+5. **Performance**: Lighthouse CI for web vitals
+
+### Workflow Configuration
+
+- **Triggers**: Push to main/develop, pull requests
+- **Node Versions**: 18.x, 20.x matrix testing
+- **Coverage**: Uploaded to Codecov for tracking
+- **Lighthouse**: Performance testing on PR
+
+### Required Checks
+
+Before merging, ensure:
+
+- All tests pass
+- No TypeScript errors
+- No linting errors
+- Build succeeds
+- Coverage thresholds met
+
 Tests are automatically run on:
 
 - Pull requests
-- Push to main branch
-- Before deployment
-
-Ensure all tests pass before merging code. description: globs: alwaysApply: false
+- Push to main/develop branches
+- Before deployment description: globs: alwaysApply: false
 
 ---

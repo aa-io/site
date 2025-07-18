@@ -64,6 +64,17 @@ pnpm test:run
 
 If the lint command or tests fail, resolve the issues before committing.
 
+### Continuous Integration
+
+The project uses GitHub Actions for automated testing:
+
+- **CI Pipeline**: Type checking, linting, testing, building, and performance testing
+- **Matrix Testing**: Node.js 18.x and 20.x versions
+- **Coverage Reporting**: Automatic coverage tracking with Codecov
+- **Lighthouse CI**: Performance testing on pull requests
+
+All checks must pass before merging to main branch.
+
 ## Testing
 
 This project uses **Vitest** with React Testing Library for comprehensive testing. The testing framework covers:
