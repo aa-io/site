@@ -323,6 +323,13 @@ Before merging, ensure:
 - Build succeeds
 - Coverage thresholds met
 
+### Required Secrets
+
+The following GitHub secrets must be configured in your repository:
+
+- `OPENAI_API_KEY`: Required for API route tests and build process
+- `LHCI_GITHUB_APP_TOKEN`: Optional, for enhanced Lighthouse CI integration
+
 Tests are automatically run on:
 
 - Pull requests

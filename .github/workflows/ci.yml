@@ -54,9 +54,13 @@ jobs:
 
       - name: Run tests
         run: pnpm test:run
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Build application
         run: pnpm build
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Upload test results
         if: always()
@@ -92,6 +96,8 @@ jobs:
 
       - name: Run tests with coverage
         run: pnpm test:run --coverage
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Upload coverage to Codecov
         if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
@@ -127,6 +133,8 @@ jobs:
 
       - name: Build application
         run: pnpm build
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Run Lighthouse CI
         run: |

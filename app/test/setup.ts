@@ -3,6 +3,9 @@ import '@testing-library/jest-dom';
 import React from 'react';
 import { beforeAll, vi } from 'vitest';
 
+// Mock environment variables for testing
+process.env.OPENAI_API_KEY = process.env.OPENAI_API_KEY || 'test-api-key';
+
 // Mock IntersectionObserver
 global.IntersectionObserver = vi.fn().mockImplementation(() => ({
   observe: vi.fn(),

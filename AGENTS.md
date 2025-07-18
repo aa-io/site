@@ -75,6 +75,10 @@ The project uses GitHub Actions for automated testing:
 
 All checks must pass before merging to main branch.
 
+**Required GitHub Secrets:**
+
+- `OPENAI_API_KEY`: Required for API route tests and build process
+
 ## Testing
 
 This project uses **Vitest** with React Testing Library for comprehensive testing. The testing framework covers:
