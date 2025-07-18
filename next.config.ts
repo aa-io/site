@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  experimental: {
+    browserDebugInfoInTerminal: true,
+    clientSegmentCache: true,
+    devtoolSegmentExplorer: true,
+  },
   devIndicators: {
     position: 'top-right',
   },

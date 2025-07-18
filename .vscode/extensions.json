@@ -1,3 +1,11 @@
 {
-    "recommendations": []
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "github.vscode-pull-request-github",
+    "yoavbls.pretty-ts-errors",
+    "bierner.markdown-mermaid"
+  ]
 }
