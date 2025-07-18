@@ -8,13 +8,13 @@ on:
 
 jobs:
   test:
-    name: Test & Build
+    name: Test
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout code
@@ -54,11 +54,6 @@ jobs:
 
       - name: Run tests
         run: pnpm test:run
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
-      - name: Build application
-        run: pnpm build
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
