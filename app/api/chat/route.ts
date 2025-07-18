@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       temperature: 0.7,
       experimental_transform: smoothStream({ chunking: 'word' }),
       onStepFinish: ({ text, toolCalls, toolResults, finishReason, usage }) => {
-        console.log('Step finished:', {
+        console.info('Step finished:', {
           text,
           toolCalls,
           toolResults,
