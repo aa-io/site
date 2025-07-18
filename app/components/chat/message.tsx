@@ -18,7 +18,7 @@ const ToolComponent = ({ toolName, output }: { toolName: string; output: any }) 
   switch (toolName) {
     case 'provideLink':
       return (
-        <a href={output?.url} target="_blank" className="glass-bg relative flex gap-3 rounded-md p-3">
+        <a href={output?.url} target="_blank" className="glass-bg glass-shadow relative flex gap-3 rounded-md p-3">
           <div className="bg-accent flex h-9 w-9 shrink-0 grow-0 items-center justify-center rounded-full p-1">
             <IconFile className="h-5 w-5" />
           </div>
