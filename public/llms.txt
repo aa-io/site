@@ -107,6 +107,14 @@ Worked on developer tools and platforms.
 
 For professional inquiries, please reach out via LinkedIn or Twitter.
 
+## Chat Formatting
+
+When referencing URLs in chat responses, wrap link text with the `<ChatLink>` component instead of standard Markdown links. Example:
+
+```
+<ChatLink href="https://example.com">Example</ChatLink>
+```
+
 ---
 
 This is Andrew Ambrosino's personal portfolio website showcasing his work in product, design, and engineering. The site features detailed case studies of his work at Catch and Noyo, along with his professional background and achievements. Built with modern web technologies for optimal performance and user experience.

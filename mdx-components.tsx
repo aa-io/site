@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { Tag, Tags } from './app/components/tag';
+import { ChatLink } from './app/components/ui/chat-link';
 
 // Define a simple type for MDX components
 type MDXComponents = {
@@ -121,15 +122,10 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     ),
 
     // Links
-    a: ({ children, href }: { children: ReactNode; href?: string }) => (
-      <a
-        className="uline hover:text-foreground/75 !decoration-muted-foreground"
-        href={href}
-        target={href?.startsWith('http') ? '_blank' : undefined}
-        rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-      >
+    a: ({ children, href, className }: { children: ReactNode; href?: string; className?: string }) => (
+      <ChatLink href={href} className={className}>
         {children}
-      </a>
+      </ChatLink>
     ),
 
     // Emphasis
