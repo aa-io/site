@@ -36,7 +36,15 @@ export async function POST(req: NextRequest) {
       stopWhen: stepCountIs(5),
       temperature: 0.7,
       experimental_transform: smoothStream({ chunking: 'word' }),
-      onStepFinish: ({ text, toolCalls, toolResults, finishReason, usage }) => {},
+      onStepFinish: ({ text, toolCalls, toolResults, finishReason, usage }) => {
+        console.log('Step finished:', {
+          text,
+          toolCalls,
+          toolResults,
+          finishReason,
+          usage,
+        });
+      },
     });
 
     // Return the stream response
