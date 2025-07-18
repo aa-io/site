@@ -8,6 +8,6 @@ export const env = {
 // Validate required environment variables
 export function validateEnv() {
   if (!env.openai.apiKey) {
-    throw new Error('OPENAI_API_KEY is required in environment variables');
+    console.error('OPENAI_API_KEY is required in environment variables');
   }
-} 
+}
