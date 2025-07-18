@@ -22,9 +22,9 @@ export function Chat() {
 
   return (
     <div className="fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center">
-      <div className="relative mx-auto h-full w-full max-w-xl">
+      <div className="relative mx-auto h-full w-full max-w-3xl">
         <div className="absolute top-0 bottom-0 w-full flex-1 scroll-m-30 space-y-1 overflow-y-auto p-4 pt-30 pb-30">
-          <div className="flex-1">
+          <div className="flex-1 space-y-6">
             {messages.map((message, idx) => (
               <AnimateInUp key={message.id} idx={messages.length - idx}>
                 <Message message={message as ChatMessage} />

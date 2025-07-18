@@ -6,11 +6,40 @@ import remarkGfm from 'remark-gfm';
 import { ChatMessage } from '@/app/api/chat/route';
 import { cn } from '@/app/components/ui/utils';
 import { chatMdxComponents } from '@/mdx-components';
+import { IconFile } from '@tabler/icons-react';
 
 interface MessageProps {
   message: ChatMessage;
 }
 
+// @todo extract
+const ToolComponent = ({ toolName, output }: { toolName: string; output: any }) => {
+  switch (toolName) {
+    case 'provideLink':
+      return (
+        <a href={output?.url} target="_blank" className="glass relative flex gap-3 rounded-md p-3">
+          <div className="bg-accent flex h-9 w-9 shrink-0 grow-0 items-center justify-center rounded-full p-1">
+            <IconFile className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="text-sm font-medium">{output?.title}</div>
+            <div className="text-muted-foreground text-xs">{output?.url}</div>
+          </div>
+        </a>
+      );
+    default:
+      return (
+        <div>
+          <div>{toolName}</div>
+          <div>{JSON.stringify(output, null, 2)}</div>
+        </div>
+      );
+  }
+};
+
+/**
+ * @todo memoize markdown (https://v5.ai-sdk.dev/cookbook/next/markdown-chatbot-with-memoization)
+ */
 export function Message({ message }: MessageProps) {
   const isUser = message.role === 'user';
 
@@ -23,17 +52,10 @@ export function Message({ message }: MessageProps) {
             {message.parts.map((part, idx) => {
               if (part.type.startsWith('tool-')) {
                 const toolName = part.type.replace('tool-', '');
-                /** @ts-expect-error */
-                const output = typeof part.output === 'string' ? part.output : JSON.stringify(part.output, null, 2);
 
                 return (
                   /** @ts-expect-error */
-                  <div key={part.toolCallId}>
-                    <div key={idx} className={cn('text-muted-foreground text-xs font-medium')}>
-                      Using {toolName}
-                    </div>
-                    {/* <div>{output}</div> */}
-                  </div>
+                  <ToolComponent key={part.toolCallId} toolName={toolName} output={part.output} />
                 );
               }
               if (part.type === 'text') {

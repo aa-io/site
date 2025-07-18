@@ -236,13 +236,13 @@ export const chatMdxComponents: Components = {
   ),
   // Compact code blocks
   pre: ({ children, ...props }) => (
-    <pre className="bg-border border-border/50 mb-2 overflow-x-auto rounded-md border p-2 text-xs" {...props}>
+    <pre className="bg-accent border-border/50 mb-2 overflow-x-auto rounded-md border p-2 text-xs" {...props}>
       {children}
     </pre>
   ),
   code: ({ children, ...props }) => (
     <code
-      className="bg-border border-border/50 mx-0.5 rounded border px-0.5 py-0 font-mono text-xs leading-none font-semibold"
+      className="bg-accent border-border/50 mx-0.5 rounded border px-0.5 py-0 font-mono text-xs leading-none font-semibold"
       {...props}
     >
       {children}

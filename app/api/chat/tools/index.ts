@@ -1,23 +1,38 @@
 import { ToolSet, tool } from 'ai';
 import { z } from 'zod';
-import { executeResumeTool } from './resume';
+import { SocialLinkKey, SocialLinkType, primaryLinks, socialLinks } from '../../../../data/links';
+
+const allLinks: SocialLinkType[] = [...primaryLinks, ...socialLinks] as const;
+const allLinkKeys: SocialLinkKey[] = allLinks.map((link) => link.key);
 
 // Export the wrapped tools
 export const tools: ToolSet = {
-  getResume: tool({
-    name: 'Read Resume',
-    description: "Read Andrew Ambrosino's resume information including work experience, education, and skills",
+  // @todo remove this and just define custom MDX component
+  provideLink: tool({
+    description: "Provide a link to Andrew Ambrosino's resume",
     inputSchema: z.object({
-      section: z
-        .enum(['all', 'experience', 'education', 'skills', 'summary', 'licenses'])
-        .optional()
-        .default('all')
-        .describe('Specific section of the resume to retrieve. Defaults to all.'),
+      to: z.enum(allLinkKeys as [string, ...string[]]),
     }),
-    execute: async ({ section }) => {
-      return await executeResumeTool({
-        section: section as 'all' | 'experience' | 'education' | 'skills' | 'summary' | 'licenses',
-      });
+    outputSchema: z.object({
+      title: z.string(),
+      url: z.string(),
+      type: z.string(),
+    }),
+    execute: async ({ to }) => {
+      switch (to) {
+        case 'Resume':
+          return { title: 'Resume', url: 'https://ambrosino.io/resume.pdf', type: 'pdf' };
+        case 'LinkedIn':
+          return { title: 'LinkedIn', url: 'https://www.linkedin.com/in/ajambrosino/', type: 'html' };
+        case 'GitHub':
+          return { title: 'GitHub', url: 'https://github.com/aa-io', type: 'html' };
+        case 'X':
+          return { title: 'Twitter', url: 'https://x.com/ajambrosino', type: 'html' };
+        case 'Dribbble':
+          return { title: 'Dribbble', url: 'https://dribbble.com/ajambrosino', type: 'html' };
+        case 'GPT':
+          return { title: 'Custom GPT', url: 'https://gpt.ambrosino.io', type: 'html' };
+      }
     },
   }),
 };
