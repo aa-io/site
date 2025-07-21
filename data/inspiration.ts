@@ -36,6 +36,7 @@ const personal = [
   'paco.me',
   'paulgraham.com',
   'ped.ro',
+  'pqoqubbw.dev',
   'rasmusnielsen.dk',
   'rauchg.com',
   'rauno.me',
