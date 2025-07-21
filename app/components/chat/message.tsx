@@ -35,8 +35,10 @@ const ToolComponent = ({ toolName, output }: { toolName: string; output: any }) 
     default:
       return (
         <div>
-          <div>{toolName}</div>
-          <div>{JSON.stringify(output, null, 2)}</div>
+          <div className="text-muted-foreground text-xs">
+            used <span className="font-medium">{toolName}</span>
+          </div>
+          {/* <code className="bg-accent text-xs opacity-25">{JSON.stringify(output, null, 2)}</code> */}
         </div>
       );
   }

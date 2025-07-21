@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
 
     // Stream the response with tools
     const result = streamText({
-      model: openai('gpt-4-turbo'),
+      model: openai('gpt-4o'),
       messages: modelMessages,
       system: systemPrompt,
       tools,
