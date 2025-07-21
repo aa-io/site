@@ -28,6 +28,7 @@ const personal = [
   'marco.fyi',
   'marijanapav.com',
   'mikematas.com',
+  'mitul.ca',
   'nat.org',
   'nelson.co',
   'oguzyagiz.com',
