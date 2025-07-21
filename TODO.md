@@ -10,7 +10,10 @@
 ## Content
 
 - [ ] stack
-- [ ] about
+- [ ] about me
+- [ ] about site
+  - [ ] stack
+  - [x] inspiration
 - [ ] licenses
 - [ ] images
 - [ ] old articles
@@ -31,6 +34,7 @@
 - [ ] ai chat
   - [ ] tools
   - [ ] this page vs global
+  - [ ] scroll effects
 - [ ] blog layout
   - [ ] wide version
   - [ ] role metadata
@@ -44,3 +48,4 @@
 - [ ] dev overlay
 - [ ] liquid glass exploration
 - [ ] db-backed
+  - [ ] [convex](https://www.convex.dev)?
