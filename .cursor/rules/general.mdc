@@ -1,8 +1,9 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
+
 # General Project Rules
 
 ## Project Overview
@@ -16,10 +17,12 @@ This is a Next.js 15 application with App Router, React 19, TypeScript, shadcn/u
 - **Language**: TypeScript with strict mode
 - **Styling**: Tailwind CSS 4
 - **UI Components**: Radix UI with shadcn/ui
+- **AI Integration**: Vercel AI SDK with OpenAI
 - **Animations**: Motion (Framer Motion)
 - **Theme**: next-themes for dark/light mode
 - **Icons**: Tabler Icons
 - **Content**: MDX with custom components
+- **Testing**: Vitest with React Testing Library
 - **Package Manager**: pnpm
 - **Font**: Custom Soehne font family
 
@@ -29,9 +32,11 @@ This is a Next.js 15 application with App Router, React 19, TypeScript, shadcn/u
 - Group related pages in route groups using `(folder-name)/`
 - Keep components in `app/components/`
 - Store shared UI components in `app/components/ui/`
+- API routes go in `app/api/` following App Router conventions
 - Place static assets in `public/`
 - Custom fonts go in `app/assets/font/`
 - Data files go in `data/` directory
+- Test files go in `app/test/` directory
 - Cursor AI rules in `.cursor/rules/`
 
 ## Naming Conventions

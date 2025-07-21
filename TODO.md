@@ -31,9 +31,11 @@
 - [ ] copy email to clipboard
 - [x] llms.txt
 - [ ] copy as markdown
-- [ ] ai chat
-  - [ ] tools
-  - [ ] this page vs global
+- [x] ai chat
+  - [x] basic implementation
+  - [x] tools (resume link)
+  - [ ] expand tools (more functionality)
+  - [ ] this page vs global context
   - [ ] scroll effects
 - [ ] blog layout
   - [ ] wide version
@@ -49,3 +51,12 @@
 - [ ] liquid glass exploration
 - [ ] db-backed
   - [ ] [convex](https://www.convex.dev)?
+
+## Recently Completed
+
+- AI Chat Assistant with OpenAI integration
+- Professional licenses display
+- Media mentions section
+- Comprehensive test suite with Vitest
+- CI/CD pipeline with GitHub Actions
+- Environment variable validation

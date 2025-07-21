@@ -1,8 +1,9 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: false
 ---
+
 # Component Guidelines
 
 ## Component Structure
@@ -45,6 +46,12 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
 - **MentionRow**: Media mention and press coverage display
 - **WorkPageWrapper**: Layout wrapper for detailed work project pages
 
+### Chat Components
+
+- **Chat**: Main chat interface with message history and input
+- **ChatInput**: Input component with send/stop functionality
+- **Message**: Message display with role-based styling and markdown support
+
 ### Usage Examples
 
 ```tsx
@@ -66,6 +73,17 @@ export const ComponentName: FC<ComponentNameProps> = ({ className, children }) =
   icon={<IconBrandLinkedin className="iconSize" />}
   text="LinkedIn"
   label="LinkedIn Profile"
+/>
+
+// Chat components for AI assistant
+<Chat />
+
+// Message component with role-based styling
+<Message
+  message={{
+    role: 'assistant',
+    content: 'Hello! How can I help you learn about Andrew?'
+  }}
 />
 ```
 
@@ -141,12 +159,8 @@ import { useTheme } from 'next-themes';
 
 export function ThemeAwareComponent() {
   const { theme, setTheme } = useTheme();
-  
-  return (
-    <div className="bg-background text-foreground">
-      {/* Component content */}
-    </div>
-  );
+
+  return <div className="bg-background text-foreground">{/* Component content */}</div>;
 }
 ```
 

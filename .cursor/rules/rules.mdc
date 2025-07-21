@@ -64,6 +64,15 @@ consistency and quality across the codebase.
 - Mocking strategies
 - Test coverage goals
 
+### 7. [API Route Guidelines](mdc:api-routes.md)
+
+- Next.js 15 App Router API conventions
+- AI chat integration patterns
+- Error handling and validation
+- Streaming responses
+- Security best practices
+- Testing API endpoints
+
 ## 🚀 Quick Start
 
 When working on this project, follow these key principles:

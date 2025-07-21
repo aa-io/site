@@ -1,0 +1,205 @@
+# API Route Guidelines
+
+## Overview
+
+This project uses Next.js 15 App Router API routes for server-side functionality. The primary API implementation is the
+AI chat assistant.
+
+## File Structure
+
+```
+app/api/
+├── chat/
+│   ├── route.ts          # Main API endpoint
+│   ├── system-prompt.ts  # AI configuration
+│   └── tools/           # AI assistant tools
+└── [other-routes]/
+    └── route.ts
+```
+
+## Route Conventions
+
+### Basic Structure
+
+```typescript
+// app/api/[route]/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET(request: NextRequest) {
+  // Handle GET requests
+  return NextResponse.json({ data });
+}
+
+export async function POST(request: NextRequest) {
+  // Handle POST requests
+  const body = await request.json();
+  return NextResponse.json({ result }, { status: 201 });
+}
+```
+
+### Error Handling
+
+```typescript
+export async function POST(request: NextRequest) {
+  try {
+    // Validate request
+    const body = await request.json();
+    if (!body.requiredField) {
+      return new Response('Missing required field', { status: 400 });
+    }
+
+    // Process request
+    const result = await processData(body);
+    return NextResponse.json(result);
+  } catch (error) {
+    console.error('API Error:', error);
+    return new Response('Internal Server Error', { status: 500 });
+  }
+}
+```
+
+## AI Chat Integration
+
+### Environment Variables
+
+```typescript
+// Validate environment on startup
+import { validateEnv } from '@/app/lib/env';
+validateEnv();
+```
+
+### AI SDK Usage
+
+```typescript
+import { streamText } from 'ai';
+import { openai } from '@ai-sdk/openai';
+
+const result = streamText({
+  model: openai('gpt-4-turbo'),
+  messages: modelMessages,
+  system: systemPrompt,
+  tools,
+  temperature: 0.7,
+});
+
+return result.toDataStreamResponse();
+```
+
+### Custom Tools
+
+```typescript
+import { tool } from 'ai';
+import { z } from 'zod';
+
+export const customTool = tool({
+  description: 'Tool description',
+  inputSchema: z.object({
+    param: z.string(),
+  }),
+  outputSchema: z.object({
+    result: z.string(),
+  }),
+  execute: async ({ param }) => {
+    // Tool implementation
+    return { result: 'processed' };
+  },
+});
+```
+
+## Best Practices
+
+### Request Validation
+
+- Always validate request body structure
+- Use Zod for schema validation when appropriate
+- Return appropriate error status codes
+- Include helpful error messages
+
+### Response Format
+
+- Use consistent JSON response structure
+- Include appropriate HTTP status codes
+- Set proper headers for CORS if needed
+- Stream responses for long-running operations
+
+### Security
+
+- Validate all inputs
+- Sanitize data before processing
+- Use environment variables for sensitive data
+- Implement rate limiting for public endpoints
+
+### Performance
+
+- Cache responses when appropriate
+- Use streaming for large responses
+- Implement request timeouts
+- Log performance metrics
+
+## Testing API Routes
+
+```typescript
+import { describe, expect, it } from 'vitest';
+import { NextRequest } from 'next/server';
+import { POST } from '@/app/api/route/route';
+
+describe('API Route', () => {
+  it('should handle valid requests', async () => {
+    const request = new NextRequest('http://localhost/api/route', {
+      method: 'POST',
+      body: JSON.stringify({ data: 'test' }),
+    });
+
+    const response = await POST(request);
+    const json = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(json).toHaveProperty('result');
+  });
+});
+```
+
+## Common Patterns
+
+### Streaming Responses
+
+```typescript
+// For AI responses
+return result.toDataStreamResponse();
+
+// For custom streaming
+const stream = new ReadableStream({
+  async start(controller) {
+    // Stream implementation
+  },
+});
+
+return new Response(stream, {
+  headers: { 'Content-Type': 'text/event-stream' },
+});
+```
+
+### Middleware Integration
+
+```typescript
+// Use Next.js middleware for auth, rate limiting, etc.
+export const config = {
+  matcher: '/api/:path*',
+};
+```
+
+### Error Logging
+
+```typescript
+// Consistent error logging
+console.error('API Error:', {
+  route: '/api/chat',
+  method: request.method,
+  error: error.message,
+  timestamp: new Date().toISOString(),
+});
+```
+
+description: globs: alwaysApply: false
+
+---

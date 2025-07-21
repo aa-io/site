@@ -18,6 +18,28 @@ reference.
 - Place shared UI elements in `app/components/ui/`.
 - Static assets go in `public/` and fonts in `app/assets/font/`.
 - Data files live in the `data/` folder.
+- API routes go in `app/api/` following App Router conventions.
+
+## Key Features
+
+### AI Chat Assistant
+
+The site includes an AI-powered chat assistant that can answer questions about Andrew's background:
+
+- Chat interface at `/chat`
+- API endpoint at `/api/chat`
+- Uses OpenAI's GPT-4 via Vercel AI SDK
+- Custom system prompt with Andrew's professional information
+- Tools for providing links to resume and social profiles
+
+### Testing Infrastructure
+
+Comprehensive testing with Vitest and React Testing Library:
+
+- Component tests for UI elements
+- API route tests with proper error handling
+- Data validation tests
+- Test coverage reporting with Codecov
 
 ## Components
 
@@ -25,6 +47,14 @@ reference.
 - Define props with TypeScript interfaces and include a `className` prop.
 - Use the `cn()` utility for conditional classes.
 - Export components as **named exports**.
+
+## API Routes
+
+- Use Next.js 15 App Router API conventions
+- Implement proper error handling and validation
+- Return appropriate HTTP status codes
+- Use TypeScript for request/response typing
+- Validate environment variables on startup
 
 ## Styling
 
@@ -113,6 +143,9 @@ pnpm test:watch
 
 # Run tests with UI
 pnpm test:ui
+
+# Run tests with coverage
+pnpm test:coverage
 ```
 
 ### Writing Tests
@@ -133,5 +166,6 @@ Prioritize testing for:
 - All API routes with error handling
 - Utility functions and data validation
 - User interactions and form submissions
+- AI chat functionality and API integration
 
 For detailed testing guidelines, see `.cursor/rules/testing.mdc`.

@@ -6,6 +6,8 @@ experience, projects, and serves as a digital presence for Andrew Ambrosino.
 ## 🚀 Features
 
 - **Modern Tech Stack**: Built with Next.js 15, React 19, and TypeScript
+- **AI Chat Assistant**: Interactive AI assistant that can answer questions about Andrew's background, experience, and
+  projects
 - **Responsive Design**: Fully responsive layout using Tailwind CSS 4
 - **Dark/Light Mode**: Theme switching with next-themes
 - **Work Experience**: Clean display of professional background with structured data
@@ -16,7 +18,6 @@ experience, projects, and serves as a digital presence for Andrew Ambrosino.
 - **MDX Support**: Rich content authoring with custom MDX components
 - **Performance Optimized**: Leverages Next.js Turbopack for fast development
 - **Accessible**: Built with Radix UI components for accessibility
-- **Custom GPT Integration**: Link to personalized GPT assistant
 - **SEO Optimized**: Custom OG images and meta tags for social sharing
 - **Professional Licenses**: Display of certifications and licenses
 - **Media Mentions**: Showcase of press coverage and mentions
@@ -28,6 +29,7 @@ experience, projects, and serves as a digital presence for Andrew Ambrosino.
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **UI Components**: [Radix UI](https://www.radix-ui.com/) with shadcn/ui
+- **AI Integration**: [AI SDK](https://sdk.vercel.ai/) with OpenAI
 - **Icons**: [Tabler Icons](https://tabler.io/icons)
 - **Content**: [MDX](https://mdxjs.com/) with custom components
 - **Animations**: [Motion](https://motion.dev/) (Framer Motion)
@@ -36,6 +38,7 @@ experience, projects, and serves as a digital presence for Andrew Ambrosino.
 - **Code Highlighting**: [Sugar High](https://github.com/huozhi/sugar-high)
 - **Typography**: [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin)
 - **Package Manager**: [pnpm](https://pnpm.io/)
+- **Testing**: [Vitest](https://vitest.dev/) with React Testing Library
 
 ## 🏗️ Project Structure
 
@@ -43,19 +46,30 @@ experience, projects, and serves as a digital presence for Andrew Ambrosino.
 site/
 ├── app/
 │   ├── (pages)/
+│   │   ├── chat/
+│   │   │   └── page.tsx          # AI chat assistant page
 │   │   ├── page.tsx              # Main homepage
 │   │   └── work/
 │   │       ├── catch/
 │   │       │   ├── content.mdx   # Catch project content
-│   │       │   ├── content-draft.mdx # Draft content
+│   │       │   ├── draft.mdx     # Draft content (unpublished)
 │   │       │   └── page.tsx      # Catch project page
 │   │       └── noyo/
 │   │           ├── content.mdx   # Noyo project content
-│   │           ├── content-draft.mdx # Draft content
+│   │           ├── draft.mdx     # Draft content (unpublished)
 │   │           └── page.tsx      # Noyo project page
+│   ├── api/
+│   │   └── chat/
+│   │       ├── route.ts          # AI chat API endpoint
+│   │       ├── system-prompt.ts  # AI assistant configuration
+│   │       └── tools/            # AI assistant tools
 │   ├── assets/
 │   │   └── font/                 # Soehne font family files
 │   ├── components/
+│   │   ├── chat/                 # Chat UI components
+│   │   │   ├── chat.tsx          # Main chat interface
+│   │   │   ├── input.tsx         # Chat input component
+│   │   │   └── message.tsx       # Message display component
 │   │   ├── ui/                   # shadcn/ui components
 │   │   ├── animate-in.tsx        # Animation wrapper
 │   │   ├── license-row.tsx       # Professional license display
@@ -66,7 +80,14 @@ site/
 │   │   ├── work-page-wrapper.tsx # Work project layout
 │   │   └── work-row.tsx          # Work experience row
 │   ├── lib/
+│   │   ├── env.ts               # Environment validation
 │   │   └── mdx.ts               # MDX utilities
+│   ├── test/                    # Test suite
+│   │   ├── api/                 # API route tests
+│   │   ├── components/          # Component tests
+│   │   ├── data/                # Data validation tests
+│   │   ├── setup.ts             # Test configuration
+│   │   └── utils.test.ts        # Utility tests
 │   ├── globals.css              # Global styles and CSS variables
 │   ├── layout.tsx               # Root layout
 │   ├── opengraph-image.jpg     # OG image for social sharing
@@ -87,6 +108,7 @@ site/
 │   └── rules/                   # Cursor AI coding rules
 ├── mdx-components.tsx           # Custom MDX components
 ├── next.config.ts               # Next.js configuration with MDX
+├── vitest.config.mjs            # Vitest test configuration
 └── components.json              # shadcn/ui configuration
 ```
 
@@ -112,13 +134,21 @@ site/
    pnpm install
    ```
 
-3. **Start the development server**
+3. **Set up environment variables**
+
+   Create a `.env.local` file in the root directory:
+
+   ```bash
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+
+4. **Start the development server**
 
    ```bash
    pnpm dev
    ```
 
-4. **Open your browser** Navigate to [http://localhost:3000](http://localhost:3000)
+5. **Open your browser** Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Available Scripts
 
@@ -126,6 +156,11 @@ site/
 - `pnpm build` - Build for production
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint
+- `pnpm test` - Run tests in interactive mode
+- `pnpm test:run` - Run all tests once
+- `pnpm test:watch` - Run tests in watch mode
+- `pnpm test:ui` - Run tests with UI
+- `pnpm test:coverage` - Run tests with coverage report
 - `pnpm aeo` - Build and run automated export optimization
 
 ## 🎨 Customization
@@ -230,7 +265,9 @@ This project is optimized for deployment on [Vercel](https://vercel.com):
 
 1. **Push to GitHub**
 2. **Connect to Vercel**
-3. **Deploy automatically**
+3. **Configure environment variables**:
+   - `OPENAI_API_KEY` - Required for the AI chat assistant
+4. **Deploy automatically**
 
 For other platforms:
 
@@ -239,6 +276,12 @@ pnpm build
 ```
 
 The build output will be in the `.next` folder.
+
+### Environment Variables
+
+Required for production:
+
+- `OPENAI_API_KEY` - OpenAI API key for the AI chat assistant
 
 ## 📱 SEO & Social
 
