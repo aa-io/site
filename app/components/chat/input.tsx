@@ -48,7 +48,7 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
             isLoading && '!bg-accent/50 shadow-none ring-0',
           )}
         >
-          <Hdr className={cn('transition-all', isLoading && 'opacity-0')} />
+          <Hdr className={cn('rounded-[25px] transition-all', isLoading && 'opacity-0')} />
           <textarea
             ref={textareaRef}
             value={input}
@@ -57,6 +57,7 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
             placeholder={isLoading ? '' : "Ask about Andrew's experience, skills, or projects..."}
             className="placeholder:text-muted-foreground relative z-10 field-sizing-content w-full resize-none bg-transparent p-1.5 px-3 text-base outline-none disabled:cursor-not-allowed disabled:opacity-50"
             autoFocus
+            rows={1}
             disabled={isLoading}
           />{' '}
           {isLoading ?
