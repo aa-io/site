@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/app/components/ui/button';
-import { IconSend, IconSquare } from '@tabler/icons-react';
+import { IconArrowUp, IconSend, IconSquare } from '@tabler/icons-react';
 import { Hdr } from '../hdr';
 import { cn } from '../ui/utils';
 
@@ -42,28 +42,38 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
   return (
     <form onSubmit={_handleSubmit} className="">
       <div className="flex gap-2">
-        <div className="glass-bg border-border focus-within:ring-ring relative flex-1 overflow-hidden rounded-xl border border-[0.5px] shadow-sm focus-within:ring-[1.5px] focus-within:ring-offset-0">
-          <Hdr className={cn('rounded-xl', isLoading && 'opacity-0 transition-all')} />
+        <div
+          className={cn(
+            'glass-bg ring-border relative flex flex-1 origin-right items-center overflow-hidden rounded-[25px] bg-clip-padding p-2 shadow-sm ring-1 ring-offset-0 transition-all focus-within:shadow-sm',
+            isLoading && '!bg-accent/50 shadow-none ring-0',
+          )}
+        >
+          <Hdr className={cn('transition-all', isLoading && 'opacity-0')} />
           <textarea
             ref={textareaRef}
             value={input}
             onChange={(e) => setInput(e.currentTarget.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask about Andrew's experience, skills, or projects..."
-            className="placeholder:text-muted-foreground relative z-10 max-h-[200px] min-h-[60px] w-full resize-none bg-transparent px-3 py-3 text-base outline-none disabled:cursor-not-allowed disabled:opacity-50"
-            rows={2}
+            placeholder={isLoading ? '' : "Ask about Andrew's experience, skills, or projects..."}
+            className="placeholder:text-muted-foreground relative z-10 field-sizing-content w-full resize-none bg-transparent p-1.5 px-3 text-base outline-none disabled:cursor-not-allowed disabled:opacity-50"
             autoFocus
             disabled={isLoading}
-          />
+          />{' '}
+          {isLoading ?
+            <Button type="button" size="icon" onClick={stop} className="shrink-0 self-end rounded-full">
+              <IconSquare fill="currentColor" className="size-4" />
+            </Button>
+          : <Button
+              type="submit"
+              size="icon"
+              variant={!input || !input.trim() ? 'secondary' : 'default'}
+              disabled={!input || !input.trim()}
+              className="shrink-0 self-end rounded-full transition-none"
+            >
+              <IconArrowUp className="size-5" />
+            </Button>
+          }
         </div>
-        {isLoading ?
-          <Button type="button" size="icon" variant="secondary" onClick={stop} className="shrink-0 rounded-full">
-            <IconSquare className="h-4 w-4" />
-          </Button>
-        : <Button type="submit" size="icon" disabled={!input || !input.trim()} className="shrink-0 rounded-full">
-            <IconSend className="h-4 w-4" />
-          </Button>
-        }
       </div>
     </form>
   );

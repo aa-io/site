@@ -39,7 +39,7 @@ export function Chat() {
           <div ref={messagesEndRef} />
         </div>
       </div>
-      <div className="fixed right-0 bottom-0 left-0 mx-auto h-30 max-w-3xl p-4">
+      <div className="from-background/0 to-background fixed right-0 bottom-0 left-0 mx-auto max-w-3xl bg-gradient-to-b p-4">
         <ChatInput
           handleSubmit={(text) => sendMessage({ text: text })}
           isLoading={status === 'streaming'}

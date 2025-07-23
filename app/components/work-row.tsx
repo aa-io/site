@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { WorkExperience, WorkExperienceRole } from '@/data/work';
 import { IconArrowRight } from '@tabler/icons-react';
+import { Hdr } from './hdr';
 import { cn } from './ui/utils';
 
 export const Role = ({ title, subtitle, startDate, endDate, hasLink }: WorkExperienceRole & { hasLink: boolean }) => {
@@ -27,10 +28,10 @@ export const WorkRow = ({ company, logo, slug, roles, invertDark }: WorkExperien
     <Element
       href={`/work/${slug}`}
       className={cn(
-        'group/workitem flex flex-col items-start gap-3 py-4 pb-6 leading-tight shadow-[inset_0_0.5px_0_var(--color-border)] peer-hover:shadow-none md:flex-row md:pb-4',
+        'group/workitem relative flex flex-col items-start gap-3 py-4 pb-6 leading-tight shadow-[inset_0_0.5px_0_var(--color-border)] peer-hover:shadow-none md:flex-row md:pb-4',
         slug ?
           'peer hover:bg-accentTransparent/75 active:bg-accentTransparent dark:hover:bg-accentTransparent/75 dark:active:bg-accentTransparent/50 cursor-pointer bg-clip-padding hover:-mx-4 hover:rounded-md hover:border-transparent hover:px-4 hover:shadow-[inset_0_0.5px_1.5px_0px_#FFFFFF0A]'
-        : 'cursor-default transition-all',
+        : 'cursor-default',
       )}
     >
       <div className="flex w-30 items-center gap-3">
@@ -45,6 +46,11 @@ export const WorkRow = ({ company, logo, slug, roles, invertDark }: WorkExperien
       <div className="iconSize text-muted-foreground group-hover/workitem:text-foreground -ml-1 hidden items-center justify-center md:flex">
         {slug && <IconArrowRight className="h-3.5 w-3.5" />}
       </div>
+      {slug && (
+        <div className="opacity-0 group-hover/workitem:opacity-100">
+          <Hdr className="rounded-md" />
+        </div>
+      )}
     </Element>
   );
 };

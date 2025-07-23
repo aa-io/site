@@ -80,7 +80,7 @@ export function Message({ message }: MessageProps) {
   const isUser = message.role === 'user';
 
   return (
-    <div className={cn('flex gap-3', isUser && 'flex-row-reverse')}>
+    <div className={cn('rotate-out flex gap-3', isUser && 'flex-row-reverse')}>
       <div className={cn('flex flex-col gap-1 md:max-w-[80%]')}>
         {/* Show tool calls if any */}
         {message.parts && message.parts.length > 0 && (

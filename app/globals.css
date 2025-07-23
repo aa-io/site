@@ -207,9 +207,9 @@
   }
 
   .glass-bg {
-    @apply bg-background/25 hover:bg-background/50 active:bg-background/75;
-    @apply dark:hover:bg-foreground/10 dark:active:bg-foreground/10 dark:bg-transparent;
-    @apply backdrop-blur-sm backdrop-saturate-250 dark:backdrop-brightness-[110%];
+    @apply bg-background/25 hover:bg-background/50 active:!bg-background/75 focus-within:!bg-background/75;
+    @apply dark:hover:bg-foreground/5 dark:active:!bg-foreground/5 dark:focus-within:!bg-foreground/5 dark:bg-transparent;
+    @apply backdrop-blur-sm backdrop-saturate-250 focus-within:backdrop-blur-lg dark:backdrop-brightness-[110%];
     @apply text-foreground/90 hover:text-foreground/100;
     @apply [&>*]:mix-blend-multiply dark:[&>*]:mix-blend-screen;
   }
@@ -284,4 +284,30 @@
       opacity: 1;
     }
   }
+}
+
+@keyframes rotate-out {
+  from {
+    transform: scale(0deg) translateY(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.9) translateY(5vh);
+    filter: blur(2px);
+    opacity: 0.2;
+  }
+}
+
+.rotate-out .prose {
+  transform-origin: bottom;
+
+  /* Create View Timeline */
+  view-timeline-name: --revealing-image;
+  view-timeline-axis: block;
+
+  /* Attach animation, linked to the  View Timeline */
+  animation: linear rotate-out both;
+  animation-timeline: --revealing-image;
+  animation-range: cover 90% cover 100%;
 }
