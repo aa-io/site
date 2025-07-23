@@ -49,6 +49,7 @@ const personal = [
 
 const misc = [
   'animations.dev',
+  'bauhausclock.com',
   'devouringdetails.com',
   'godly.website',
   'liquid-glass.maxrovensky.com',
