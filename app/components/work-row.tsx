@@ -47,7 +47,7 @@ export const WorkRow = ({ company, logo, slug, roles, invertDark }: WorkExperien
         {slug && <IconArrowRight className="h-3.5 w-3.5" />}
       </div>
       {slug && (
-        <div className="contents opacity-0 group-hover/workitem:opacity-100">
+        <div className="absolute inset-0 opacity-0 group-hover/workitem:opacity-100">
           <Hdr className="rounded-md" />
         </div>
       )}
