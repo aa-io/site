@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/app/components/ui/button';
-import { IconArrowUp, IconSend, IconSquare } from '@tabler/icons-react';
+import { IconArrowUp, IconSquare } from '@tabler/icons-react';
 import { Hdr } from '../hdr';
 import { cn } from '../ui/utils';
 
