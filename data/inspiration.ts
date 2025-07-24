@@ -14,6 +14,7 @@ const personal = [
   'glaze.design',
   'gunnargray.com',
   'haydenbleasel.com',
+  'itsmarga.me',
   'jasonyuan.design',
   'jhey.dev',
   'jordan.cv',
@@ -68,12 +69,13 @@ const corporate = [
   'midday.ai',
   'openai.com',
   'paper.design',
+  'press.stripe.com',
   'resend.com/handbook',
   'sesame.com',
+  'stedi.com/edi/inspector',
   'stripe.com',
   'ui.shadcn.com',
-  'stedi.com/edi/inspector',
-  'press.stripe.com',
+  'variant.ai',
 ];
 
 export const inspiration = {
