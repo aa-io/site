@@ -10,7 +10,7 @@ export const LicenseRow = ({
   number: string;
 }) => {
   return (
-    <div className="group/license text-foreground/65 flex flex-col py-1.5 text-sm leading-relaxed sm:flex-row sm:gap-3">
+    <div className="group/license text-foreground/65 flex w-full flex-col py-1.5 text-sm leading-relaxed sm:flex-row sm:gap-3">
       <div className="group-hover/mention:text-foreground gap-1.5 md:flex">
         <div className="line-clamp-1 truncate">{name}</div>
       </div>

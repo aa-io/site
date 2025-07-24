@@ -40,7 +40,7 @@
 - [ ] blog layout
   - [ ] wide version
   - [ ] role metadata
-  - [ ] breadcrumb on scroll w/logo
+  - [x] breadcrumb on scroll w/logo
   - [ ] stack agg
   - [ ] toc/outline
     - [ ] sticky headers

@@ -91,3 +91,10 @@ export const workItems: Array<WorkExperience> = [
     ],
   },
 ];
+
+/**
+ * Get work experience data by slug
+ */
+export function getWorkBySlug(slug: string): WorkExperience | undefined {
+  return workItems.find((item) => item.slug === slug);
+}

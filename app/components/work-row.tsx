@@ -8,7 +8,7 @@ export const Role = ({ title, subtitle, startDate, endDate, hasLink }: WorkExper
   const willShowEndDate = endDate && endDate !== startDate;
   const isCurrentRole = !endDate;
   return (
-    <div key={title} className="flex justify-between gap-1 py-1 first:pt-0 last:pb-0">
+    <div key={title} className="flex justify-between gap-3 py-1 first:pt-0 last:pb-0">
       <div className="flex gap-2">
         <div className={cn('text-balance md:font-medium', hasLink && 'uline')}>{title}</div>
         {subtitle && <div className="text-muted-foreground hidden opacity-65 sm:block">{subtitle}</div>}
