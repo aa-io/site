@@ -41,7 +41,7 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
 
   return (
     <form onSubmit={_handleSubmit} className="">
-      <div className="flex gap-2">
+      <div className="flex gap-2 md:pb-[max(0px,5vh)]">
         <div
           className={cn(
             'glass-bg ring-border relative flex flex-1 origin-right items-center overflow-hidden rounded-[25px] bg-clip-padding p-1.5 shadow-sm ring-1 ring-offset-0 transition-all focus-within:shadow-sm',
