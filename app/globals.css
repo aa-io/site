@@ -304,13 +304,11 @@
   }
 }
 
-.rotate-out {
-  /* Create View Timeline */
+/* .rotate-out {
   view-timeline-name: --revealing-image;
   view-timeline-axis: block;
 
-  /* Attach animation, linked to the  View Timeline */
   animation: linear rotate-out both;
   animation-timeline: --revealing-image;
   animation-range: cover 85% cover 100%;
-}
+} */
