@@ -39,7 +39,7 @@
   - [ ] scroll effects
 - [ ] blog layout
   - [ ] wide version
-  - [ ] role metadata
+  - [x] role metadata
   - [x] breadcrumb on scroll w/logo
   - [ ] stack agg
   - [ ] toc/outline
