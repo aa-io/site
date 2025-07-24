@@ -44,7 +44,7 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
       <div className="flex gap-2">
         <div
           className={cn(
-            'glass-bg ring-border relative flex flex-1 origin-right items-center overflow-hidden rounded-[25px] bg-clip-padding p-2 shadow-sm ring-1 ring-offset-0 transition-all focus-within:shadow-sm',
+            'glass-bg ring-border relative flex flex-1 origin-right items-center overflow-hidden rounded-[25px] bg-clip-padding p-1.5 shadow-sm ring-1 ring-offset-0 transition-all focus-within:shadow-sm',
             isLoading && '!bg-accent/50 shadow-none ring-0',
           )}
         >
@@ -54,8 +54,8 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
             value={input}
             onChange={(e) => setInput(e.currentTarget.value)}
             onKeyDown={handleKeyDown}
-            placeholder={isLoading ? '' : "Ask about Andrew's experience, skills, or projects..."}
-            className="placeholder:text-muted-foreground relative z-10 field-sizing-content w-full resize-none bg-transparent p-1.5 px-3 text-base outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            placeholder={isLoading ? '' : 'Ask about Andrew...'}
+            className="placeholder:text-muted-foreground relative z-10 field-sizing-content w-full resize-none bg-transparent p-1.5 px-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50"
             autoFocus
             rows={1}
             disabled={isLoading}

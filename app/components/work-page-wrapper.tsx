@@ -12,7 +12,6 @@ import {
 import type { WorkExperienceRole } from '@/data/work';
 import { IconChevronLeft } from '@tabler/icons-react';
 import AnimateIn from './animate-in';
-import { LicenseRow } from './license-row';
 import { LinkButton } from './social-link';
 import { cn } from './ui/utils';
 import { Role } from './work-row';
@@ -25,6 +24,7 @@ interface WorkPageWrapperProps {
   roles?: Array<WorkExperienceRole>;
 }
 
+/** @todo extract toolbar, share with chat page */
 export function WorkPageWrapper({ title, children, description, parent, roles }: WorkPageWrapperProps) {
   const [showBreadcrumb, setShowBreadcrumb] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);

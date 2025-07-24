@@ -1,13 +1,14 @@
 import {
   IconBrandDribbble,
   IconBrandGithub,
+  IconBrandLine,
   IconBrandLinkedin,
   IconBrandOpenai,
   IconBrandX,
   IconFileTypePdf,
 } from '@tabler/icons-react';
 
-export type SocialLinkKey = 'GPT' | 'Resume' | 'LinkedIn' | 'GitHub' | 'X' | 'Dribbble';
+export type SocialLinkKey = 'Chat' | 'Resume' | 'LinkedIn' | 'GitHub' | 'X' | 'Dribbble';
 
 export type SocialLinkType = {
   key: SocialLinkKey;
@@ -18,13 +19,6 @@ export type SocialLinkType = {
 };
 
 export const primaryLinks: Array<SocialLinkType> = [
-  {
-    key: 'GPT',
-    label: 'GPT',
-    text: 'Custom GPT',
-    icon: IconBrandOpenai,
-    href: 'https://gpt.ambrosino.io',
-  },
   {
     key: 'Resume',
     text: 'Download resume',

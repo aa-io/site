@@ -23,7 +23,7 @@ export function Chat() {
   return (
     <>
       <div className="mx-auto w-full max-w-3xl">
-        <div className="w-full flex-1 scroll-m-30 space-y-1 p-4 pt-30 pb-30 perspective-dramatic">
+        <div className="p-pageMargin w-full flex-1 scroll-m-30 space-y-1 pt-30 pb-30 perspective-dramatic">
           <div className="flex-1 space-y-6">
             {messages.map((message, idx) => (
               <AnimateInUp key={message.id} idx={messages.length - idx}>
@@ -39,12 +39,14 @@ export function Chat() {
           <div ref={messagesEndRef} />
         </div>
       </div>
-      <div className="from-background/0 to-background fixed right-0 bottom-0 left-0 mx-auto max-w-3xl bg-gradient-to-b p-4">
-        <ChatInput
-          handleSubmit={(text) => sendMessage({ text: text })}
-          isLoading={status === 'streaming'}
-          stop={stop}
-        />
+      <div className="from-background/0 to-background p-pageMargin fixed right-0 bottom-0 left-0 mx-auto max-w-3xl bg-gradient-to-b">
+        <AnimateInUp idx={0}>
+          <ChatInput
+            handleSubmit={(text) => sendMessage({ text: text })}
+            isLoading={status === 'streaming'}
+            stop={stop}
+          />
+        </AnimateInUp>
       </div>
     </>
   );
