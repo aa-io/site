@@ -5,7 +5,6 @@ import { licenses } from '@/data/licenses';
 import { primaryLinks, socialLinks } from '@/data/links';
 import { mentions } from '@/data/mentions';
 import { workItems } from '@/data/work';
-import { IconBrandLine, IconInfoCircle } from '@tabler/icons-react';
 import AnimateIn from '../components/animate-in';
 import { LicenseRow } from '../components/license-row';
 import { MentionRow } from '../components/mention-row';
@@ -98,21 +97,6 @@ export default function HomePage() {
                 className="opacity-50 hover:opacity-100"
               />
             ))}
-            <SocialLink
-              key="inspiration"
-              href="/site"
-              icon={<IconInfoCircle className="iconSize" strokeWidth={1.85} />}
-              text="Site info"
-              target="_self"
-              className="opacity-50 hover:opacity-100"
-            />
-            <SocialLink
-              key="chat"
-              href="/chat"
-              icon={<IconBrandLine className="iconSize" strokeWidth={1.85} />}
-              text="AI Chat"
-              target="_self"
-            />
           </div>
         </AnimateIn>
       </div>

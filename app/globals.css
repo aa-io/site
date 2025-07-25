@@ -207,17 +207,17 @@
   }
 
   .glass-bg {
-    @apply bg-background/25 hover:bg-background/50 active:!bg-background/75 focus-within:!bg-background/75;
-    @apply dark:hover:bg-foreground/5 dark:active:!bg-foreground/5 dark:focus-within:!bg-foreground/5 dark:bg-transparent;
+    @apply bg-card/50 hover:bg-background/50 active:!bg-background/75 focus-within:!bg-background/75;
+    @apply dark:hover:bg-foreground/5 dark:active:!bg-foreground/5 dark:focus-within:!bg-foreground/5 dark:bg-foreground/5;
     @apply backdrop-blur-sm backdrop-saturate-250 focus-within:backdrop-blur-lg dark:backdrop-brightness-[110%];
     @apply text-foreground/90 hover:text-foreground/100;
     @apply [&>*]:mix-blend-multiply dark:[&>*]:mix-blend-screen;
   }
 
   .glass-shadow {
-    @apply shadow-[inset_0px_-0.25px_0.5px_0.5px_#00000019,inset_0px_0.5px_1px_0px_#FFFFFF,inset_0_-12px_6px_0px_#ffffff55,0_6px_32px_-10px_#00000033,0_0px_25px_0px_#FFFFFF88,1px_1px_15px_5px_#00000000];
-    @apply dark:shadow-[inset_0px_0.5px_1px_0px_#FFFFFF33,inset_-1px_-3px_3px_-2px_#FFFFFF11,inset_0_24px_6px_-12px_#00000005,0_10px_60px_-10px_#00000055,0_0px_25px_0px_#00000033,1px_1px_7px_0px_#00000055];
-    @apply drop-shadow-[0px_10px_16px_#00000022] sm:drop-shadow-none;
+    @apply shadow-[inset_0px_-0.25px_0.5px_0.5px_#00000025,inset_0px_0.5px_1px_0px_#FFFFFF,inset_0_-12px_12px_0px_#ffffff99,0_6px_32px_-10px_#00000033,0_0px_25px_0px_#FFFFFF88,inset_0px_1px_0.5px_0px_#ffffffff];
+    @apply dark:shadow-[inset_0px_0.5px_1px_0px_#FFFFFF33,inset_-1px_-3px_3px_-2px_#FFFFFF11,inset_0_24px_6px_-12px_#00000005,0_10px_60px_-10px_#00000033,0_0px_25px_0px_#00000022,1px_1px_7px_0px_#00000033];
+    @apply drop-shadow-[0px_10px_16px_#00000033] sm:drop-shadow-none;
   }
 }
 

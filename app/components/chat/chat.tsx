@@ -23,10 +23,10 @@ export function Chat() {
   return (
     <>
       <div
-        className="mx-auto w-full max-w-3xl"
+        className="mx-auto w-full max-w-2xl"
         style={{ '--chat-padding': 'max(var(--padding-pageMargin),5vh)' } as React.CSSProperties}
       >
-        <div className="p-pageMargin w-full flex-1 scroll-m-30 space-y-1 pb-[max(120px,20vh)] perspective-dramatic">
+        <div className="p-pageMargin w-full flex-1 scroll-m-30 space-y-1 py-[max(120px,20vh)] perspective-dramatic">
           <div className="flex-1 space-y-6">
             {messages.map((message, idx) => (
               <AnimateInUp key={message.id} idx={messages.length - idx}>
@@ -42,7 +42,7 @@ export function Chat() {
           <div ref={messagesEndRef} />
         </div>
       </div>
-      <div className="from-background/0 to-background p-pageMargin fixed right-0 bottom-0 left-0 mx-auto max-w-3xl bg-gradient-to-b">
+      <div className="from-background/0 to-background p-pageMargin fixed right-0 bottom-0 left-0 mx-auto max-w-2xl bg-gradient-to-b">
         <AnimateInUp idx={0}>
           <ChatInput
             handleSubmit={(text) => sendMessage({ text: text })}
