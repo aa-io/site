@@ -80,6 +80,8 @@
   }
 }
 
+
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -116,7 +118,18 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --blend: multiply;
+  --opacity-glass: 0.05;
 }
+
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  :root {
+   --opacity-glass: 0.3;
+ 
+  }
+   
+  
+  }
 
 .dark {
   --background: oklch(0.145 0 0);
@@ -205,17 +218,20 @@
   .uline {
     @apply decoration-muted-foreground/50 hover:decoration-muted-foreground break-words underline decoration-[0.5px] underline-offset-4 transition-all;
   }
-
+.glass-o {
+  opacity: var(--opacity-glass);
+}
   .glass-bg {
-    @apply bg-card/50 hover:bg-background/50 active:!bg-background/75 focus-within:!bg-background/75;
-    @apply dark:hover:bg-foreground/5 dark:active:!bg-foreground/5 dark:focus-within:!bg-foreground/5 dark:bg-foreground/5;
-    @apply backdrop-blur-sm backdrop-saturate-250 focus-within:backdrop-blur-lg dark:backdrop-brightness-[110%];
+    
+    @apply bg-background/25   active:!bg-background/75 focus-within:!bg-background/75;
+    @apply  dark:active:!bg-foreground/5 dark:focus-within:!bg-foreground/5  ;
+    @apply backdrop-blur-sm backdrop-saturate-300 focus-within:backdrop-blur-lg backdrop-brightness-[105%] dark:backdrop-brightness-[125%];
     @apply text-foreground/90 hover:text-foreground/100;
     @apply [&>*]:mix-blend-multiply dark:[&>*]:mix-blend-screen;
   }
 
   .glass-shadow {
-    @apply shadow-[inset_0px_-0.25px_0.5px_0.5px_#00000025,inset_0px_0.5px_1px_0px_#FFFFFF,inset_0_-12px_12px_0px_#ffffff99,0_6px_32px_-10px_#00000033,0_0px_25px_0px_#FFFFFF88,inset_0px_1px_0.5px_0px_#ffffffff];
+    @apply shadow-[inset_0px_0px_0.5px_0.5px_#FFFFFF,0_1.5px_16px_-8px_#00000033,0_0px_0.5px_0.5px_#00000011];
     @apply dark:shadow-[inset_0px_0.5px_1px_0px_#FFFFFF33,inset_-1px_-3px_3px_-2px_#FFFFFF11,inset_0_24px_6px_-12px_#00000005,0_10px_60px_-10px_#00000033,0_0px_25px_0px_#00000022,1px_1px_7px_0px_#00000033];
     @apply drop-shadow-[0px_10px_16px_#00000033] sm:drop-shadow-none;
   }

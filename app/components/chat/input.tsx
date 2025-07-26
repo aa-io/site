@@ -44,12 +44,19 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
       <div className="flex gap-2 md:pb-[max(0px,5vh)]">
         <div
           className={cn(
-            'glass-bg ring-border relative flex flex-1 origin-right items-center overflow-hidden rounded-[25px] bg-clip-padding p-1.5 shadow-sm ring-1 ring-offset-0 transition-all focus-within:shadow-sm',
+            'glass-bg group ring-border relative flex flex-1 origin-right items-center overflow-hidden rounded-[25px] bg-clip-padding p-1.5 shadow-sm ring-[0.5px] ring-offset-0 transition-all focus-within:shadow-sm',
             isLoading && '!bg-accent/50 shadow-none ring-0',
           )}
         >
-          <Hdr className={cn('rounded-[25px] transition-all', isLoading && 'opacity-0')} />
+          <div className="absolute inset-0 -z-10 h-full overflow-hidden rounded-full ">
+          <Hdr className={cn(' h-[0.25px] blur-[1px] opacity-10  transition-all', isLoading && 'opacity-0')} />
+          <Hdr className={cn('  h-[20px] bottom-0 top-auto blur-[20px] transition-all', isLoading && 'opacity-0')} />
+          
+          </div>
+
           <textarea
+          
+          
             ref={textareaRef}
             value={input}
             onChange={(e) => setInput(e.currentTarget.value)}

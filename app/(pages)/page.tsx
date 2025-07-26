@@ -43,8 +43,7 @@ export default function HomePage() {
               </div>
             ))}
           </Section>
-        </AnimateIn>
-        <AnimateIn idx={3}>
+ 
           <Section title="Licenses">
             {licenses.map((license) => (
               <LicenseRow
@@ -56,8 +55,7 @@ export default function HomePage() {
               />
             ))}
           </Section>
-        </AnimateIn>
-        <AnimateIn idx={4}>
+ 
           <Section title="Misc">
             {mentions.map((mention) => (
               <MentionRow

@@ -47,7 +47,7 @@ export const Tab = ({
       className={cn(
         !active ? 'px-3' : 'w-24 px-3',
         'hover:text-foreground relative flex h-8 min-w-8 items-center justify-center overflow-hidden rounded-full font-medium active:scale-95',
-        active ? 'text-foreground' : 'text-foreground/75 hover:bg-foreground/5',
+        active ? 'text-foreground' : 'text-foreground/50 hover:bg-foreground/5',
       )}
     >
       <motion.div transition={transition} className="blend z-10 flex items-center justify-center gap-1">
@@ -62,9 +62,9 @@ export const Tab = ({
           <motion.div
             layoutId="bg-indicator"
             transition={transitionFast}
-            className="bg-card/50 dark:bg-foreground/10 glass-shadow absolute inset-0 z-1 h-full rounded-full"
+            className="bg-foreground/10 dark:bg-foreground/5 shadow-md absolute inset-0 z-1 h-full rounded-full"
           >
-            <Hdr className="absolute inset-0 -z-10" />
+            <Hdr className="absolute inset-0 -z-10 dark:opacity-0" />
           </motion.div>
         </>
       )}
@@ -78,7 +78,6 @@ export const Tab = ({
 export const Glass = ({
   children,
   layoutId,
-  empty,
   hdr,
 }: {
   children: React.ReactNode;
@@ -95,14 +94,17 @@ export const Glass = ({
       key={layoutId}
       layoutId={layoutId}
       className={cn(
-        hdr ? 'glass-bg glass-shadow' : 'bg-foreground/5',
+ 
+        'glass-bg glass-shadow  dark:shadow-xl  ',
         'relative flex h-9 min-w-9 items-center justify-center rounded-[20px] px-0.5 backdrop-blur-sm',
       )}
     >
       {children}
-      {hdr && (
-        <motion.div transition={transition} layoutId="hdr" className="absolute inset-0 -z-10 h-full w-full">
-          <Hdr />
+    
+      {true && (
+        <motion.div transition={transition} layoutId="glass-hdr" className="absolute inset-0 shadow-[inset_0px_0px_0.5px_0.5px_#FFFFFF] dark:shadow-[inset_0px_0px_0.5px_0.5px_#FFFFFF11]  -z-10 h-full overflow-hidden rounded-full ">
+          <div className="dark:opacity-50"><Hdr className="h-[0.25px] top-0  blur-[1px] scale-75 glass-o " /></div>
+          <div className="opacity-15"><Hdr className=" top-auto h-full scale-90 blur-[20px] glass-o  " /></div>
         </motion.div>
       )}
     </motion.div>
@@ -180,7 +182,7 @@ export const Navigation = () => {
           <div className="flex items-center justify-start">
             {needsBackButton && (
               <>
-                <Glass hdr layoutId="glass-left" empty={!needsBackButton}>
+                <Glass  hdr layoutId="glass-left" empty={!needsBackButton}>
                   <LeftTabs currentPath={pathname} isBackButton />
                 </Glass>
                 <motion.div
@@ -197,7 +199,7 @@ export const Navigation = () => {
           <div>
             {needsBackButton ? null : (
               <>
-                <Glass layoutId="glass-right">
+                <Glass layoutId="glass-left">
                   <LeftTabs currentPath={pathname} />
                   <RightTabs currentPath={pathname} />
                 </Glass>
@@ -206,7 +208,7 @@ export const Navigation = () => {
           </div>
           <div className="flex items-center justify-end">
             {needsBackButton ?
-              <Glass layoutId="glass-right" empty={!needsBackButton}>
+              <Glass hdr layoutId="glass-right" empty={!needsBackButton}>
                 <RightTabs hideText currentPath={pathname} />
               </Glass>
             : <motion.div
