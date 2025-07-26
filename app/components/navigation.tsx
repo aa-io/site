@@ -62,9 +62,9 @@ export const Tab = ({
           <motion.div
             layoutId="bg-indicator"
             transition={transitionFast}
-            className="bg-foreground/10 dark:bg-foreground/5 shadow-md absolute inset-0 z-1 h-full rounded-full"
+            className="bg-accent dark:bg-foreground/5 shadow-md absolute inset-0 z-1 h-full rounded-full"
           >
-            <Hdr className="absolute inset-0 -z-10 dark:opacity-0" />
+            {/* <Hdr className="absolute inset-0 -z-10 dark:opacity-0" /> */}
           </motion.div>
         </>
       )}
@@ -101,12 +101,12 @@ export const Glass = ({
     >
       {children}
     
-      {true && (
+     
         <motion.div transition={transition} layoutId="glass-hdr" className="absolute inset-0 shadow-[inset_0px_0px_0.5px_0.5px_#FFFFFF] dark:shadow-[inset_0px_0px_0.5px_0.5px_#FFFFFF11]  -z-10 h-full overflow-hidden rounded-full ">
-          <div className="dark:opacity-50"><Hdr className="h-[0.25px] top-0  blur-[1px] scale-75 glass-o " /></div>
-          <div className="opacity-15"><Hdr className=" top-auto h-full scale-90 blur-[20px] glass-o  " /></div>
+          <div className="dark:opacity-25"><Hdr className="h-[0.25px] top-0  blur-[1px] scale-75 glass-o " /></div>
+          <div className={cn("opacity-15 dark:opacity-10", hdr && 'dark:opacity-50')}><Hdr className=" top-auto h-full dark:h-[50%] blur-[20px]  glass-o  " /></div>
         </motion.div>
-      )}
+    
     </motion.div>
   );
 };
@@ -133,7 +133,7 @@ export const LeftTabs = ({ currentPath, isBackButton }: { currentPath: string })
 /**
  * @todo clean up this file
  * */
-export const RightTabs = ({ currentPath, hideText }: { currentPath: string }) => {
+export const RightTabs = ({ currentPath, hideText }: { currentPath: string, hideText?: boolean }) => {
   return (
     <motion.div layout transition={transition} layoutId="right-tabs" className="flex h-full items-center">
       <Tab
@@ -175,7 +175,7 @@ export const Navigation = () => {
   return (
     <motion.div
       layoutRoot
-      className="from-background to-background/0 p-pageMargin via-background/75 fixed top-0 right-0 left-0 z-50 flex items-center justify-center bg-gradient-to-b from-0% via-50% to-100% pt-[min(12px,calc(var(--padding-pageMargin)*2))] pb-[calc(var(--padding-pageMargin)*2)]"
+      className="from-background to-background/0 p-pageMargin   fixed top-0 right-0 left-0 z-50 flex items-center justify-center bg-gradient-to-b from-0%  to-100% pt-[min(12px,calc(var(--padding-pageMargin)*2))] pb-[calc(var(--padding-pageMargin)*2)]"
     >
       <AnimatePresence mode="wait">
         <div className="mx-auto grid w-full max-w-xl grid-cols-[1fr_auto_1fr] items-center">
@@ -198,12 +198,12 @@ export const Navigation = () => {
           </div>
           <div>
             {needsBackButton ? null : (
-              <>
+           
                 <Glass layoutId="glass-left">
                   <LeftTabs currentPath={pathname} />
                   <RightTabs currentPath={pathname} />
                 </Glass>
-              </>
+             
             )}
           </div>
           <div className="flex items-center justify-end">
