@@ -45,6 +45,7 @@ const personal = [
   'rsms.me',
   'sdw.space',
   'shadcn.com',
+  'tommoor.com',
   'wireframe.co',
 ];
 
