@@ -44,7 +44,7 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
       <div className="flex gap-2 md:pb-[max(0px,5vh)]">
         <div
           className={cn(
-            'bg-card dark:bg-card/50 group ring-border relative flex flex-1 origin-right items-center overflow-hidden rounded-[25px] bg-clip-padding p-1.5 shadow-sm ring-[0.5px] ring-offset-0 transition-all focus-within:shadow-sm',
+            'glass-bg group ring-border relative flex flex-1 origin-right items-center overflow-hidden rounded-[25px] bg-clip-padding p-1.5 shadow-sm ring-[0.5px] ring-offset-0 transition-all focus-within:shadow-sm',
             isLoading && '!bg-accent/50 shadow-none ring-0',
           )}
         >
