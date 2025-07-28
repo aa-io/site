@@ -42,7 +42,7 @@ export function Chat() {
           <div ref={messagesEndRef} />
         </div>
       </div>
-      <div className="from-background/0 to-background p-pageMargin fixed right-0 bottom-0 left-0 mx-auto max-w-2xl bg-gradient-to-b">
+      <div className="from-background/0 to-background p-pageMargin fixed right-0 bottom-0 left-0 mx-auto h-30 max-w-2xl bg-gradient-to-b">
         <AnimateInUp idx={0}>
           <ChatInput
             handleSubmit={(text) => sendMessage({ text: text })}

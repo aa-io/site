@@ -48,9 +48,13 @@ export function ChatInput({ handleSubmit, isLoading, stop }: ChatInputProps) {
             isLoading && '!bg-accent/50 shadow-none ring-0',
           )}
         >
-          <div className="absolute inset-0 -z-10 h-full overflow-hidden rounded-full">
-            <Hdr className={cn('h-[0.25px] opacity-10 blur-[1px] transition-all', isLoading && 'opacity-0')} />
-            <Hdr className={cn('top-auto bottom-0 h-[20px] blur-[20px] transition-all', isLoading && 'opacity-0')} />
+          <div className="absolute inset-0 -z-0 h-full overflow-hidden rounded-full">
+            <Hdr
+              className={cn(
+                'absolute top-0 bottom-auto h-full opacity-[0.02] transition-all',
+                isLoading && 'opacity-0',
+              )}
+            />
           </div>
           <textarea
             ref={textareaRef}

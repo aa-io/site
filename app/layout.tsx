@@ -3,11 +3,9 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Geist_Mono, Newsreader } from 'next/font/google';
 import localFont from 'next/font/local';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { ThemeProvider } from '@/app/components/theme-provider';
 import { Toaster } from '@/app/components/ui/sonner';
-import { Navigation } from './components/navigation';
-import { LayoutInner } from './layout-inner';
 
 const _sans = localFont({
   src: './assets/font/sohne.woff2',
@@ -70,17 +68,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`overflow-hidden ${_sans.className} ${_serif.variable} ${geistMono.variable} bg-background antialiased`}
-      >
+      <body className={`${_sans.className} ${_serif.variable} ${geistMono.variable} bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Suspense key="layout-inner">
-            <Navigation />
-
-            <LayoutInner>
-              <main>{children}</main>
-            </LayoutInner>
-          </Suspense>
+          <main className="flex min-h-screen justify-center">
+            <div className="w-full">{children}</div>
+          </main>
         </ThemeProvider>
         <Toaster />
       </body>

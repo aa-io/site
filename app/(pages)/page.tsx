@@ -36,37 +36,39 @@ export default function HomePage() {
           </Section>
         </AnimateIn>
         <AnimateIn idx={2}>
-          <Section title="Earlier">
-            {earlierWorkItems.map((work, idx) => (
-              <div key={idx} className="text-foreground/65">
-                <WorkRow {...work} />
-              </div>
-            ))}
-          </Section>
- 
-          <Section title="Licenses">
-            {licenses.map((license) => (
-              <LicenseRow
-                key={license.credential.number}
-                entity={license.entity}
-                name={license.name}
-                credential={license.credential.type}
-                number={license.credential.number}
-              />
-            ))}
-          </Section>
- 
-          <Section title="Misc">
-            {mentions.map((mention) => (
-              <MentionRow
-                key={mention.title}
-                link={mention.url}
-                title={mention.title}
-                date={mention.year}
-                description={mention.description}
-              />
-            ))}
-          </Section>
+          <div className="flex flex-col gap-12">
+            <Section title="Earlier">
+              {earlierWorkItems.map((work, idx) => (
+                <div key={idx} className="text-foreground/65">
+                  <WorkRow {...work} />
+                </div>
+              ))}
+            </Section>
+
+            <Section title="Licenses">
+              {licenses.map((license) => (
+                <LicenseRow
+                  key={license.credential.number}
+                  entity={license.entity}
+                  name={license.name}
+                  credential={license.credential.type}
+                  number={license.credential.number}
+                />
+              ))}
+            </Section>
+
+            <Section title="Misc">
+              {mentions.map((mention) => (
+                <MentionRow
+                  key={mention.title}
+                  link={mention.url}
+                  title={mention.title}
+                  date={mention.year}
+                  description={mention.description}
+                />
+              ))}
+            </Section>
+          </div>
         </AnimateIn>
 
         <AnimateIn
@@ -93,6 +95,7 @@ export default function HomePage() {
                 text={link.text}
                 label={link.label}
                 className="opacity-50 hover:opacity-100"
+                target={link.target ?? '_self'}
               />
             ))}
           </div>
