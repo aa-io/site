@@ -9,14 +9,7 @@ import {
   IconFileTypePdf,
 } from '@tabler/icons-react';
 
-export type SocialLinkKey =
-  | 'Chat'
-  | 'About'
-  | 'Resume'
-  | 'LinkedIn'
-  | 'GitHub'
-  | 'X'
-  | 'Dribbble';
+export type SocialLinkKey = 'Chat' | 'About' | 'Resume' | 'LinkedIn' | 'GitHub' | 'X' | 'Dribbble';
 
 export type SocialLinkType = {
   key: SocialLinkKey;
@@ -24,6 +17,7 @@ export type SocialLinkType = {
   icon: any;
   label?: string;
   text?: string;
+  target?: string;
 };
 
 export const primaryLinks: Array<SocialLinkType> = [
@@ -33,6 +27,7 @@ export const primaryLinks: Array<SocialLinkType> = [
     label: 'PDF',
     icon: IconFileTypePdf,
     href: '/resume.pdf',
+    target: '_blank',
   },
   {
     key: 'About',

@@ -68,7 +68,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${_sans.className} ${_serif.variable} ${geistMono.variable} bg-background antialiased`}>
+      <body className={`${_sans.className} ${_serif.variable} ${geistMono.variable} bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <main className="flex min-h-screen justify-center">
             <div className="w-full">{children}</div>
