@@ -6,6 +6,7 @@ import localFont from 'next/font/local';
 import React from 'react';
 import { ThemeProvider } from '@/app/components/theme-provider';
 import { Toaster } from '@/app/components/ui/sonner';
+import { LayoutInner } from './layout-inner';
 
 const _sans = localFont({
   src: './assets/font/sohne.woff2',
@@ -68,11 +69,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${_sans.className} ${_serif.variable} ${geistMono.variable} bg-background antialiased`}>
+      <body className={`overflow-hidden ${_sans.className} ${_serif.variable} ${geistMono.variable} bg-background antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <main className="flex min-h-screen justify-center">
-            <div className="w-full">{children}</div>
-          </main>
+          <LayoutInner>
+            <main>{children}</main>
+          </LayoutInner>
         </ThemeProvider>
         <Toaster />
       </body>

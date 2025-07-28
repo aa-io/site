@@ -15,7 +15,7 @@ export const SocialLink = ({
   text,
   label,
   className,
-  target = '_blank',
+  target,
 }: {
   href: string;
   icon: ReactNode;
@@ -24,11 +24,14 @@ export const SocialLink = ({
   className?: string;
   target?: string;
 }) => {
+  const isExternal = /^https?:\/\//.test(href);
+  const linkTarget = target ?? (isExternal ? '_blank' : undefined);
+
   return (
     <div className={cn(className)}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Link target={target} className={cn(_cns.button)} href={href}>
+          <Link target={linkTarget} className={cn(_cns.button)} href={href}>
             {icon}
             {label && <span className={cn(_cns.text, 'text-xs')}>{label}</span>}
           </Link>
