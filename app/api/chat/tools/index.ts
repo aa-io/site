@@ -22,6 +22,10 @@ export const tools: ToolSet = {
     }),
     execute: async ({ to }) => {
       switch (to) {
+        case 'Chat':
+          return { title: 'AI Chat', url: 'https://ambrosino.io/chat', type: 'html' };
+        case 'About':
+          return { title: 'Site info', url: 'https://ambrosino.io/site', type: 'html' };
         case 'Resume':
           return { title: 'Resume', url: 'https://ambrosino.io/resume.pdf', type: 'pdf' };
         case 'LinkedIn':

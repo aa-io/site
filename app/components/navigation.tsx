@@ -1,5 +1,8 @@
 'use client';
 
+// Temporarily disabled until performance issues are resolved. The component
+// remains in the codebase for future optimization efforts.
+
 import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
