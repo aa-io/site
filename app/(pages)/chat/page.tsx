@@ -6,7 +6,7 @@ import { WorkPageWrapper } from '../../components/work-page-wrapper';
 
 export default function ChatPage() {
   return (
-    <WorkPageWrapper title="Chat">
+    <WorkPageWrapper title="Chat" animateChildren={false}>
       <Chat />
     </WorkPageWrapper>
   );

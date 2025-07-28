@@ -22,10 +22,23 @@ interface WorkPageWrapperProps {
   description?: string;
   parent?: string;
   roles?: Array<WorkExperienceRole>;
+  /**
+   * Disable child entrance animation. Useful when the
+   * page contains fixed-position elements like the chat
+   * input that should remain attached to the viewport.
+   */
+  animateChildren?: boolean;
 }
 
 /** @todo extract toolbar, share with chat page */
-export function WorkPageWrapper({ title, children, description, parent, roles }: WorkPageWrapperProps) {
+export function WorkPageWrapper({
+  title,
+  children,
+  description,
+  parent,
+  roles,
+  animateChildren = true,
+}: WorkPageWrapperProps) {
   const [showBreadcrumb, setShowBreadcrumb] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -106,9 +119,13 @@ export function WorkPageWrapper({ title, children, description, parent, roles }:
             )}
           </AnimateIn>
         )}
-        <AnimateIn idx={1} className="mx-auto w-full max-w-2xl justify-center">
-          {children}
-        </AnimateIn>
+        {animateChildren ? (
+          <AnimateIn idx={1} className="mx-auto w-full max-w-2xl justify-center">
+            {children}
+          </AnimateIn>
+        ) : (
+          <div className="mx-auto w-full max-w-2xl justify-center">{children}</div>
+        )}
       </article>
     </>
   );
