@@ -91,6 +91,7 @@ Worked on developer tools and platforms.
 
 ## Media Mentions
 
+- **VentureBeat**: "OpenAI drastically updates Codex desktop app" (2026)
 - **TechCrunch Series A**: "Catch takes hold of $12M to provide benefits that aren't tied to employers" (2021)
 - **TechCrunch Seed**: "Gig workers need health & benefits — Catch is their safety net" (2019)
 - **Medium**: "macOS: It's time to take the next step" - Early concept work (2016)

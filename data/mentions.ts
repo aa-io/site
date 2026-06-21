@@ -7,6 +7,12 @@ export type Mention = {
 
 export const mentions: Array<Mention> = [
   {
+    title: 'OpenAI drastically updates Codex desktop app',
+    description: 'VentureBeat',
+    url: 'https://venturebeat.com/technology/openai-drastically-updates-codex-desktop-app-to-use-all-other-apps-on-your-computer-generate-images-preview-webpages/',
+    year: '2026',
+  },
+  {
     title: 'Catch takes hold of $12M to provide benefits that aren’t tied to employers',
     description: 'Series A',
     url: 'https://techcrunch.com/2021/07/30/catch-takes-hold-of-12m-to-provide-benefits-that-arent-tied-to-employers/',
