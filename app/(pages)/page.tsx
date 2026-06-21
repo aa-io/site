@@ -73,7 +73,7 @@ export default function HomePage() {
 
         <AnimateIn
           idx={3}
-          className="from-background/0 to-background/100 via-background/90 sticky bottom-0 -mx-1.5 flex items-center justify-around gap-6 bg-gradient-to-b pt-[calc(var(--padding-pageMargin)*1.5)] pb-[calc(var(--padding-pageMargin)/1.5)] md:justify-between md:gap-12"
+          className="bg-surface-fade-bottom sticky bottom-0 -mx-1.5 flex items-center justify-around gap-6 pt-[calc(var(--padding-pageMargin)*1.5)] pb-[calc(var(--padding-pageMargin)/1.5)] md:justify-between md:gap-12"
         >
           <div className="flex items-center justify-between gap-3">
             {socialLinks.map((link) => (

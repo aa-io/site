@@ -176,7 +176,7 @@ export const Navigation = () => {
   return (
     <motion.div
       layoutRoot
-      className="from-background to-background/0 p-pageMargin fixed top-0 right-0 left-0 z-50 flex items-center justify-center bg-gradient-to-b from-0% to-100% pt-[min(12px,calc(var(--padding-pageMargin)*2))] pb-[calc(var(--padding-pageMargin)*2)]"
+      className="bg-surface-fade-top p-pageMargin fixed top-0 right-0 left-0 z-50 flex items-center justify-center pt-[min(12px,calc(var(--padding-pageMargin)*2))] pb-[calc(var(--padding-pageMargin)*2)]"
     >
       <AnimatePresence mode="wait">
         <div className="mx-auto grid w-full max-w-xl grid-cols-[1fr_auto_1fr] items-center">

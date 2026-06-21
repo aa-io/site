@@ -84,6 +84,7 @@
 
 :root {
   --radius: 0.625rem;
+  --background-rgb: 255 255 255;
   --background: oklch(1 0 0);
   --foreground: oklch(0.15 0 0);
   --card: oklch(1 0 0);
@@ -132,6 +133,7 @@
   }
 
 .dark {
+  --background-rgb: 19 19 19;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.95 0 0);
   --card: oklch(0.205 0 0);
@@ -208,6 +210,22 @@
 }
 
 @layer utilities {
+  .bg-surface-fade-bottom {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(var(--background-rgb) / 0),
+      rgb(var(--background-rgb) / 0.9),
+      rgb(var(--background-rgb) / 1)
+    );
+  }
+  .bg-surface-fade-top {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(var(--background-rgb) / 1),
+      rgb(var(--background-rgb) / 0.75),
+      rgb(var(--background-rgb) / 0)
+    );
+  }
   .blend {
     mix-blend-mode: var(--blend);
   }
