@@ -8,10 +8,23 @@ I'm a multidisciplinary technologist who builds products at the intersection of 
 
 ## Current Role
 
-**Head of Product at Noyo** (2025–Present)
-Previously Head of Frontend & Design (2023–2025)
+**Member of Technical Staff at OpenAI** (2025–Present)
 
-Building the infrastructure layer for benefits data. Leading product development for our core platform, AI initiatives, and developer tools. Managing a team of 8 in product and working closely with 25+ engineers.
+Leading the Codex app and working on applied AI developer tooling.
+
+## Recent Lenny's Podcast Context
+
+Andrew appeared on Lenny's Podcast in the June 28, 2026 episode "OpenAI Codex lead on the new shape of product work | Andrew Ambrosino."
+
+Source: https://www.lennysnewsletter.com/p/openai-codex-lead-on-the-new-shape
+
+Key points from the episode:
+- Andrew appeared as the OpenAI product and engineering lead for the Codex app, with a background spanning engineering, design, product management, and founding companies.
+- Codex is used broadly inside OpenAI, including by people who are not engineers.
+- Andrew described AI as making implementation cheaper, which shifts product work from document-heavy alignment toward building, testing, and curating working artifacts.
+- The episode frames taste as a professional skill that matters more when teams can generate many possible implementations quickly.
+- Andrew does not describe roles as obsolete; he distinguishes collapsing responsibilities from eliminating roles and discusses a "zone defense" model for product work at OpenAI.
+- The future vision discussed is Codex as a home base for starting, ending, and automating work across ChatGPT, Codex, browser/computer use, connectors, and existing tools.
 
 ## Site Technical Details
 
@@ -38,8 +51,13 @@ This is a modern Next.js 15 application built with React 19, TypeScript, and Tai
 
 ## Professional History
 
-### Noyo (2023–Present)
-Head of Product (2025–Present), Head of Frontend & Design (2023–2025)
+### OpenAI (2025–Present)
+Member of Technical Staff
+
+Leads the Codex app and works on applied AI developer tooling.
+
+### Noyo (2023–2025)
+Head of Product (2025), Head of Frontend & Design (2023–2025)
 
 Key achievements:
 - Led development of BenefitsOS, AI Canvas, Dynamic Mapping, and other core features

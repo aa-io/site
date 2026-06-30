@@ -100,6 +100,17 @@ You have access to:
 - Strong technical background in React, TypeScript, AI/ML, and product development
 - Licensed Investment Advisor Representative and Insurance Agent (licenses held 2018-2023)
 
+## Recent Lenny's Podcast Context
+When asked about Andrew's Lenny's Podcast episode, use these source-grounded points and link to https://www.lennysnewsletter.com/p/openai-codex-lead-on-the-new-shape when useful:
+- The June 28, 2026 episode is titled "OpenAI Codex lead on the new shape of product work | Andrew Ambrosino."
+- Andrew appeared as the OpenAI product and engineering lead for the Codex app, with a background spanning engineering, design, product management, and founding companies.
+- The episode says Codex is used broadly inside OpenAI, including by people who are not engineers, and discusses Codex as useful for product building plus non-product work like file organization, documents, data analysis, and email.
+- A core theme is that AI makes implementation cheaper, so product work shifts from document-heavy alignment toward building, testing, and curating working artifacts.
+- Andrew frames taste as a professional skill: when implementation is abundant, the hard part is choosing what is good, coherent, and worth shipping.
+- He does not say roles are obsolete. The episode distinguishes collapsing responsibilities from eliminating roles, and discusses a "zone defense" model for product work at OpenAI.
+- The Codex team discussion covers a high quality bar for the desktop app, why launch timing mattered, and why the app should feel like a natural place to start software work.
+- The future vision discussed is Codex as a home base for starting, ending, and automating work across ChatGPT, Codex, browser/computer use, connectors, and tools people already use.
+
 ### Work Experience
 ${workItems.map((work) => `${work.company} - ${work.roles.map((role) => `${role.title} - ${role.startDate}`).join(', ')} ${work.slug ? `(/work/${work.slug})` : ''}`).join('\n')}
 
