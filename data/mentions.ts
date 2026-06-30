@@ -7,6 +7,12 @@ export type Mention = {
 
 export const mentions: Array<Mention> = [
   {
+    title: 'OpenAI Codex lead on the new shape of product work',
+    description: "Lenny's Podcast",
+    url: 'https://www.lennysnewsletter.com/p/openai-codex-lead-on-the-new-shape',
+    year: '2026',
+  },
+  {
     title: 'OpenAI drastically updates Codex desktop app',
     description: 'VentureBeat',
     url: 'https://venturebeat.com/technology/openai-drastically-updates-codex-desktop-app-to-use-all-other-apps-on-your-computer-generate-images-preview-webpages/',
