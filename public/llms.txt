@@ -10,7 +10,7 @@ I'm a multidisciplinary technologist who builds products at the intersection of 
 
 **Member of Technical Staff at OpenAI** (2025–Present)
 
-Leading the Codex app and working on applied AI developer tooling.
+Leading the Codex app.
 
 ## Recent Lenny's Podcast Context
 
@@ -54,7 +54,7 @@ This is a modern Next.js 15 application built with React 19, TypeScript, and Tai
 ### OpenAI (2025–Present)
 Member of Technical Staff
 
-Leads the Codex app and works on applied AI developer tooling.
+Leads the Codex app. Initially worked on applied AI developer tooling at OpenAI before moving to Codex; that was separate from the current Codex role.
 
 ### Noyo (2023–2025)
 Head of Product (2025), Head of Frontend & Design (2023–2025)
